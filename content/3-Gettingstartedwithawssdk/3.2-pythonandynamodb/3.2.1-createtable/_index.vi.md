@@ -1,12 +1,12 @@
 ---
-title : "Tạo bảng"
+title : "Tạo table"
 date : "`r Sys.Date()`"
 weight : 1
 chapter : false
 pre : " <b> 3.2.1 </b> "
 ---
 
-Trong bước này, chúng ta tạo một bảng có tên **Movies**. primary key cho bảng bao gồm các thuộc tính sau:
+Trong bước này, chúng ta tạo một table có tên **Movies**. primary key cho table bao gồm các attritube sau:
 
 **year** – The partition key. AttributeType là N(number).
 
@@ -66,4 +66,4 @@ python MoviesCreateTable.py
 ```
 Trường hợp khác: sử dụng **`python "đường dẫn file MoviesCreateTable.py"`**
 
-4. Sau khi chạy chương trình trả về **`Table status: CREATING`** là tạo bảng thành công.
+4. Sau khi chạy chương trình trả về **`Table status: CREATING`** là tạo table thành công.

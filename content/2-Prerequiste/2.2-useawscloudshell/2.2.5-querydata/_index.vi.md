@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 2.2.5 </b> "
 ---
 
-- Để truy vấn dữ liệu từ bảng, sử dụng lệnh **`query`** và cung cấp **partition key**.
+- Để truy vấn dữ liệu từ table, sử dụng lệnh **`query`** và cung cấp **partition key**.
 
 1. Thực hiện lệnh:
   

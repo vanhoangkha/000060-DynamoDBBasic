@@ -8,7 +8,7 @@ pre : " <b> 2.2.2 </b> "
 
 - Để ghi dữ liệu, sử dụng lệnh **`put-item`**
 
-1. Sau khi tạo bảng ở [bước 2.2.1 Tạo bảng](../2.2.1-createtable/), tiếp tục gõ lệnh:
+1. Sau khi tạo table ở [bước 2.2.1 Tạo table](../2.2.1-createtable/), tiếp tục gõ lệnh:
 
 ```
 aws dynamodb put-item \

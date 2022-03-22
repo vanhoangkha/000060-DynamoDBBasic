@@ -1,5 +1,5 @@
 ---
-title : "Tạo bảng"
+title : "Tạo table"
 date : "`r Sys.Date()`"
 weight : 1
 chapter : false
@@ -20,7 +20,7 @@ pre : " <b> 2.2.1 </b> "
 
 ![Create Table Dashboard!](/images/2-prerequisite/2.2-usecloudshell/2.2.1-createtable/0001-createtable.png "CreateTableDashboard")
 
-4. Để tạo bảng, ta sử dụng lệnh **`create-table`** . Gõ lệnh:
+4. Để tạo table, ta sử dụng lệnh **`create-table`** . Gõ lệnh:
 ```
 aws dynamodb create-table \
     --table-name Music \
@@ -85,11 +85,11 @@ aws dynamodb create-table \
 
 ![Createb Table CloudShell!](/images/2-prerequisite/2.2-usecloudshell/2.2.1-createtable/0002-createtable.png "Createb Table CloudShell")
 
-6. Kiểm tra trạng thái bảng:
+6. Kiểm tra trạng thái table:
 
 - Gõ lệnh: 
 ```
 aws dynamodb describe-table --table-name Music | grep TableStatus
 ```
 
-- Khi DynamoDB hoàn thành việc tạo bảng, giá trị của **TableStatus** là **ACTIVE**: `"TableStatus": "ACTIVE",`
+- Khi DynamoDB hoàn thành việc tạo table, giá trị của **TableStatus** là **ACTIVE**: `"TableStatus": "ACTIVE",`

@@ -378,13 +378,13 @@
  
   
     
-    <li data-nav-id="/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/" title="Tạo bảng" class="dd-item 
+    <li data-nav-id="/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/" title="Tạo table" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/">
-           <b> 2.1.2 </b> Tạo bảng
+           <b> 2.1.2 </b> Tạo table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -614,13 +614,13 @@
  
   
     
-    <li data-nav-id="/vi/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/" title="Tạo bảng" class="dd-item 
+    <li data-nav-id="/vi/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/" title="Tạo table" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/">
-           <b> 2.2.1 </b> Tạo bảng
+           <b> 2.2.1 </b> Tạo table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -972,13 +972,13 @@
  
   
     
-    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.4-pythonandynamodb/3.4.1-createtable/" title="Tạo bảng" class="dd-item 
+    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.4-pythonandynamodb/3.4.1-createtable/" title="Tạo table" class="dd-item 
         
         
         
         ">
       <a href="/vi/3-gettingstartedwithawssdk/3.4-pythonandynamodb/3.4.1-createtable/">
-           <b> 3.4.1 </b> Tạo bảng
+           <b> 3.4.1 </b> Tạo table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1196,13 +1196,13 @@
  
   
     
-    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.4-pythonandynamodb/3.4.9-deletethetable/" title="Xóa dữ liệu bảng" class="dd-item 
+    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.4-pythonandynamodb/3.4.9-deletethetable/" title="Xóa dữ liệu table" class="dd-item 
         
         
         
         ">
       <a href="/vi/3-gettingstartedwithawssdk/3.4-pythonandynamodb/3.4.9-deletethetable/">
-           <b> 3.4.9 </b> Xóa dữ liệu bảng
+           <b> 3.4.9 </b> Xóa dữ liệu table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1442,8 +1442,8 @@
 
 
 
-	<p>Phương thức <strong>scan</strong> đọc mọi mục trong toàn bộ bảng và trả về tất cả dữ liệu trong bảng. Bạn có thể cung cấp một tùy chọn <strong>filter_expression</strong> để chỉ những mặt hàng phù hợp với tiêu chí của bạn mới được trả lại. Tuy nhiên, bộ lọc chỉ được áp dụng sau khi toàn bộ bảng đã được quét.</p>
-<p>Chương trình sau quét toàn bộ bảng Movies, trong đó có khoảng 5.000 mục. Quá trình quét chỉ định bộ lọc tùy chọn để chỉ lấy các phim từ những năm 1950 (khoảng 100 mục) và loại bỏ tất cả các phim khác.</p>
+	<p>Phương thức <strong>scan</strong> đọc mọi item trong toàn bộ table và trả về tất cả dữ liệu trong table. Bạn có thể cung cấp một tùy chọn <strong>filter_expression</strong> để chỉ những mặt hàng phù hợp với tiêu chí của bạn mới được trả lại. Tuy nhiên, bộ lọc chỉ được áp dụng sau khi toàn bộ table đã được quét.</p>
+<p>Chương trình sau quét toàn bộ table Movies, trong đó có khoảng 5.000 item. Quá trình quét chỉ định bộ lọc tùy chọn để chỉ lấy các phim từ những năm 1950 (khoảng 100 item) và loại bỏ tất cả các phim khác.</p>
 <ol>
 <li>
 <p>Tạo file có tên <strong><code>MoviesScan.py</code></strong></p>
@@ -1489,8 +1489,8 @@ if __name__ == '__main__':
         f&quot;Scanning for movies released from {query_range[0]} to {query_range[1]}...&quot;)
     scan_movies(query_range, print_movies)
 </code></pre><p>Chú thích:</p>
-<p><strong>ProjectionExpression</strong> chỉ định các thuộc tính bạn muốn trong kết quả quét.</p>
-<p><strong>FilterExpression</strong> chỉ định một điều kiện chỉ trả về các mục thỏa mãn điều kiện. Tất cả các mục khác đều bị loại bỏ.</p>
+<p><strong>ProjectionExpression</strong> chỉ định các attritube bạn muốn trong kết quả quét.</p>
+<p><strong>FilterExpression</strong> chỉ định một điều kiện chỉ trả về các item thỏa mãn điều kiện. Tất cả các item khác đều bị loại bỏ.</p>
 <ol start="3">
 <li>Chạy chương trình bằng <strong>Window Command Prompt</strong> đã được xác thực và cấu hình ở <a href="../../3.1-configureawscli/">bước 3.1 Cấu hình AWS CLI</a>. Gõ lệnh:</li>
 </ol>
@@ -2253,7 +2253,7 @@ if __name__ == '__main__':
 			<a class="nav nav-prev" href="/vi/3-gettingstartedwithawssdk/3.4-pythonandynamodb/3.4.7-querydata/" title="Truy vấn dữ liệu"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/3-gettingstartedwithawssdk/3.4-pythonandynamodb/3.4.9-deletethetable/" title="Xóa dữ liệu bảng" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/3-gettingstartedwithawssdk/3.4-pythonandynamodb/3.4.9-deletethetable/" title="Xóa dữ liệu table" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

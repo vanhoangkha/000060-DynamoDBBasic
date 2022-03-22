@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 3.2.2 </b> "
 ---
 
-Thực hiện thêm item vào bảng **Movies** vừa tạo ở [3.4.1-Tạo bảng](3.4-pythonanddynamodb/../../3.4.1-createtable/)
+Thực hiện thêm item vào table **Movies** vừa tạo ở [3.4.1-Tạo table](3.4-pythonanddynamodb/../../3.4.1-createtable/)
 
 1. Tạo file có tên **`MoviesItemOps01.py`** 
 

@@ -10,7 +10,7 @@ pre : " <b> 3.2.6 </b> "
 
 2. Giải nén tệp dữ liệu (**moviedata.json**) từ kho lưu trữ.
 
-3. Sao chép tệp **moviedata.json** vào thư mục hiện tại của bạn.
+3. Sao chép tệp **moviedata.json** vào thư item hiện tại của bạn.
 
 4. Tạo file có tên **`MoviesLoadData.py`**
 

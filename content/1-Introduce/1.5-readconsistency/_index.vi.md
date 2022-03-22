@@ -7,7 +7,7 @@ pre : " <b> 1.5</b> "
 ---
 
 #### **Eventually Consistent Reads**
-- Khi bạn đọc dữ liệu từ bảng DynamoDB, phản hồi có thể không phản ánh kết quả của một thao tác ghi đã hoàn thành gần đây.  
+- Khi bạn đọc dữ liệu từ table DynamoDB, phản hồi có thể không phản ánh kết quả của một thao tác ghi đã hoàn thành gần đây.  
 - Phản hồi có thể bao gồm một số dữ liệu cũ. 
 - Nếu bạn lặp lại yêu cầu đọc của mình sau một thời gian ngắn, phản hồi sẽ trả về dữ liệu mới nhất.
   

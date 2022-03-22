@@ -378,13 +378,13 @@
  
   
     
-    <li data-nav-id="/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/" title="Tạo bảng" class="dd-item 
+    <li data-nav-id="/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/" title="Tạo table" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/">
-           <b> 2.1.2 </b> Tạo bảng
+           <b> 2.1.2 </b> Tạo table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -614,13 +614,13 @@
  
   
     
-    <li data-nav-id="/vi/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/" title="Tạo bảng" class="dd-item 
+    <li data-nav-id="/vi/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/" title="Tạo table" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/">
-           <b> 2.2.1 </b> Tạo bảng
+           <b> 2.2.1 </b> Tạo table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -916,13 +916,13 @@
  
   
     
-    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.1-createtable/" title="Tạo bảng" class="dd-item 
+    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.1-createtable/" title="Tạo table" class="dd-item 
         
         
         
         ">
       <a href="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.1-createtable/">
-           <b> 3.2.1 </b> Tạo bảng
+           <b> 3.2.1 </b> Tạo table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1140,13 +1140,13 @@
  
   
     
-    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.9-deletethetable/" title="Xóa dữ liệu bảng" class="dd-item 
+    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.9-deletethetable/" title="Xóa dữ liệu table" class="dd-item 
         
         
         
         ">
       <a href="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.9-deletethetable/">
-           <b> 3.2.9 </b> Xóa dữ liệu bảng
+           <b> 3.2.9 </b> Xóa dữ liệu table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1399,13 +1399,13 @@
 </ul>
 <h4 id="partition-key"><strong>Partition key</strong></h4>
 <ul>
-<li>Một primary key đơn giản, bao gồm một thuộc tính được gọi là <strong>Partition key</strong>.</li>
+<li>Một primary key đơn giản, bao gồm một attritube được gọi là <strong>Partition key</strong>.</li>
 <li><strong>DynamoDB</strong> sử dụng giá trị của partition key làm đầu vào cho hàm băm bên trong. Đầu ra từ hàm băm xác định phân vùng (bộ nhớ vật lý bên trong DynamoDB) mà item sẽ được lưu trữ.</li>
 <li>Trong table chỉ có partition key, không có hai item nào có thể có cùng giá trị Partition key.</li>
 </ul>
 <h4 id="composite-primary-key"><strong>Composite primary key</strong></h4>
 <ul>
-<li>Thuộc tính đầu tiên là <strong>partition key</strong> và thuộc tính thứ hai là <strong>sort key</strong>.</li>
+<li>attritube đầu tiên là <strong>partition key</strong> và attritube thứ hai là <strong>sort key</strong>.</li>
 <li><strong>DynamoDB</strong> sử dụng giá trị partition key làm đầu vào cho hàm băm bên trong. Đầu ra từ hàm băm xác định phân vùng (bộ nhớ vật lý bên trong DynamoDB) mà item sẽ được lưu trữ. Tất cả các item có cùng giá trị partition key được lưu trữ cùng nhau, theo thứ tự được sắp xếp theo giá trị sort key.</li>
 <li>Trong table có partition key và sort key, nhiều item có thể có cùng giá trị partition key. Tuy nhiên, các item đó phải có các giá trị sort key khác nhau.</li>
 <li><strong>Composite primary</strong> key giúp bạn linh hoạt hơn khi truy vấn dữ liệu.</li>

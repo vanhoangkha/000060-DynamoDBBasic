@@ -378,13 +378,13 @@
  
   
     
-    <li data-nav-id="/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/" title="Tạo bảng" class="dd-item 
+    <li data-nav-id="/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/" title="Tạo table" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/">
-           <b> 2.1.2 </b> Tạo bảng
+           <b> 2.1.2 </b> Tạo table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -614,13 +614,13 @@
  
   
     
-    <li data-nav-id="/vi/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/" title="Tạo bảng" class="dd-item 
+    <li data-nav-id="/vi/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/" title="Tạo table" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/">
-           <b> 2.2.1 </b> Tạo bảng
+           <b> 2.2.1 </b> Tạo table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -916,13 +916,13 @@
  
   
     
-    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.1-createtable/" title="Tạo bảng" class="dd-item 
+    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.1-createtable/" title="Tạo table" class="dd-item 
         
         
         
         ">
       <a href="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.1-createtable/">
-           <b> 3.2.1 </b> Tạo bảng
+           <b> 3.2.1 </b> Tạo table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1140,13 +1140,13 @@
  
   
     
-    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.9-deletethetable/" title="Xóa dữ liệu bảng" class="dd-item 
+    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.9-deletethetable/" title="Xóa dữ liệu table" class="dd-item 
         
         
         
         ">
       <a href="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.9-deletethetable/">
-           <b> 3.2.9 </b> Xóa dữ liệu bảng
+           <b> 3.2.9 </b> Xóa dữ liệu table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1389,11 +1389,11 @@
 
 	<h4 id="quy-tắc-đặt-tên"><strong>Quy tắc đặt tên</strong></h4>
 <ul>
-<li>Các bảng, thuộc tính và các đối tượng khác trong <strong>DynamoDB</strong> phải có tên.</li>
+<li>Các table, attritube và các đối tượng khác trong <strong>DynamoDB</strong> phải có tên.</li>
 <li>Sau đây là các quy tắc đặt tên cho DynamoDB:
 <ul>
 <li>Tất cả các tên phải được mã hóa bằng <em><strong>UTF-8</strong></em> và có <em><strong>phân biệt chữ hoa chữ thường</strong></em>.</li>
-<li>Tên bảng và tên chỉ mục phải dài từ <em><strong>3 đến 255 ký tự</strong></em> và chỉ được chứa các ký tự sau:
+<li>Tên table và tên indexphải dài từ <em><strong>3 đến 255 ký tự</strong></em> và chỉ được chứa các ký tự sau:
 <ul>
 <li>a-z</li>
 <li>A-Z</li>
@@ -1405,20 +1405,20 @@
 </li>
 </ul>
 </li>
-<li>Tên thuộc tính phải dài ít nhất một ký tự, nhưng không dài hơn 64 KB.</li>
-<li>Sau đây là các trường hợp ngoại lệ. Các tên thuộc tính này không được dài quá 255 ký tự:
+<li>Tên attritube phải dài ít nhất một ký tự, nhưng không dài hơn 64 KB.</li>
+<li>Sau đây là các trường hợp ngoại lệ. Các tên attritube này không được dài quá 255 ký tự:
 <ul>
 <li>Tên khóa của phân vùng Secondary Index.</li>
 <li>Secondary Index sắp xếp các tên khóa.</li>
-<li>Tên của bất kỳ thuộc tính dự kiến ​​nào do người dùng chỉ định (chỉ áp dụng cho các Secondary Index cục bộ).</li>
+<li>Tên của bất kỳ attritube dự kiến ​​nào do người dùng chỉ định (chỉ áp dụng cho các Secondary Index cục bộ).</li>
 </ul>
 </li>
 </ul>
 <h4 id="kiểu-dữ-liệu"><strong>Kiểu dữ liệu</strong></h4>
-<p><strong>DynamoDB</strong> hỗ trợ nhiều kiểu dữ liệu khác nhau cho các thuộc tính trong bảng. Chúng có thể được phân loại như sau:</p>
+<p><strong>DynamoDB</strong> hỗ trợ nhiều kiểu dữ liệu khác nhau cho các attritube trong table. Chúng có thể được phân loại như sau:</p>
 <ul>
 <li><strong>Các kiểu vô hướng:</strong> Một kiểu vô hướng có thể biểu diễn chính xác một giá trị. Các kiểu vô hướng là <strong>số, chuỗi, nhị phân, Boolean và null</strong>.</li>
-<li><strong>Loại tài liệu:</strong> Một loại tài liệu có thể đại diện cho một cấu trúc phức tạp với các thuộc tính lồng nhau, chẳng hạn như bạn sẽ tìm thấy trong tài liệu JSON. Các loại tài liệu là <strong>list</strong> và <strong>map</strong>.</li>
+<li><strong>Loại tài liệu:</strong> Một loại tài liệu có thể đại diện cho một cấu trúc phức tạp với các attritube lồng nhau, chẳng hạn như bạn sẽ tìm thấy trong tài liệu JSON. Các loại tài liệu là <strong>list</strong> và <strong>map</strong>.</li>
 <li><strong>Loại tập hợp:</strong> Một loại tập hợp có thể đại diện cho nhiều giá trị vô hướng. Các loại tập hợp là <strong>tập hợp chuỗi, tập hợp số và tập hợp nhị phân</strong>.</li>
 </ul>
 

@@ -6,9 +6,9 @@ chapter : false
 pre : " <b> 3.2.8 </b> "
 ---
 
-Phương thức **scan** đọc mọi item trong toàn bộ bảng và trả về tất cả dữ liệu trong bảng. Bạn có thể cung cấp một tùy chọn **filter_expression** để chỉ những mặt hàng phù hợp với tiêu chí của bạn mới được trả lại. Tuy nhiên, bộ lọc chỉ được áp dụng sau khi toàn bộ bảng đã được quét.
+Phương thức **scan** đọc mọi item trong toàn bộ table và trả về tất cả dữ liệu trong table. Bạn có thể cung cấp một tùy chọn **filter_expression** để chỉ những mặt hàng phù hợp với tiêu chí của bạn mới được trả lại. Tuy nhiên, bộ lọc chỉ được áp dụng sau khi toàn bộ table đã được quét.
 
-Chương trình sau quét toàn bộ bảng Movies, trong đó có khoảng 5.000 mục. Quá trình quét chỉ định bộ lọc tùy chọn để chỉ lấy các phim từ những năm 1950 (khoảng 100 mục) và loại bỏ tất cả các phim khác.
+Chương trình sau quét toàn bộ table Movies, trong đó có khoảng 5.000 item. Quá trình quét chỉ định bộ lọc tùy chọn để chỉ lấy các phim từ những năm 1950 (khoảng 100 item) và loại bỏ tất cả các phim khác.
 
 1. Tạo file có tên **`MoviesScan.py`**
 
@@ -54,9 +54,9 @@ if __name__ == '__main__':
 ```
 Chú thích:
 
-**ProjectionExpression** chỉ định các thuộc tính bạn muốn trong kết quả quét.
+**ProjectionExpression** chỉ định các attritube bạn muốn trong kết quả quét.
 
-**FilterExpression** chỉ định một điều kiện chỉ trả về các mục thỏa mãn điều kiện. Tất cả các mục khác đều bị loại bỏ.
+**FilterExpression** chỉ định một điều kiện chỉ trả về các item thỏa mãn điều kiện. Tất cả các item khác đều bị loại bỏ.
 
 3. Chạy chương trình bằng **Window Command Prompt** đã được xác thực và cấu hình ở [bước 3.1 Cấu hình AWS CLI](../../3.1-configureawscli/). Gõ lệnh:
 

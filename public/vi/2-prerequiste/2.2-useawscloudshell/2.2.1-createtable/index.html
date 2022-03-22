@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Tạo bảng :: AWS DynamoDB</title>
+    <title>Tạo table :: AWS DynamoDB</title>
 
     
     <link href="/css/nucleus.css?1647919101" rel="stylesheet">
@@ -378,13 +378,13 @@
  
   
     
-    <li data-nav-id="/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/" title="Tạo bảng" class="dd-item 
+    <li data-nav-id="/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/" title="Tạo table" class="dd-item 
         
         
         
         ">
       <a href="/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/">
-           <b> 2.1.2 </b> Tạo bảng
+           <b> 2.1.2 </b> Tạo table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -614,13 +614,13 @@
  
   
     
-    <li data-nav-id="/vi/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/" title="Tạo bảng" class="dd-item 
+    <li data-nav-id="/vi/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/" title="Tạo table" class="dd-item 
         
         active
         
         ">
       <a href="/vi/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/">
-           <b> 2.2.1 </b> Tạo bảng
+           <b> 2.2.1 </b> Tạo table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -916,13 +916,13 @@
  
   
     
-    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.1-createtable/" title="Tạo bảng" class="dd-item 
+    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.1-createtable/" title="Tạo table" class="dd-item 
         
         
         
         ">
       <a href="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.1-createtable/">
-           <b> 3.2.1 </b> Tạo bảng
+           <b> 3.2.1 </b> Tạo table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1140,13 +1140,13 @@
  
   
     
-    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.9-deletethetable/" title="Xóa dữ liệu bảng" class="dd-item 
+    <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.9-deletethetable/" title="Xóa dữ liệu table" class="dd-item 
         
         
         
         ">
       <a href="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.9-deletethetable/">
-           <b> 3.2.9 </b> Xóa dữ liệu bảng
+           <b> 3.2.9 </b> Xóa dữ liệu table
           
             <i class="fas fa-check read-icon"></i>
           
@@ -1346,7 +1346,7 @@
             
           
           
-            <a href='/vi/'>AWS DynamoDB</a> > <a href='/vi/2-prerequiste/'>Các bước chuẩn bị</a> > <a href='/vi/2-prerequiste/2.2-useawscloudshell/'>Sử dụng AWS CloudShell</a> > Tạo bảng
+            <a href='/vi/'>AWS DynamoDB</a> > <a href='/vi/2-prerequiste/'>Các bước chuẩn bị</a> > <a href='/vi/2-prerequiste/2.2-useawscloudshell/'>Sử dụng AWS CloudShell</a> > Tạo table
           
         
           
@@ -1377,7 +1377,7 @@
           
             <h1>
               
-              Tạo bảng
+              Tạo table
             </h1>
           
 
@@ -1404,7 +1404,7 @@
 </ul>
 <p><img src="/images/2-prerequisite/2.2-usecloudshell/2.2.1-createtable/0001-createtable.png" alt="Create Table Dashboard!" title="CreateTableDashboard"></p>
 <ol start="4">
-<li>Để tạo bảng, ta sử dụng lệnh <strong><code>create-table</code></strong> . Gõ lệnh:</li>
+<li>Để tạo table, ta sử dụng lệnh <strong><code>create-table</code></strong> . Gõ lệnh:</li>
 </ol>
 <pre><code>aws dynamodb create-table \
     --table-name Music \
@@ -1467,14 +1467,14 @@
 </ul>
 <p><img src="/images/2-prerequisite/2.2-usecloudshell/2.2.1-createtable/0002-createtable.png" alt="Createb Table CloudShell!" title="Createb Table CloudShell"></p>
 <ol start="6">
-<li>Kiểm tra trạng thái bảng:</li>
+<li>Kiểm tra trạng thái table:</li>
 </ol>
 <ul>
 <li>Gõ lệnh:</li>
 </ul>
 <pre><code>aws dynamodb describe-table --table-name Music | grep TableStatus
 </code></pre><ul>
-<li>Khi DynamoDB hoàn thành việc tạo bảng, giá trị của <strong>TableStatus</strong> là <strong>ACTIVE</strong>: <code>&quot;TableStatus&quot;: &quot;ACTIVE&quot;,</code></li>
+<li>Khi DynamoDB hoàn thành việc tạo table, giá trị của <strong>TableStatus</strong> là <strong>ACTIVE</strong>: <code>&quot;TableStatus&quot;: &quot;ACTIVE&quot;,</code></li>
 </ul>
 
 

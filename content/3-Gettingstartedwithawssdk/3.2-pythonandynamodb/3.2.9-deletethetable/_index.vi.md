@@ -1,5 +1,5 @@
 ---
-title : "Xóa dữ liệu bảng"
+title : "Xóa dữ liệu table"
 date : "`r Sys.Date()`"
 weight : 9
 chapter : false

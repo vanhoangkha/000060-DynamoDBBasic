@@ -5,9 +5,9 @@ weight : 1
 chapter : false
 pre : " <b> 2.1 </b> "
 ---
-Bạn có thể truy cập table điều khiển quản lý AWS cho Amazon DynamoDB tại [table điều khiển quản lý AWS cho Amazon DynamoDB](https://console.aws.amazon.com/dynamodb/home).
+Bạn có thể truy cập bảng điều khiển quản lý AWS cho Amazon DynamoDB tại [bảng điều khiển quản lý AWS cho Amazon DynamoDB](https://console.aws.amazon.com/dynamodb/home).
 
-Bạn có thể sử dụng table điều khiển để thực hiện những việc sau trong DynamoDB:
+Bạn có thể sử dụng bảng điều khiển để thực hiện những việc sau trong DynamoDB:
 
 - Theo dõi các cảnh báo gần đây, tổng dung lượng, tình trạng dịch vụ và tin tức DynamoDB mới nhất trên bảng điều khiển DynamoDB.
 
@@ -15,7 +15,7 @@ Bạn có thể sử dụng table điều khiển để thực hiện những vi
 
 - Quản lý luồng.
 
-- Xem, thêm, cập nhật và xóa các mục được lưu trữ trong table. **Quản lý thời gian tồn tại (TTL)** để xác định thời điểm các mục trong table hết hạn để chúng có thể tự động bị xóa khỏi cơ sở dữ liệu.
+- Xem, thêm, cập nhật và xóa các item được lưu trữ trong table. **Quản lý thời gian tồn tại (TTL)** để xác định thời điểm các item trong table hết hạn để chúng có thể tự động bị xóa khỏi cơ sở dữ liệu.
 
 - Truy vấn và quét table.
 
@@ -39,11 +39,11 @@ Nếu bạn có thể dự đoán nhu cầu của mình đối với thông lư�
 
 ![DYNAMODB AWS](/images/2-prerequisite/2.1-useawsconsole/0001-dynamodbhome.png)
 
-Management console hiển thị màn hình giới thiệu nhắc bạn tạo table đầu tiên của mình. Để xem các table của bạn, trong thanh điều hướng ở phía bên trái của table điều khiển, hãy chọn **Tables** .
+Management console hiển thị màn hình giới thiệu nhắc bạn tạo table đầu tiên của mình. Để xem các table của bạn, trong thanh điều hướng ở phía bên trái của bảng điều khiển, hãy chọn **Tables** .
 
 Dưới đây là tổng quan cấp cao về các tác vụ có sẵn trên mỗi table trong mỗi tab điều hướng:
 
-- **Tổng quan** - Xem chi tiết table, bao gồm số lượng mục và số liệu.
+- **Tổng quan** - Xem chi tiết table, bao gồm số lượng item và số liệu.
 
 - **index** - Quản lý các index thứ cấp toàn cầu và cục bộ.
 

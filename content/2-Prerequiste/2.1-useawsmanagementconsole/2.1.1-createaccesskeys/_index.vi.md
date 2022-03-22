@@ -8,7 +8,7 @@ pre : " <b> 2.1.1 </b> "
 
 #### **Tạo khóa truy cập cho người dùng IAM**
 
-1. Đăng nhập vào Bảng điều khiển quản lý AWS và mở bảng điều khiển IAM tại [bảng điều khiển IAM](https://console.aws.amazon.com/iam/).
+1. Đăng nhập vào bảng điều khiển quản lý AWS và mở bảng điều khiển IAM tại [bảng điều khiển IAM](https://console.aws.amazon.com/iam/).
 
 2. Trong thanh điều hướng, chọn **Users**.
 
