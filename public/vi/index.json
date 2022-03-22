@@ -1,0 +1,288 @@
+[
+{
+	"uri": "/vi/",
+	"title": "AWS DynamoDB",
+	"tags": [],
+	"description": "",
+	"content": "Làm việc với Amazon DynamoDB Tổng quan Trong bài lab này, bạn sẽ tìm hiểu các khái niệm cơ bản và thực hành về Amazon DynamoDB. Thực hành Python với AWS DynamoDB.\nNội dung  Giới thiệu Các bước chuẩn bị Bắt đầu với AWS SDK Dọn dẹp tài nguyên  "
+},
+{
+	"uri": "/vi/1-introduce/1.1-corecomponentsofamazondynamodb/",
+	"title": "Các thành phần cốt lõi của Amazon DynamoDB",
+	"tags": [],
+	"description": "",
+	"content": "  Table: Tương tự như các hệ thống cơ sở dữ liệu khác, DynamoDB lưu trữ dữ liệu trong table. Table là một tập hợp dữ liệu.\n  Item: Mỗi bảng chứa không hoặc nhiều item. Các item trong DynamoDB khá tương đồng với khái niệm hàng trong cơ sở dữ liệu quan hệ, bản ghi hoặc bộ dữ liệu trong các hệ thống cơ sở dữ liệu khác. Trong DynamoDB, không có giới hạn về số lượng item bạn có thể lưu trữ trong một bảng.\n  Attribute: Mỗi item bao gồm một hoặc nhiều attribute. Attribute là một phần tử dữ liệu cơ bản, không cần phải chia nhỏ thêm nữa. Các attribute trong DynamoDB theo nhiều cách tương tự với các cột trong các hệ thống cơ sở dữ liệu khác.\n  "
+},
+{
+	"uri": "/vi/3-gettingstartedwithawssdk/3.1-configureawscli/",
+	"title": "Cấu hình AWS CLI",
+	"tags": [],
+	"description": "",
+	"content": "  Mở Window Command Prompt, chọn chế độ Run as administrator\n  Gõ lệnh aws configure\n  Nhập chi tiết thông tin từ file csv ở phần 2.1.1 Tạo access key:\n  AWS Access Key ID\n  AWS Secret Access Key\n  Default region name\n  Default output format: bỏ trống\n    Cài đặt Python 2.6 trở lên.\n  Kiểm tra version python để xác định đã cài đặt thành công bằng lệnh python --version\n  Cài đặt thư viện Boto3 bằng lệnh pip install boto3\n  "
+},
+{
+	"uri": "/vi/1-introduce/",
+	"title": "Giới thiệu",
+	"tags": [],
+	"description": "",
+	"content": "Amazon DynamoDB là một dịch vụ cơ sở dữ liệu NoSQL được quản lý hoàn toàn, cung cấp hiệu suất nhanh và có thể dự đoán được với khả năng mở rộng liền mạch. DynamoDB cho phép giảm bớt gánh nặng quản trị của việc vận hành và mở rộng cơ sở dữ liệu phân tán, cung cấp phần cứng, thiết lập và cấu hình, sao chép, vá lỗi phần mềm hoặc mở rộng cụm. DynamoDB cũng cung cấp mã hóa ở trạng thái nghỉ.\n DynamoDB tạo các bảng cơ sở dữ liệu có thể lưu trữ và truy xuất bất kỳ lượng dữ liệu nào và phục vụ bất kỳ mức lưu lượng yêu cầu nào. Có thể tăng hoặc giảm quy mô công suất thông qua bảng của mình mà không có thời gian chết hoặc giảm hiệu suất. DynamoDB cung cấp khả năng sao lưu theo yêu cầu. Nó cho phép bạn tạo bản sao lưu đầy đủ các bảng để lưu giữ và lưu trữ lâu dài cho các nhu cầu tuân thủ quy định. Có thể tạo bản sao lưu theo yêu cầu và bật khôi phục tại thời điểm cho các bảng Amazon DynamoDB. Khôi phục theo thời gian giúp bảo vệ bảng khỏi các thao tác ghi hoặc xóa ngẫu nhiên. Với khôi phục theo thời gian, có thể khôi phục bảng về bất kỳ thời điểm nào trong 35 ngày qua. DynamoDB cho phép tự động xóa các mục đã hết hạn khỏi bảng giúp giảm mức sử dụng bộ nhớ và chi phí lưu trữ dữ liệu không còn phù hợp.  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.1-useawsmanagementconsole/",
+	"title": "Sử dụng AWS Management Console",
+	"tags": [],
+	"description": "",
+	"content": "Bạn có thể truy cập table điều khiển quản lý AWS cho Amazon DynamoDB tại table điều khiển quản lý AWS cho Amazon DynamoDB.\nBạn có thể sử dụng table điều khiển để thực hiện những việc sau trong DynamoDB:\n  Theo dõi các cảnh báo gần đây, tổng dung lượng, tình trạng dịch vụ và tin tức DynamoDB mới nhất trên bảng điều khiển DynamoDB.\n  Tạo, cập nhật và xóa table. Máy tính công suất cung cấp ước tính về số lượng đơn vị dung lượng cần yêu cầu dựa trên thông tin sử dụng bạn cung cấp.\n  Quản lý luồng.\n  Xem, thêm, cập nhật và xóa các mục được lưu trữ trong table. Quản lý thời gian tồn tại (TTL) để xác định thời điểm các mục trong table hết hạn để chúng có thể tự động bị xóa khỏi cơ sở dữ liệu.\n  Truy vấn và quét table.\n  Thiết lập và xem cảnh báo để giám sát việc sử dụng công suất của table. Xem các chỉ số giám sát hàng đầu của table của bạn trên biểu đồ thời gian thực từ CloudWatch.\n  Sửa đổi dung lượng được cung cấp của table.\n  Sửa đổi lớp table của table.\n  Tạo và xóa các Secondary Index toàn cầu.\n  Tạo trình kích hoạt để kết nối các luồng DynamoDB với các chức năng AWS Lambda.\n  Áp dụng các tag cho tài nguyên của bạn để giúp tổ chức và xác định chúng.\n  Mua dung lượng dự trữ ( reversed capacity).\n  Nếu bạn có thể dự đoán nhu cầu của mình đối với thông lượng đọc và ghi của Amazon DynamoDB, thì dung lượng dự trữ sẽ tiết kiệm đáng kể so với mức giá bình thường của dung lượng thông lượng được DynamoDB cung cấp. Bạn trả phí trả trước một lần và cam kết thanh toán cho mức sử dụng tối thiểu với mức giá cụ thể theo giờ trong suốt thời hạn dung lượng đã bảo lưu.\n\rManagement console hiển thị màn hình giới thiệu nhắc bạn tạo table đầu tiên của mình. Để xem các table của bạn, trong thanh điều hướng ở phía bên trái của table điều khiển, hãy chọn Tables .\nDưới đây là tổng quan cấp cao về các tác vụ có sẵn trên mỗi table trong mỗi tab điều hướng:\n  Tổng quan - Xem chi tiết table, bao gồm số lượng mục và số liệu.\n  index - Quản lý các index thứ cấp toàn cầu và cục bộ.\n  Monitoring - Xem báo thức, Thông tin chi tiết về cộng tác viên CloudWatch và các chỉ số Cloudwatch.\n  Global table - Quản lý bản sao table.\n  Backup - Quản lý khôi phục tại thời điểm và sao lưu theo yêu cầu.\n  Export \u0026amp; Stream - Xuất table của bạn sang Amazon S3 và quản lý Luồng DynamoDB và Luồng dữ liệu Kinesis.\n  Cài đặt bổ sung - Quản lý dung lượng đọc / ghi, cài đặt Thời gian tồn tại, mã hóa và tag.\n  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/",
+	"title": "Tạo bảng",
+	"tags": [],
+	"description": "",
+	"content": "  Khởi động AWS CloudShell tại Giao diện CloudShell\n  Gõ lệnh aws configure\n  Nhập chi tiết thông tin từ file csv ở phần 2.1.1 Tạo Access key:\n   AWS Access Key ID AWS Secret Access Key Default region name Default output format  Để tạo bảng, ta sử dụng lệnh create-table . Gõ lệnh:  aws dynamodb create-table \\\r--table-name Music \\\r--attribute-definitions \\\rAttributeName=Artist,AttributeType=S \\\rAttributeName=SongTitle,AttributeType=S \\\r--key-schema \\\rAttributeName=Artist,KeyType=HASH \\\rAttributeName=SongTitle,KeyType=RANGE \\\r--provisioned-throughput \\\rReadCapacityUnits=10,WriteCapacityUnits=5 \\\r--table-class STANDARD\rKết quả:   Kết quả trên AWS CloudShell:  {\r\u0026quot;TableDescription\u0026quot;: {\r\u0026quot;AttributeDefinitions\u0026quot;: [\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;Artist\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r},\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;SongTitle\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r}\r],\r\u0026quot;TableName\u0026quot;: \u0026quot;Music\u0026quot;,\r\u0026quot;KeySchema\u0026quot;: [\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;Artist\u0026quot;,\r\u0026quot;KeyType\u0026quot;: \u0026quot;HASH\u0026quot;\r},\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;SongTitle\u0026quot;,\r\u0026quot;KeyType\u0026quot;: \u0026quot;RANGE\u0026quot;\r}\r],\r\u0026quot;TableStatus\u0026quot;: \u0026quot;CREATING\u0026quot;,\r\u0026quot;CreationDateTime\u0026quot;: \u0026quot;2022-02-08T06:15:18.343000+00:00\u0026quot;,\r\u0026quot;ProvisionedThroughput\u0026quot;: {\r\u0026quot;NumberOfDecreasesToday\u0026quot;: 0,\r\u0026quot;ReadCapacityUnits\u0026quot;: 10,\r\u0026quot;WriteCapacityUnits\u0026quot;: 5\r},\r\u0026quot;TableSizeBytes\u0026quot;: 0,\r\u0026quot;ItemCount\u0026quot;: 0,\r\u0026quot;TableArn\u0026quot;: \u0026quot;arn:aws:dynamodb:us-east-2:089359461550:table/Music\u0026quot;,\r\u0026quot;TableId\u0026quot;: \u0026quot;4b2a1e9a-c223-4b07-a536-c4b85a67df96\u0026quot;,\r\u0026quot;TableClassSummary\u0026quot;: {\r\u0026quot;TableClass\u0026quot;: \u0026quot;STANDARD\u0026quot;\r}\r}\r}\r Kết quả trên giao diện:  Kiểm tra trạng thái bảng:   Gõ lệnh:  aws dynamodb describe-table --table-name Music | grep TableStatus\r Khi DynamoDB hoàn thành việc tạo bảng, giá trị của TableStatus là ACTIVE: \u0026quot;TableStatus\u0026quot;: \u0026quot;ACTIVE\u0026quot;,  "
+},
+{
+	"uri": "/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.1-createtable/",
+	"title": "Tạo bảng",
+	"tags": [],
+	"description": "",
+	"content": "Trong bước này, chúng ta tạo một bảng có tên Movies. primary key cho bảng bao gồm các thuộc tính sau:\nyear – The partition key. AttributeType là N(number).\ntitle – The sort key. AttributeType là S(string).\n  Tạo file có tên MoviesCreateTable.py\n  Sao chép đoạn mã sau và dán vào file MoviesCreateTable.py\n  import boto3\rdef create_movie_table(dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.create_table(\rTableName='Movies',\rKeySchema=[\r{\r'AttributeName': 'year',\r'KeyType': 'HASH' # Partition key\r},\r{\r'AttributeName': 'title',\r'KeyType': 'RANGE' # Sort key\r}\r],\rAttributeDefinitions=[\r{\r'AttributeName': 'year',\r'AttributeType': 'N'\r},\r{\r'AttributeName': 'title',\r'AttributeType': 'S'\r},\r],\rProvisionedThroughput={\r'ReadCapacityUnits': 10,\r'WriteCapacityUnits': 10\r}\r)\rreturn table\rif __name__ == '__main__':\rmovie_table = create_movie_table()\rprint(\u0026quot;Table status:\u0026quot;, movie_table.table_status)\rChạy chương trình bằng Window Command Prompt đã được xác thực và cấu hình ở bước 3.1 Cấu hình AWS CLI. Gõ lệnh:  python MoviesCreateTable.py\rTrường hợp khác: sử dụng python \u0026quot;đường dẫn file MoviesCreateTable.py\u0026quot;\nSau khi chạy chương trình trả về Table status: CREATING là tạo bảng thành công.  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.1-createaccesskeys/",
+	"title": "Tạo khóa truy cập",
+	"tags": [],
+	"description": "",
+	"content": "Tạo khóa truy cập cho người dùng IAM   Đăng nhập vào Bảng điều khiển quản lý AWS và mở bảng điều khiển IAM tại bảng điều khiển IAM.\n  Trong thanh điều hướng, chọn Users.\n   Chọn tên của người dùng có khóa truy cập bạn muốn tạo, sau đó chọn tab Security credentials.\n  Trong phần Access keys, chọn Create access key.\n  Để xem access key mới, hãy chọn Show. Thông tin đăng nhập của bạn sẽ trông giống như sau:  Access key ID: AKIAIOSFODNN7EXAMPLE\rSecret access key: wJalrXUtnFEMI / K7MDENG / bPxRfiCYEXAMPLEKEY``\rĐể tải xuống cặp khóa, hãy chọn Download .csv file.  Sau khi bạn tải xuống tệp .csv, chọn Close  "
+},
+{
+	"uri": "/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/",
+	"title": "Bắt đầu phát triển với Python và DynamoDB",
+	"tags": [],
+	"description": "",
+	"content": "Trong bài lab này, bạn sử dụng AWS SDK cho Python (Boto3) để viết các chương trình đơn giản nhằm thực hiện các hoạt động Amazon DynamoDB sau:\n  Tạo một bảng có tên Movies và tải dữ liệu mẫu ở định dạng JSON.\n  Thực hiện các thao tác tạo, đọc, cập nhật và xóa trên bảng.\n  Chạy các truy vấn đơn giản.\n  Nội dung  Tạo bảng  Ghi dữ liệu Đọc dữ liệu Cập nhật dữ liệu Xóa dữ liệu Tải dữ liệu mẫu Truy vấn dữ liệu Quét dữ liệu Xóa bảng dữ liệu  "
+},
+{
+	"uri": "/vi/2-prerequiste/",
+	"title": "Các bước chuẩn bị",
+	"tags": [],
+	"description": "",
+	"content": "\rBạn cần tạo sẵn 1 Access key để tiến hành cấu hình AWS CLI.\n\rBạn có thể truy cập AWS DynamoDB bằng cách sử dụng AWS Management Console, AWS Command Line Interface (AWS CLI).\nNội dung  Sử dụng AWS Management Console Sử dụng AWS CloudShell  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.2-useawscloudshell/2.2.2-writedata/",
+	"title": "Ghi dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": " Để ghi dữ liệu, sử dụng lệnh put-item   Sau khi tạo bảng ở bước 2.2.1 Tạo bảng, tiếp tục gõ lệnh:  aws dynamodb put-item \\\r--table-name Music \\\r--item \\\r'{\u0026quot;Artist\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;No One You Know\u0026quot;}, \u0026quot;SongTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Call Me Today\u0026quot;}, \u0026quot;AlbumTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Somewhat Famous\u0026quot;}, \u0026quot;Awards\u0026quot;: {\u0026quot;N\u0026quot;: \u0026quot;1\u0026quot;}}'\raws dynamodb put-item \\\r--table-name Music \\\r--item \\\r'{\u0026quot;Artist\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;No One You Know\u0026quot;}, \u0026quot;SongTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Howdy\u0026quot;}, \u0026quot;AlbumTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Somewhat Famous\u0026quot;}, \u0026quot;Awards\u0026quot;: {\u0026quot;N\u0026quot;: \u0026quot;2\u0026quot;}}'\raws dynamodb put-item \\\r--table-name Music \\\r--item \\\r'{\u0026quot;Artist\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;}, \u0026quot;SongTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Happy Day\u0026quot;}, \u0026quot;AlbumTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Songs About Life\u0026quot;}, \u0026quot;Awards\u0026quot;: {\u0026quot;N\u0026quot;: \u0026quot;10\u0026quot;} }'\raws dynamodb put-item \\\r--table-name Music \\\r--item \\\r'{\u0026quot;Artist\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;}, \u0026quot;SongTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;PartiQL Rocks\u0026quot;}, \u0026quot;AlbumTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Another Album Title\u0026quot;}, \u0026quot;Awards\u0026quot;: {\u0026quot;N\u0026quot;: \u0026quot;8\u0026quot;} }'\rKết quả:  "
+},
+{
+	"uri": "/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.2-writedata/",
+	"title": "Ghi dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Thực hiện thêm item vào bảng Movies vừa tạo ở 3.4.1-Tạo bảng\n  Tạo file có tên MoviesItemOps01.py\n  Sao chép chương trình sau và dán vào file MoviesItemOps01.py\n  from pprint import pprint\rimport boto3\rdef put_movie(title, year, plot, rating, dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rresponse = table.put_item(\rItem={\r'year': year,\r'title': title,\r'info': {\r'plot': plot,\r'rating': rating\r}\r}\r)\rreturn response\rif __name__ == '__main__':\rmovie_resp = put_movie(\u0026quot;The Big New Movie\u0026quot;, 2015,\r\u0026quot;Nothing happens at all.\u0026quot;, 0)\rprint(\u0026quot;Put movie succeeded:\u0026quot;)\rpprint(movie_resp, sort_dicts=False)\rChạy chương trình bằng Window Command Prompt đã được xác thực và cấu hình ở bước 3.1 Cấu hình AWS CLI. Gõ lệnh:  python MoviesItemOps01.py\rTrường hợp khác: sử dụng python \u0026quot;đường dẫn file MoviesItemOps01.py\u0026quot;\nSau khi chạy chương trình, thu được kết quả:  Put movie succeeded:\r{'ResponseMetadata': {'RequestId': 'U9PQSVRR5PKKDD7NPV0NH91JD7VV4KQNSO5AEMVJF66Q9ASUAAJG',\r'HTTPStatusCode': 200,\r'HTTPHeaders': {'server': 'Server',\r'date': 'Wed, 09 Feb 2022 03:11:45 GMT',\r'content-type': 'application/x-amz-json-1.0',\r'content-length': '2',\r'connection': 'keep-alive',\r'x-amzn-requestid': 'U9PQSVRR5PKKDD7NPV0NH91JD7VV4KQNSO5AEMVJF66Q9ASUAAJG',\r'x-amz-crc32': '2745614147'},\r'RetryAttempts': 0}}\r"
+},
+{
+	"uri": "/vi/1-introduce/1.2-primarykey/",
+	"title": "Primary Key",
+	"tags": [],
+	"description": "",
+	"content": " Khi bạn tạo một table, ngoài tên table, bạn phải chỉ định primary key của table. Primary key xác định duy nhất từng item trong table, do đó không có hai item nào có thể có cùng một key. DynamoDB hỗ trợ hai loại primary key khác nhau:  Partition key Composite primary key    Partition key  Một primary key đơn giản, bao gồm một thuộc tính được gọi là Partition key. DynamoDB sử dụng giá trị của partition key làm đầu vào cho hàm băm bên trong. Đầu ra từ hàm băm xác định phân vùng (bộ nhớ vật lý bên trong DynamoDB) mà item sẽ được lưu trữ. Trong table chỉ có partition key, không có hai item nào có thể có cùng giá trị Partition key.  Composite primary key  Thuộc tính đầu tiên là partition key và thuộc tính thứ hai là sort key. DynamoDB sử dụng giá trị partition key làm đầu vào cho hàm băm bên trong. Đầu ra từ hàm băm xác định phân vùng (bộ nhớ vật lý bên trong DynamoDB) mà item sẽ được lưu trữ. Tất cả các item có cùng giá trị partition key được lưu trữ cùng nhau, theo thứ tự được sắp xếp theo giá trị sort key. Trong table có partition key và sort key, nhiều item có thể có cùng giá trị partition key. Tuy nhiên, các item đó phải có các giá trị sort key khác nhau. Composite primary key giúp bạn linh hoạt hơn khi truy vấn dữ liệu.  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.2-useawscloudshell/",
+	"title": "Sử dụng AWS CloudShell",
+	"tags": [],
+	"description": "",
+	"content": " AWS CloudShell là một trình dòng lệnh dựa trên trình duyệt giúp bạn dễ dàng quản lý, khám phá và tương tác với các tài nguyên AWS của mình một cách an toàn. CloudShell được xác thực trước bằng thông tin đăng nhập bảng điều khiển của bạn. Các công cụ phát triển và hoạt động phổ biến được cài đặt sẵn, vì vậy không cần cài đặt hoặc cấu hình cục bộ. Với CloudShell, bạn có thể nhanh chóng chạy các tập lệnh với Giao diện dòng lệnh AWS (AWS CLI), thử nghiệm với các API dịch vụ AWS bằng AWS SDK hoặc sử dụng một loạt các công cụ khác để hoạt động hiệu quả. Bạn có thể sử dụng CloudShell ngay từ trình duyệt của mình và không mất thêm phí.  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/",
+	"title": "Tạo bảng",
+	"tags": [],
+	"description": "",
+	"content": "Trong bước này, bạn tạo một bảng Music trong Amazon DynamoDB. Bảng có các chi tiết sau:\n  Partition key — Artist\n  Sort key — SongTitle\n    Đăng nhập vào Bảng điều khiển quản lý AWS và mở DynamoDB Console tại Giao diện quản lý DynamoDB.\n  Trong thanh điều hướng ở bên trái của bảng điều khiển, chọn Dashboard.\n  Ở phía bên phải của bảng điều khiển, chọn Create Table.\n  Nhập chi tiết bảng như sau:    Đối với Table name, hãy nhập Music.\n  Đối với Partition key, hãy nhập Artist.\n  Nhập SongTitle làm Sort key.\n  Chọn Default settings.\n  Chọn Create table để tạo bảng.  "
+},
+{
+	"uri": "/vi/3-gettingstartedwithawssdk/",
+	"title": "Bắt đầu với AWS SDK",
+	"tags": [],
+	"description": "",
+	"content": "\rĐể thực hiện bước này, bạn cần tạo Access key được sử dụng để định cấu hình AWS CLI và cài đặt Python và Boto3.\n\rSDK bao gồm hai gói Python chính: Botocore (thư viện cung cấp chức năng cấp thấp được chia sẻ giữa Python SDK và AWS CLI) và Boto3 (gói triển khai Python SDK chính).\nTrong bài lab này, chúng ta sử dụng Boto3\n** Clients ** cung cấp giao diện cấp thấp cho dịch vụ AWS. Định nghĩa của chúng được tạo bởi mô tả dịch vụ JSON có trong thư viện botocore. Gói botocore được chia sẻ giữa boto3 cũng như AWS CLI.\nĐịnh nghĩa dịch vụ cho AWS S3 được lưu trữ dưới dạng JSON trong gói botocore.\nCác lợi ích chính của việc sử dụng ứng dụng Boto3 Client là:\n Nó ánh xạ 1: 1 với API dịch vụ AWS thực tế. Tất cả các hoạt động dịch vụ AWS đều được hỗ trợ bởi Clients.  Ví dụ: nếu bạn muốn liệt kê tất cả các S3 buckets trong tài khoản AWS của mình, bạn có thể sử dụng Ứng dụng Clients S3 như sau:\n`` import boto3\nRetrieve the list of existing buckets s3 = boto3.client(\u0026ldquo;s3\u0026rdquo;) response = s3.list_buckets()\nOutput the bucket names print(\u0026ldquo;Existing buckets:\u0026quot;) for bucket in response[\u0026lsquo;Buckets\u0026rsquo;]: print(f\u0026rsquo;{bucket[\u0026ldquo;Name\u0026rdquo;]}')\n`` ** Resource ** là một mức trừu tượng cao hơn các máy khách. Chúng được tạo từ mô tả Resource JSON có trong chính thư viện boto.\nResource cung cấp giao diện hướng đối tượng để tương tác với các dịch vụ AWS khác nhau. Resource có thể được khởi tạo như sau:\nVí dụ dưới đây là định nghĩa Resource cho S3.\n\r`` import boto3\ns3 = boto3.resource(\u0026ldquo;s3\u0026rdquo;)\n``\nNội dung  [Cấu hình AWS CLI] (3.1-configureawscli /) [Python và DynamoDB] (3.2-pythonandynamodb /)  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.3-writedata/",
+	"title": "Ghi dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Các bước ghi dữ liệu vào bảng Music(đã tạo ở mục 2.1.2):\n  Đăng nhập vào Bảng điều khiển quản lý AWS và mở DynamoDB Console tại Giao diện quản lý DynamoDB.\n  Trong thanh điều hướng ở bên trái của bảng điều khiển, chọn Tables.\n  Trong danh sách bảng, hãy chọn bảng Music.\n  Chọn Explore items\n  Trong giao diện Items, chọn Create item  Chọn Add new attribute, sau đó chọn Number. Tên trường: Awards.  Lặp lại bước 6 tạo AlbumTitle với kiểu String.   Nhập các giá trị cho các item:\n  Artist, nhập No One You Know\n  SongTitle, nhập Call Me Today\n  AlbumTitle, nhập Somewhat Famous\n  Awards, nhập 1.\n    Chọn Create item.  Lặp lại bước 8 và tạo một mục khác với các giá trị sau:    Artist, nhập Acme Band.\n  SongTitle nhập Happy Day.\n  AlbumTitle, nhập Songs About Life.\n  Awards, nhập 10.\n  Thực hiện thao tác này một lần nữa để tạo một mục khác có cùng một Artist như bước trước, nhưng các giá trị khác nhau cho các thuộc tính khác:    Artist, nhập Acme Band.\n  SongTitle nhập PartiQL Rocks.\n  AlbumTitle, nhập Another Album Title.\n  Awards, nhập 8.\n  Kết quả:  "
+},
+{
+	"uri": "/vi/1-introduce/1.3-secondaryindexes/",
+	"title": "Secondary Index",
+	"tags": [],
+	"description": "",
+	"content": " Bạn có thể tạo một hoặc nhiều Secondary Index trên một table. Secondary Index cho phép truy vấn dữ liệu trong table bằng các key khác với partition key và sort ban đầu của table. Với Dynamo DB thao tác truy vấn dữ liệu có tốc độ nhanh và tiết kiệm chi phí hơn rất nhiều so với thao tác scan.  . DynamoDB không bắt buộc bạn phải sử dụng index, nhưng chúng giúp các ứng dụng của bạn linh hoạt hơn khi truy vấn dữ liệu. Sau khi tạo Secondary Index trên table, bạn có thể đọc dữ liệu từ index theo cách giống như đọc dữ liệu từ table.\n  DynamoDB hỗ trợ hai loại index:\n Global secondary index index có partition key và sort key có thể khác với các index trên table. Local secondary index index có cùng partition key với table nhưng có sort key khác.    Mỗi table trong DynamoDB có tối đa 20 Global secondary index (giới hạn mặc định) và 5 Local secondary index.\n  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.2-useawscloudshell/2.2.3-readdata/",
+	"title": "Đọc dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "  Để đọc dữ liệu, sử dụng lệnh get-item và tham số **consistent-read thể hiện strongly consistent reads.\n  Mặc định của AWS DynamoDB là eventually consistent reads.\n   Thực hiện lệnh:  aws dynamodb get-item --consistent-read \\\r--table-name Music \\\r--key '{ \u0026quot;Artist\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;}, \u0026quot;SongTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Happy Day\u0026quot;}}'\rKết quả:   Kết quả trên AWS CloudShell:  {\r\u0026quot;Item\u0026quot;: {\r\u0026quot;AlbumTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Songs About Life\u0026quot;\r},\r\u0026quot;Awards\u0026quot;: {\r\u0026quot;N\u0026quot;: \u0026quot;10\u0026quot;\r},\r\u0026quot;Artist\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;\r},\r\u0026quot;SongTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Happy Day\u0026quot;\r}\r}\r}\r"
+},
+{
+	"uri": "/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.3-readdata/",
+	"title": "Đọc dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "  Tạo file có tên MoviesItemOps02.py\n  Sao chép đoạn mã sau và dán vào file MoviesItemOps02.py\n  from pprint import pprint\rimport boto3\rfrom botocore.exceptions import ClientError\rdef get_movie(title, year, dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rtry:\rresponse = table.get_item(Key={'year': year, 'title': title})\rexcept ClientError as e:\rprint(e.response['Error']['Message'])\relse:\rreturn response['Item']\rif __name__ == '__main__':\rmovie = get_movie(\u0026quot;The Big New Movie\u0026quot;, 2015,)\rif movie:\rprint(\u0026quot;Get movie succeeded:\u0026quot;)\rpprint(movie, sort_dicts=False)\rChạy chương trình bằng Window Command Prompt đã được xác thực và cấu hình ở bước 3.1 Cấu hình AWS CLI. Gõ lệnh:  python MoviesItemOps02.py\rTrường hợp khác: sử dụng python \u0026quot;đường dẫn file MoviesItemOps02.py\u0026quot;\nSau khi chạy chương trình, thu được kết quả:  Get movie succeeded:\r{'year': Decimal('2015'),\r'info': {'rating': Decimal('0'), 'plot': 'Nothing happens at all.'},\r'title': 'The Big New Movie'}\r"
+},
+{
+	"uri": "/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.4-readdata/",
+	"title": " Đọc dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Các bước đọc dữ liệu từ bảng Music bằng DynamoDB console:\n  Đăng nhập vào Bảng điều khiển quản lý AWS và mở DynamoDB Console tại Giao diện quản lý DynamoDB.\n  Trong thanh điều hướng ở bên trái của bảng điều khiển, chọn Tables\n  Chọn bảng Music từ danh sách bảng.\n  Chọn Actions, sau đó chọn Explore items.\n  Chọn Query, sau đó điền Artist (Partition key) là Acme Band  Chọn Run và thu kết quả như hình:  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.2-useawscloudshell/2.2.4-updatedata/",
+	"title": "Cập nhật dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": " Để cập nhật dữ liệu, sử dụng lệnh update-item   Thực hiện lệnh:  aws dynamodb update-item \\\r--table-name Music \\\r--key '{ \u0026quot;Artist\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;}, \u0026quot;SongTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Happy Day\u0026quot;}}' \\\r--update-expression \u0026quot;SET AlbumTitle = :newval\u0026quot; \\\r--expression-attribute-values '{\u0026quot;:newval\u0026quot;:{\u0026quot;S\u0026quot;:\u0026quot;Updated Album Title\u0026quot;}}' \\\r--return-values ALL_NEW\rKết quả:   Kết quả trên AWS CLoudShell:  {\r\u0026quot;Attributes\u0026quot;: {\r\u0026quot;AlbumTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Updated Album Title\u0026quot;\r},\r\u0026quot;Awards\u0026quot;: {\r\u0026quot;N\u0026quot;: \u0026quot;10\u0026quot;\r},\r\u0026quot;Artist\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;\r},\r\u0026quot;SongTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Happy Day\u0026quot;\r}\r}\r}\r Kết quả trên giao diện:  "
+},
+{
+	"uri": "/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.4-updatedata/",
+	"title": "Cập nhật dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "  Tạo file có tên MoviesItemOps03.py\n  Sao chép đoạn mã sau và dán vào file MoviesItemOps03.py\n  from decimal import Decimal\rfrom pprint import pprint\rimport boto3\rdef update_movie(title, year, rating, plot, actors, dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rresponse = table.update_item(\rKey={\r'year': year,\r'title': title\r},\rUpdateExpression=\u0026quot;set info.rating=:r, info.plot=:p, info.actors=:a\u0026quot;,\rExpressionAttributeValues={\r':r': Decimal(rating),\r':p': plot,\r':a': actors\r},\rReturnValues=\u0026quot;UPDATED_NEW\u0026quot;\r)\rreturn response\rif __name__ == '__main__':\rupdate_response = update_movie(\r\u0026quot;The Big New Movie\u0026quot;, 2015, 5.5, \u0026quot;Everything happens all at once.\u0026quot;,\r[\u0026quot;Larry\u0026quot;, \u0026quot;Moe\u0026quot;, \u0026quot;Curly\u0026quot;])\rprint(\u0026quot;Update movie succeeded:\u0026quot;)\rpprint(update_response, sort_dicts=False)\rChạy chương trình bằng Window Command Prompt đã được xác thực và cấu hình ở bước 3.1 Cấu hình AWS CLI. Gõ lệnh:  python MoviesItemOps03.py\rTrường hợp khác: sử dụng python \u0026quot;đường dẫn file MoviesItemOps03.py\u0026quot;\nSau khi chạy chương trình, thu được kết quả:  Update movie succeeded:\r{'Attributes': {'info': {'actors': ['Larry', 'Moe', 'Curly'],\r'plot': 'Everything happens all at once.',\r'rating': Decimal('5.5')}},\r'ResponseMetadata': {'RequestId': 'RFMTVB72A6E2J39HBPIK8SHBN7VV4KQNSO5AEMVJF66Q9ASUAAJG',\r'HTTPStatusCode': 200,\r'HTTPHeaders': {'server': 'Server',\r'date': 'Wed, 09 Feb 2022 03:29:15 GMT',\r'content-type': 'application/x-amz-json-1.0',\r'content-length': '156',\r'connection': 'keep-alive',\r'x-amzn-requestid': 'RFMTVB72A6E2J39HBPIK8SHBN7VV4KQNSO5AEMVJF66Q9ASUAAJG',\r'x-amz-crc32': '3767510606'},\r'RetryAttempts': 0}}\r"
+},
+{
+	"uri": "/vi/4-cleanupresource/",
+	"title": "Dọn dẹp tài nguyên",
+	"tags": [],
+	"description": "",
+	"content": "Sử dụng AWS Management Console   Mở bảng DynamoDB console tại https://console.aws.amazon.com/dynamodb/\n  Trong thanh điều hướng ở bên trái của bảng điều khiển, chọn Tables\n  Chọn bảng Music từ danh sách bảng.\n  Chọn Actions, sau đó chọn Delete table.\n  Sử dụng AWS CloudShell   Để xóa bảng, sử dụng lệnh delete-table\n  Gõ lệnh:\n  aws dynamodb delete-table --table-name Music\r"
+},
+{
+	"uri": "/vi/1-introduce/1.4-namingrulesanddatatypes/",
+	"title": "Quy tắc đặt tên và kiểu dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Quy tắc đặt tên  Các bảng, thuộc tính và các đối tượng khác trong DynamoDB phải có tên. Sau đây là các quy tắc đặt tên cho DynamoDB:  Tất cả các tên phải được mã hóa bằng UTF-8 và có phân biệt chữ hoa chữ thường. Tên bảng và tên chỉ mục phải dài từ 3 đến 255 ký tự và chỉ được chứa các ký tự sau:  a-z A-Z 0-9 _(gạch dưới) -(gạch ngang) . (dấu chấm)     Tên thuộc tính phải dài ít nhất một ký tự, nhưng không dài hơn 64 KB. Sau đây là các trường hợp ngoại lệ. Các tên thuộc tính này không được dài quá 255 ký tự:  Tên khóa của phân vùng Secondary Index. Secondary Index sắp xếp các tên khóa. Tên của bất kỳ thuộc tính dự kiến ​​nào do người dùng chỉ định (chỉ áp dụng cho các Secondary Index cục bộ).    Kiểu dữ liệu DynamoDB hỗ trợ nhiều kiểu dữ liệu khác nhau cho các thuộc tính trong bảng. Chúng có thể được phân loại như sau:\n Các kiểu vô hướng: Một kiểu vô hướng có thể biểu diễn chính xác một giá trị. Các kiểu vô hướng là số, chuỗi, nhị phân, Boolean và null. Loại tài liệu: Một loại tài liệu có thể đại diện cho một cấu trúc phức tạp với các thuộc tính lồng nhau, chẳng hạn như bạn sẽ tìm thấy trong tài liệu JSON. Các loại tài liệu là list và map. Loại tập hợp: Một loại tập hợp có thể đại diện cho nhiều giá trị vô hướng. Các loại tập hợp là tập hợp chuỗi, tập hợp số và tập hợp nhị phân.  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.5-updatedata/",
+	"title": "Cập nhật dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Các bước cập nhật dữ liệu bảng Music như sau:\n  Đăng nhập vào Bảng điều khiển quản lý AWS và mở DynamoDB Console tại Giao diện quản lý DynamoDB.\n  Trong thanh điều hướng ở bên trái của bảng điều khiển, chọn Tables\n  Chọn bảng Music từ danh sách bảng.\n  Chọn Actions, sau đó chọn Explore item.\n  Chọn item có giá trị Artist là Acme Band và giá trị SongTitle là Happy Day.  Cập nhật giá trị Album Title thành Updated Album Title, sau đó chọn Save changes.  Kết quả sau khi cập nhật dữ liệu:  "
+},
+{
+	"uri": "/vi/1-introduce/1.5-readconsistency/",
+	"title": "Read Consistency",
+	"tags": [],
+	"description": "",
+	"content": "Eventually Consistent Reads  Khi bạn đọc dữ liệu từ bảng DynamoDB, phản hồi có thể không phản ánh kết quả của một thao tác ghi đã hoàn thành gần đây. Phản hồi có thể bao gồm một số dữ liệu cũ. Nếu bạn lặp lại yêu cầu đọc của mình sau một thời gian ngắn, phản hồi sẽ trả về dữ liệu mới nhất.  Strongly Consistent Reads Khi bạn yêu cầu Strongly Consistent Reads, DynamoDB trả về phản hồi với dữ liệu cập nhật nhất, phản ánh các cập nhật từ tất cả các hoạt động ghi trước đó đã thành công. Tuy nhiên, tính nhất quán này đi kèm với một số nhược điểm:\n Strongly Consistent Reads có thể không khả dụng nếu có sự cố mạng hoặc ngừng hoạt động. Trong trường hợp này, DynamoDB có thể trả về lỗi máy chủ (HTTP 500). Strongly Consistent Reads có thể có độ trễ cao hơn eventually consistent reads. Global secondary indexes không được hỗ trợ Strongly Consistent Reads. Strongly Consistent Reads sử dụng gấp đôi dung lượng thông lượng hơn so với eventually consistent reads.  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.2-useawscloudshell/2.2.5-querydata/",
+	"title": "Truy vấn dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": " Để truy vấn dữ liệu từ bảng, sử dụng lệnh query và cung cấp partition key.   Thực hiện lệnh:  aws dynamodb query \\\r--table-name Music \\\r--key-condition-expression \u0026quot;Artist = :name\u0026quot; \\\r--expression-attribute-values '{\u0026quot;:name\u0026quot;:{\u0026quot;S\u0026quot;:\u0026quot;Acme Band\u0026quot;}}'\rKết quả:   Kết quả trên AWS CloudShell:  {\r\u0026quot;Items\u0026quot;: [\r{\r\u0026quot;AlbumTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Updated Album Title\u0026quot;\r},\r\u0026quot;Awards\u0026quot;: {\r\u0026quot;N\u0026quot;: \u0026quot;10\u0026quot;\r},\r\u0026quot;Artist\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;\r},\r\u0026quot;SongTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Happy Day\u0026quot;\r}\r},\r{\r\u0026quot;AlbumTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Another Album Title\u0026quot;\r},\r\u0026quot;Awards\u0026quot;: {\r\u0026quot;N\u0026quot;: \u0026quot;8\u0026quot;\r},\r\u0026quot;Artist\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;\r},\r\u0026quot;SongTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;PartiQL Rocks\u0026quot;\r}\r}\r],\r\u0026quot;Count\u0026quot;: 2,\r\u0026quot;ScannedCount\u0026quot;: 2,\r\u0026quot;ConsumedCapacity\u0026quot;: null\r}\r Kết quả trên giao diện:  "
+},
+{
+	"uri": "/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.5-deletedata/",
+	"title": "Xóa dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "  Tạo file có tên MoviesItemOps04.py\n  Sao chép đoạn mã sau và dán vào file MoviesItemOps04.py\n  from decimal import Decimal\rfrom pprint import pprint\rimport boto3\rfrom botocore.exceptions import ClientError\rdef delete_underrated_movie(title, year, rating, dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rtry:\rresponse = table.delete_item(\rKey={\r'year': year,\r'title': title\r}\r)\rexcept ClientError as e:\rif e.response['Error']['Code'] == \u0026quot;ConditionalCheckFailedException\u0026quot;:\rprint(e.response['Error']['Message'])\relse:\rraise\relse:\rreturn response\rif __name__ == '__main__':\rprint(\u0026quot;Attempting a conditional delete...\u0026quot;)\rdelete_response = delete_underrated_movie(\u0026quot;The Big New Movie\u0026quot;, 2015, 5)\rif delete_response:\rprint(\u0026quot;Delete movie succeeded:\u0026quot;)\rpprint(delete_response, sort_dicts=False)\r Chạy chương trình bằng Window Command Prompt đã được xác thực và cấu hình ở bước 3.1 Cấu hình AWS CLI. Gõ lệnh:  python MoviesItemOps03.py\rTrường hợp khác: sử dụng python \u0026quot;đường dẫn file MoviesItemOps03.py\u0026quot;\nSau khi chạy chương trình, thu được kết quả:  Attempting a conditional delete...\rDelete movie succeeded:\r{'ResponseMetadata': {'RequestId': 'HHA9MQ2U0UP1CL7CECBAAQRMMVVV4KQNSO5AEMVJF66Q9ASUAAJG',\r'HTTPStatusCode': 200,\r'HTTPHeaders': {'server': 'Server',\r'date': 'Wed, 09 Feb 2022 03:39:32 GMT',\r'content-type': 'application/x-amz-json-1.0',\r'content-length': '2',\r'connection': 'keep-alive',\r'x-amzn-requestid': 'HHA9MQ2U0UP1CL7CECBAAQRMMVVV4KQNSO5AEMVJF66Q9ASUAAJG',\r'x-amz-crc32': '2745614147'},\r'RetryAttempts': 0}}\r"
+},
+{
+	"uri": "/vi/1-introduce/1.6-readwritecapacitymode/",
+	"title": "Read/Write Capacity Mode",
+	"tags": [],
+	"description": "",
+	"content": "On-Demand Mode  Amazon DynamoDB on-demand là một tùy chọn thanh toán linh hoạt có khả năng phục vụ hàng nghìn yêu cầu mỗi giây mà không cần lập kế hoạch dung lượng. DynamoDB theo yêu cầu cung cấp giá trả theo yêu cầu cho các yêu cầu đọc và ghi để bạn chỉ trả tiền cho những gì bạn sử dụng. Khi bạn chọn chế độ theo yêu cầu, DynamoDB ngay lập tức đáp ứng các khối lượng công việc của bạn khi chúng tăng hoặc giảm đến bất kỳ mức lưu lượng truy cập nào đã đạt được trước đó. Nếu mức lưu lượng của khối lượng công việc đạt đến đỉnh mới, DynamoDB sẽ thích ứng nhanh chóng để đáp ứng khối lượng công việc. Các bảng sử dụng chế độ theo yêu cầu cung cấp cùng độ trễ mili giây một chữ số, cam kết thỏa thuận mức dịch vụ (SLA) và bảo mật mà DynamoDB đã cung cấp. Bạn có thể chọn theo yêu cầu cho cả bảng mới và bảng hiện có và bạn có thể tiếp tục sử dụng các API DynamoDB hiện có mà không cần thay đổi mã. Chế độ theo yêu cầu là một lựa chọn tốt nếu bất kỳ điều nào sau đây là đúng:  Bạn tạo bảng mới với khối lượng công việc không xác định. Bạn có lưu lượng ứng dụng không thể đoán trước. Bạn chỉ thích dễ dàng thanh toán cho những gì bạn sử dụng.    Provisioned Mode  Nếu bạn chọn chế độ được cấp phép, bạn chỉ định số lần đọc và ghi mỗi giây mà bạn yêu cầu cho ứng dụng của mình. Bạn có thể sử dụng tính năng tự động chia tỷ lệ để tự động điều chỉnh dung lượng được cung cấp của bảng để đáp ứng với những thay đổi về lưu lượng truy cập. Điều này giúp bạn quản lý việc sử dụng DynamoDB của mình để duy trì bằng hoặc thấp hơn tỷ lệ yêu cầu xác định để có được khả năng dự đoán chi phí. Chế độ được cung cấp là một tùy chọn tốt nếu bất kỳ điều nào sau đây là đúng:  Bạn có lưu lượng ứng dụng có thể dự đoán được. Bạn chạy các ứng dụng có lưu lượng truy cập nhất quán hoặc tăng dần. Bạn có thể dự báo các yêu cầu về năng lực để kiểm soát chi phí.    "
+},
+{
+	"uri": "/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.6-querydata/",
+	"title": "Truy vấn dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Các bước truy vấn dữ liệu bảng Music như sau:\n  Đăng nhập vào Bảng điều khiển quản lý AWS và mở DynamoDB Console tại Giao diện quản lý DynamoDB.\n  Trong thanh điều hướng ở bên trái của bảng điều khiển, chọn Tables\n  Chọn bảng Music từ danh sách bảng.\n  Chọn Actions, sau đó chọn Explore item.\n   Chọn Query\n  Nhập chi tiết các key:\n  Đối với Artist (Partition key), nhập Acme Band\n  Đối với SongTitle (Sort key), nhập PartiQL Rocks\n    Chọn Run\n  Kết quả trả về:\n  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.2-useawscloudshell/2.2.6-createglobalsecondaryindex/",
+	"title": "Tạo Global secondary index",
+	"tags": [],
+	"description": "",
+	"content": " Để tạo Global Secondary Index, sử dụng lệnh update-table   Thực hiện lệnh:  aws dynamodb update-table \\\r--table-name Music \\\r--attribute-definitions AttributeName=AlbumTitle,AttributeType=S \\\r--global-secondary-index-updates \\\r\u0026quot;[{\\\u0026quot;Create\\\u0026quot;:{\\\u0026quot;IndexName\\\u0026quot;: \\\u0026quot;AlbumTitle-index\\\u0026quot;,\\\u0026quot;KeySchema\\\u0026quot;:[{\\\u0026quot;AttributeName\\\u0026quot;:\\\u0026quot;AlbumTitle\\\u0026quot;,\\\u0026quot;KeyType\\\u0026quot;:\\\u0026quot;HASH\\\u0026quot;}], \\\r\\\u0026quot;ProvisionedThroughput\\\u0026quot;: {\\\u0026quot;ReadCapacityUnits\\\u0026quot;: 10, \\\u0026quot;WriteCapacityUnits\\\u0026quot;: 5 },\\\u0026quot;Projection\\\u0026quot;:{\\\u0026quot;ProjectionType\\\u0026quot;:\\\u0026quot;ALL\\\u0026quot;}}}]\u0026quot;\rKết quả:   Kết quả trên AWS CloudShell: sử dụng Esc và !wq  {\r\u0026quot;TableDescription\u0026quot;: {\r\u0026quot;AttributeDefinitions\u0026quot;: [\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;AlbumTitle\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r},\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;Artist\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r},\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;SongTitle\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r{\r\u0026quot;TableDescription\u0026quot;: {\r\u0026quot;AttributeDefinitions\u0026quot;: [\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;AlbumTitle\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r},\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;Artist\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r},\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;SongTitle\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r}\r],\r\u0026quot;TableName\u0026quot;: \u0026quot;Music\u0026quot;,\r\u0026quot;KeySchema\u0026quot;: [\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;Artist\u0026quot;,\r\u0026quot;KeyType\u0026quot;: \u0026quot;HASH\u0026quot;\r},\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;SongTitle\u0026quot;,\r\u0026quot;KeyType\u0026quot;: \u0026quot;RANGE\u0026quot;\r}\r],\r\u0026quot;TableStatus\u0026quot;: \u0026quot;UPDATING\u0026quot;,\r\u0026quot;CreationDateTime\u0026quot;: \u0026quot;2022-03-06T08:48:31.027000+00:00\u0026quot;,\r\u0026quot;ProvisionedThroughput\u0026quot;: {\r\u0026quot;NumberOfDecreasesToday\u0026quot;: 0,\r\u0026quot;ReadCapacityUnits\u0026quot;: 10,\r\u0026quot;WriteCapacityUnits\u0026quot;: 5\r},\r\u0026quot;TableSizeBytes\u0026quot;: 0,\r\u0026quot;ItemCount\u0026quot;: 0,\r\u0026quot;TableArn\u0026quot;: \u0026quot;arn:aws:dynamodb:us-east-1:089359461550:table/Music\u0026quot;,\r\u0026quot;TableId\u0026quot;: \u0026quot;ee1ef0d6-af0c-4fc2-8dac-10d5a0791fac\u0026quot;,\r\u0026quot;GlobalSecondaryIndexes\u0026quot;: [\r{\r\u0026quot;IndexName\u0026quot;: \u0026quot;AlbumTitle-index\u0026quot;,\r\u0026quot;KeySchema\u0026quot;: [\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;AlbumTitle\u0026quot;,\r\u0026quot;KeyType\u0026quot;: \u0026quot;HASH\u0026quot;\r}\r],\r\u0026quot;Projection\u0026quot;: {\r\u0026quot;ProjectionType\u0026quot;: \u0026quot;ALL\u0026quot;\r},\r\u0026quot;IndexStatus\u0026quot;: \u0026quot;CREATING\u0026quot;,\r\u0026quot;Backfilling\u0026quot;: false,\r\u0026quot;ProvisionedThroughput\u0026quot;: {\r Kết quả trên giao diện:  "
+},
+{
+	"uri": "/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.6-loadsampledata/",
+	"title": "Tải dữ liệu mẫu",
+	"tags": [],
+	"description": "",
+	"content": "  Tải xuống dữ liệu mẫu moviedata.zip.\n  Giải nén tệp dữ liệu (moviedata.json) từ kho lưu trữ.\n  Sao chép tệp moviedata.json vào thư mục hiện tại của bạn.\n  Tạo file có tên MoviesLoadData.py\n  Sao chép đoạn mã sau và dán vào file MoviesLoadData.py\n  from decimal import Decimal\rimport json\rimport boto3\rdef load_movies(movies, dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rfor movie in movies:\ryear = int(movie['year'])\rtitle = movie['title']\rprint(\u0026quot;Adding movie:\u0026quot;, year, title)\rtable.put_item(Item=movie)\rif __name__ == '__main__':\rwith open(\u0026quot;moviedata.json\u0026quot;) as json_file:\rmovie_list = json.load(json_file, parse_float=Decimal)\rload_movies(movie_list)\rChạy chương trình bằng Window Command Prompt đã được xác thực và cấu hình ở bước 3.1 Cấu hình AWS CLI. Gõ lệnh:  python MoviesLoadData.py\rTrường hợp khác: sử dụng python \u0026quot;đường dẫn file MoviesLoadData.py\u0026quot;\nSau khi chạy chương trình, thu được kết quả:  Adding movie: 2013 Insidious: Chapter 2\rAdding movie: 2013 World War Z\rAdding movie: 2014 X-Men: Days of Future Past\rAdding movie: 2014 Transformers: Age of Extinction\rAdding movie: 2013 Now You See Me\rAdding movie: 2013 Gravity\rAdding movie: 2013 We're the Millers\rAdding movie: 2013 Riddick\rAdding movie: 2013 The Family\rAdding movie: 2013 Star Trek Into Darkness\rAdding movie: 2013 After Earth\rAdding movie: 2013 The Great Gatsby\rAdding movie: 2014 Divergent\rAdding movie: 2013 We Are What We Are\rAdding movie: 2013 Iron Man 3\rAdding movie: 2014 The Amazing Spider-Man 2\rAdding movie: 2013 Curse of Chucky\rAdding movie: 2013 The Conjuring\rAdding movie: 2013 Oldboy\rAdding movie: 2013 Escape Plan\rAdding movie: 2013 Elysium\rAdding movie: 2013 Cloudy with a Lưu ý: Đúng đường dẫn file moviedata.json\n"
+},
+{
+	"uri": "/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.7-querydata/",
+	"title": "Truy vấn dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Truy xuất tất cả các phim được phát hành vào năm 1985 từ dữ liệu mẫu được tải lên ở 3.2.6 Tải dữ liệu mẫu\n  Tạo file có tên MoviesQuery01.py\n  Sao chép đoạn mã sau và dán vào file MoviesQuery01.py\n  import boto3\rfrom boto3.dynamodb.conditions import Key\rdef query_movies(year, dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rresponse = table.query(\rKeyConditionExpression=Key('year').eq(year)\r)\rreturn response['Items']\rif __name__ == '__main__':\rquery_year = 1985\rprint(f\u0026quot;Movies from {query_year}\u0026quot;)\rmovies = query_movies(query_year)\rfor movie in movies:\rprint(movie['year'], \u0026quot;:\u0026quot;, movie['title'])\rChạy chương trình bằng Window Command Prompt đã được xác thực và cấu hình ở bước 3.1 Cấu hình AWS CLI. Gõ lệnh:  python MoviesQuery01.py\rTrường hợp khác: sử dụng python \u0026quot;đường dẫn file MoviesQuery01.py\u0026quot;\nSau khi chạy chương trình, thu được kết quả:  Movies from 1985\r1985 : A Nightmare on Elm Street Part 2: Freddy's Revenge\r1985 : A Room with a View\r1985 : A View to a Kill\r1985 : Back to the Future\r1985 : Better Off Dead...\r1985 : Brazil\r1985 : Clue\r1985 : Cocoon\r1985 : Commando\r1985 : Day of the Dead\r1985 : Flesh+Blood\r1985 : Friday the 13th: A New Beginning\r1985 : Fright Night\r1985 : Girls Just Want to Have Fun\r1985 : Just One of the Guys\r1985 : Legend\r1985 : Mad Max Beyond Thunderdome\r1985 : Mask\r1985 : Pale Rider\r1985 : Pee-wee's Big Adventure\r1985 : Police Academy 2: Their First Assignment\r1985 : Rambo: First Blood Part II\r1985 : Real Genius\r1985 : Return to Oz\r1985 : Rocky IV\r1985 : Silverado\r1985 : St. Elmo's Fire\r1985 : Teen Wolf\r1985 : The Breakfast Club\r1985 : The Color Purple\r1985 : The Goonies\r1985 : The Last Dragon\r1985 : The Return of the Living Dead\r1985 : Weird Science\r1985 : Witness\r"
+},
+{
+	"uri": "/vi/2-prerequiste/2.2-useawscloudshell/2.2.7-queryglobalsecondaryindex/",
+	"title": "Truy vấn Global secondary index",
+	"tags": [],
+	"description": "",
+	"content": " Để truy vấn Global Secondary Index, sử dụng lệnh query   Thực hiện lệnh:  aws dynamodb query \\\r--table-name Music \\\r--index-name AlbumTitle-index \\\r--key-condition-expression \u0026quot;AlbumTitle = :name\u0026quot; \\\r--expression-attribute-values '{\u0026quot;:name\u0026quot;:{\u0026quot;S\u0026quot;:\u0026quot;Somewhat Famous\u0026quot;}}'\rKết quả:   Kết quả trên AWS CloudShell:  {\r\u0026quot;Items\u0026quot;: [\r{\r\u0026quot;AlbumTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Somewhat Famous\u0026quot;\r},\r\u0026quot;Awards\u0026quot;: {\r\u0026quot;N\u0026quot;: \u0026quot;1\u0026quot;\r},\r\u0026quot;Artist\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;No One You Know\u0026quot;\r},\r\u0026quot;SongTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Call Me Today\u0026quot;\r}\r},\r{\r\u0026quot;AlbumTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Somewhat Famous\u0026quot;\r},\r\u0026quot;Awards\u0026quot;: {\r\u0026quot;N\u0026quot;: \u0026quot;2\u0026quot;\r},\r\u0026quot;Artist\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;No One You Know\u0026quot;\r},\r\u0026quot;SongTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Howdy\u0026quot;\r}\r}\r],\r\u0026quot;Count\u0026quot;: 2,\r\u0026quot;ScannedCount\u0026quot;: 2,\r\u0026quot;ConsumedCapacity\u0026quot;: null\r}\r Kết quả trên giao diện:  "
+},
+{
+	"uri": "/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.7-creategobalsecondaryindex/",
+	"title": "Tạo Global secondary index",
+	"tags": [],
+	"description": "",
+	"content": "  Đăng nhập vào Bảng điều khiển quản lý AWS và mở DynamoDB Console tại Giao diện quản lý DynamoDB.\n  Trong thanh điều hướng ở bên trái của bảng điều khiển, chọn Tables\n  Chọn bảng Music từ danh sách bảng.\n   Chọn tab Indexes từ bảng Music.\n  Chọn Create index\n   Đối với Partition key , nhập AlbumTitle.\n  Đối với Index name, nhập AlbumTitle-index.\n  Các mục khác để mặc định và chọn Create index  Kết quả:  "
+},
+{
+	"uri": "/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.8-scandata/",
+	"title": "Quét dữ liệu",
+	"tags": [],
+	"description": "",
+	"content": "Phương thức scan đọc mọi item trong toàn bộ bảng và trả về tất cả dữ liệu trong bảng. Bạn có thể cung cấp một tùy chọn filter_expression để chỉ những mặt hàng phù hợp với tiêu chí của bạn mới được trả lại. Tuy nhiên, bộ lọc chỉ được áp dụng sau khi toàn bộ bảng đã được quét.\nChương trình sau quét toàn bộ bảng Movies, trong đó có khoảng 5.000 mục. Quá trình quét chỉ định bộ lọc tùy chọn để chỉ lấy các phim từ những năm 1950 (khoảng 100 mục) và loại bỏ tất cả các phim khác.\n  Tạo file có tên MoviesScan.py\n  Sao chép đoạn mã sau và dán vào file MoviesScan.py\n  from pprint import pprint\rimport boto3\rfrom boto3.dynamodb.conditions import Key\rdef scan_movies(year_range, display_movies, dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rscan_kwargs = {\r'FilterExpression': Key('year').between(*year_range),\r'ProjectionExpression': \u0026quot;#yr, title, info.rating\u0026quot;,\r'ExpressionAttributeNames': {\u0026quot;#yr\u0026quot;: \u0026quot;year\u0026quot;}\r}\rdone = False\rstart_key = None\rwhile not done:\rif start_key:\rscan_kwargs['ExclusiveStartKey'] = start_key\rresponse = table.scan(**scan_kwargs)\rdisplay_movies(response.get('Items', []))\rstart_key = response.get('LastEvaluatedKey', None)\rdone = start_key is None\rif __name__ == '__main__':\rdef print_movies(movies):\rfor movie in movies:\rprint(f\u0026quot;\\n{movie['year']} : {movie['title']}\u0026quot;)\rpprint(movie['info'])\rquery_range = (1950, 1959)\rprint(\rf\u0026quot;Scanning for movies released from {query_range[0]} to {query_range[1]}...\u0026quot;)\rscan_movies(query_range, print_movies)\rChú thích:\nProjectionExpression chỉ định các thuộc tính bạn muốn trong kết quả quét.\nFilterExpression chỉ định một điều kiện chỉ trả về các mục thỏa mãn điều kiện. Tất cả các mục khác đều bị loại bỏ.\nChạy chương trình bằng Window Command Prompt đã được xác thực và cấu hình ở bước 3.1 Cấu hình AWS CLI. Gõ lệnh:  python MoviesScan.py\rTrường hợp khác: sử dụng python \u0026quot;đường dẫn file MoviesScan.py\u0026quot;\nSau khi chạy chương trình, thu được kết quả  \r1958 : Cat on a Hot Tin Roof\r{'rating': Decimal('8')}\r1958 : Monster on the Campus\r{'rating': Decimal('5.7')}\r1958 : No Time for Sergeants\r{'rating': Decimal('7.5')}\r1958 : Teacher's Pet\r{'rating': Decimal('7')}\r1958 : Touch of Evil\r{'rating': Decimal('8.2')}\r1958 : Vertigo\r{'rating': Decimal('8.5')}\r1951 : A Streetcar Named Desire\r{'rating': Decimal('8')}\r1951 : Alice in Wonderland\r{'rating': Decimal('7.4')}\r1951 : An American in Paris\r{'rating': Decimal('7.2')}\r1951 : Operation Pacific\r{'rating': Decimal('6.5')}\r1951 : Storm Warning\r{'rating': Decimal('7')}\r1951 : Strangers on a Train\r{'rating': Decimal('8.2')}\r1951 : The African Queen\r{'rating': Decimal('8')}\r"
+},
+{
+	"uri": "/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.8-querytheglobalsecondaryindex/",
+	"title": "Truy vấn Global secondary index",
+	"tags": [],
+	"description": "",
+	"content": " Đăng nhập vào Bảng điều khiển quản lý AWS và mở DynamoDB Console tại Giao diện quản lý DynamoDB. Trong thanh điều hướng ở bên trái của bảng điều khiển, chọn Tables Chọn bảng Music từ danh sách bảng. Chọn Actions, sau đó chọn Explore item.  Chọn Query Trong danh sách thả xuống bên dưới Query, chọn AlbumTitle-index Đối với AlbumTitle , nhập Somewhat Famous, . Chọn Run Kết quả trả về:  "
+},
+{
+	"uri": "/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.9-deletethetable/",
+	"title": "Xóa dữ liệu bảng",
+	"tags": [],
+	"description": "",
+	"content": "  Tạo file có tên MoviesDeleteTable.py\n  Sao chép đoạn mã sau và dán vào file MoviesDeleteTable.py\n  import boto3\rdef delete_movie_table(dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rtable.delete()\rif __name__ == '__main__':\rdelete_movie_table()\rprint(\u0026quot;Movies table deleted.\u0026quot;)\rChạy chương trình bằng Window Command Prompt đã được xác thực và cấu hình ở bước 3.1 Cấu hình AWS CLI. Gõ lệnh:  python MoviesDeleteTable.py\rTrường hợp khác: sử dụng python \u0026quot;đường dẫn file MoviesDeleteTable.py\u0026quot;\nSau khi chạy chương trình, thu được kết quả  Movies table deleted.\r"
+},
+{
+	"uri": "/vi/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/vi/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

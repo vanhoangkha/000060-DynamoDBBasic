@@ -1,0 +1,288 @@
+[
+{
+	"uri": "/",
+	"title": "AWS DynamoDB",
+	"tags": [],
+	"description": "",
+	"content": "Work with AWS DynamoDB Overall In this lab, you\u0026rsquo;ll learn the basics and practice of Amazon DynamoDB\nContent  Introduction  Preparation Getting started with AWS SDK Clean up resources  "
+},
+{
+	"uri": "/3-gettingstartedwithawssdk/3.1-configureawscli/",
+	"title": "Configure AWS CLI",
+	"tags": [],
+	"description": "",
+	"content": "  Open Window Command Prompt, select Run as administrator mode\n  Type the command aws configure\n  Enter details from the csv file in section 2.1.1 Creating access key:\n  AWS Access Key ID\n  AWS Secret Access Key\n  Default region name\n  Default output format: leave blank\n    Install Python 2.6 or later.\n  Check python version to confirm successful installation with command python --version\n  Install Boto3 library with pip install boto3 command\n  "
+},
+{
+	"uri": "/1-introduce/1.1-corecomponentsofamazondynamodb/",
+	"title": "Core Components of Amazon DynamoDB",
+	"tags": [],
+	"description": "",
+	"content": "  Table: Similar to other database systems, DynamoDB stores data in tables. The table is a collection of items.\n  Item: Each table contains zero or more items. Items in DynamoDB are quite similar to the concept of rows in relational databases, records, or tuples in other database systems. In DynamoDB, there is no limit to the number of items you can store in a table.\n  Attribute: Each item includes one or more attributes. An attribute is a basic data element that does not need to be broken down further. Attributes in DynamoDB are in many ways similar to columns in other database systems.\n  "
+},
+{
+	"uri": "/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/",
+	"title": "Create a table",
+	"tags": [],
+	"description": "",
+	"content": "  Start AWS CloudShell at CloudShell Interface\n  Type the command aws configure\n  Enter details from the csv file in 2.1.1 Generating Access key:\n   AWS Access Key ID AWS Secret Access Key Default region name Default output format  To create a table, use the create-table command. Type command:  aws dynamodb create-table \\\r--table-name Music \\\r--attribute-definitions \\\rAttributeName=Artist,AttributeType=S \\\rAttributeName=SongTitle,AttributeType=S \\\r--key-schema \\\rAttributeName=Artist,KeyType=HASH \\\rAttributeName=SongTitle,KeyType=RANGE \\\r--provided-throughput \\\rReadCapacityUnits=10,WriteCapacityUnits=5 \\\r--table-class STANDARD\rResult:   Results on AWS CloudShell:  {\r\u0026quot;TableDescription\u0026quot;: {\r\u0026quot;AttributeDefinitions\u0026quot;: [\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;Artist\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r},\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;SongTitle\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r}\r],\r\u0026quot;TableName\u0026quot;: \u0026quot;Music\u0026quot;,\r\u0026quot;KeySchema\u0026quot;: [\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;Artist\u0026quot;,\r\u0026quot;KeyType\u0026quot;: \u0026quot;HASH\u0026quot;\r},\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;SongTitle\u0026quot;,\r\u0026quot;KeyType\u0026quot;: \u0026quot;RANGE\u0026quot;\r}\r],\r\u0026quot;TableStatus\u0026quot;: \u0026quot;CREATING\u0026quot;,\r\u0026quot;CreationDateTime\u0026quot;: \u0026quot;2022-02-08T06:15:18.343000+00:00\u0026quot;,\r\u0026quot;ProvisionedThroughput\u0026quot;: {\r\u0026quot;NumberOfDecreasesToday\u0026quot;: 0,\r\u0026quot;ReadCapacityUnits\u0026quot;: 10,\r\u0026quot;WriteCapacityUnits\u0026quot;: 5\r},\r\u0026quot;TableSizeBytes\u0026quot;: 0,\r\u0026quot;ItemCount\u0026quot;: 0,\r\u0026quot;TableArn\u0026quot;: \u0026quot;arn:aws:dynamodb:us-east-2:089359461550:table/Music\u0026quot;,\r\u0026quot;TableId\u0026quot;: \u0026quot;4b2a1e9a-c223-4b07-a536-c4b85a67df96\u0026quot;,\r\u0026quot;TableClassSummary\u0026quot;: {\r\u0026quot;TableClass\u0026quot;: \u0026quot;STANDARD\u0026quot;\r}\r}\r}\r Result on the interface:  Check table status:   Type command:  aws dynamodb describe-table --table-name Music | grep TableStatus\r When DynamoDB finishes creating the table, the value of TableStatus is ACTIVE: \u0026quot;TableStatus\u0026quot;: \u0026quot;ACTIVE\u0026quot;,  "
+},
+{
+	"uri": "/2-prerequiste/2.1-useawsmanagementconsole/2.1.1-createaccesskeys/",
+	"title": "Create access key",
+	"tags": [],
+	"description": "",
+	"content": "Generate access keys for IAM users   Sign in to the AWS Management Console and open the IAM console at IAM console.\n  In the navigation bar, select Users.\n   Select the name of the user whose access key you want to create, and then select the Security credentials tab.\n  In the Access keys section, select Create access key.\n  To view the new access key, select Show. Your login information should look like this:  Access key ID: AKIAIOSFODNN7EXAMPLE\rSecret access key: wJalrXUtnFEMI / K7MDENG / bPxRfiCYEXAMPLEKEY``\rTo download the key pair, select Download .csv file.  After you download the .csv file, select Close  "
+},
+{
+	"uri": "/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.1-createtable/",
+	"title": "Create table",
+	"tags": [],
+	"description": "",
+	"content": "In this step, we create a table named Movies. The primary key for the table includes the following attributes:\nyear – The partition key. AttributeType is N(number).\ntitle – The sort key. AttributeType is S(string).\n  Create a file named MoviesCreateTable.py\n  Copy the following code and paste it into the file MoviesCreateTable.py\n  import boto3\rdef create_movie_table(dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.create_table(\rTableName='Movies',\rKeySchema=[\r{\r'AttributeName': 'year',\r'KeyType': 'HASH' # Partition key\r},\r{\r'AttributeName': 'title',\r'KeyType': 'RANGE' # Sort key\r}\r],\rAttributeDefinitions=[\r{\r'AttributeName': 'year',\r'AttributeType': 'N'\r},\r{\r'AttributeName': 'title',\r'AttributeType': 'S'\r},\r],\rProvisionedThroughput={\r'ReadCapacityUnits': 10,\r'WriteCapacityUnits': 10\r}\r)\rreturn table\rif __name__ == '__main__':\rmovie_table = create_movie_table()\rprint(\u0026quot;Table status:\u0026quot;, movie_table.table_status)\rRun the program using the authenticated and configured Window Command Prompt in step 3.1 Configure AWS CLI. Type command:  python MoviesCreateTable.py\rAnother case: use python \u0026quot;MoviesCreateTable.py file path\u0026quot;\nAfter running the program, Table status: CREATING is returned to the successful creation of the table.  "
+},
+{
+	"uri": "/1-introduce/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": "Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. DynamoDB allows easing the administrative burden of operating and scaling distributed databases, provisioning hardware, setup and configuration, replication, software patching, or cluster expansion. DynamoDB also provides encryption at rest.\n DynamoDB creates database tables that can store and retrieve any amount of data and serve any amount of required traffic. You can scale up or down your capacity through your table without downtime or performance loss. DynamoDB provides on-demand backup. It allows you to create full backups of tables for long-term retention and archiving for regulatory compliance needs. We can create on-demand backups and enable point-in-time recovery for Amazon DynamoDB tables. Timed restore helps protect tables from accidental writes or deletes. With the point in time restore, it is possible to restore the table to any point in the last 35 days. DynamoDB allows automatic deletion of expired items from the table thus reducing storage usage and data storage costs that are no longer relevant.  "
+},
+{
+	"uri": "/2-prerequiste/2.1-useawsmanagementconsole/",
+	"title": "Manage using AWS Management Console",
+	"tags": [],
+	"description": "",
+	"content": "You can access the AWS management console for Amazon DynamoDB at AWS management console for Amazon DynamoDB.\nYou can use the management console to do the following things in DynamoDB:\n  Track recent alerts, total capacity, service health, and the latest DynamoDB news on the DynamoDB console.\n  Create, update and delete tables. The capacity calculator provides an estimate of the number of capacity units required based on the usage information you provide.\n  Stream management.\n  View, add, update and delete entries stored in the table. Time to Live (TTL) to determine when table entries expire so they can be automatically deleted from the database.\n  Query and scan tables.\n  Set up and view alerts to monitor table capacity usage. View your table\u0026rsquo;s top monitoring metrics on a real-time chart from CloudWatch.\n  Modify the provided capacity of the table.\n  Modify the table class of the table.\n  Create and delete global Secondary Indexes.\n  Create triggers to connect DynamoDB streams to AWS Lambda functions.\n  Apply tags to your resources to help organize and identify them.\n  Buy reserve capacity.\n  If you can predict your need for Amazon DynamoDB read-and-write throughput, reserved capacity offers significant savings over the normal price of DynamoDB provisioned throughput capacity. You pay a one-time upfront fee and commit to paying for a minimum usage level at specific hourly rates for the duration of the reserved capacity term.\n\rManagement console shows an intro screen prompting you to create your first table. To view your tables, in the navigation bar on the left side of the table panel, select Tables .\nHere is a high-level overview of the tasks available per table in each navigation tab:\n  Overview - View table details, including item count and metrics.\n  index - Manage global and local secondary indexes.\n  Monitoring - View alarms, CloudWatch collaborator Insights, and Cloudwatch metrics.\n  Global table - Manage table copy.\n  Backup - Manage restores in time and backups on demand.\n  Export \u0026amp; Stream - Export your tables to Amazon S3 and manage DynamoDB Streams and Kinesis Data Streams.\n  Additional Settings - Manage read/write capacity, Duration settings, encryption and tags.\n  "
+},
+{
+	"uri": "/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/",
+	"title": "Create a table",
+	"tags": [],
+	"description": "",
+	"content": "In this step, you create a Music table in Amazon DynamoDB. The table has the following details:\n  Partition key — Artist\n  Sort key — SongTitle\n    Sign in to the AWS Management Console and open the DynamoDB Console at DynamoDB Management Console.\n  In the navigation bar on the left side of the panel, select Dashboard.\n  On the right side of the panel, select Create Table.\n  Enter the table details as follows:    For Table name, enter Music.\n  For Partition key, enter Artist.\n  Enter SongTitle as Sort key.\n  Select Default settings.\n  Select Create table to create the table.  "
+},
+{
+	"uri": "/2-prerequiste/",
+	"title": "Preparation ",
+	"tags": [],
+	"description": "",
+	"content": "\rYou need to create an Access key to proceed with the AWS CLI configuration.\n\rYou can access AWS DynamoDB using the AWS Management Console, AWS Command Line Interface (AWS CLI).\nContent  Using AWS Management Console Using AWS CloudShell  "
+},
+{
+	"uri": "/1-introduce/1.2-primarykey/",
+	"title": "Primary Key",
+	"tags": [],
+	"description": "",
+	"content": " When you create a table, in addition to the table name, you must specify the primary key of the table. The primary key uniquely identifies each item in the table, so no two items can have the same key. DynamoDB supports two different types of primary keys:   Partition key Composite primary key  Partition key  A simple primary key, consisting of an attribute called Partition key. DynamoDB uses the value of the partition key as input to the internal hash. The output from the hash defines the partition (physical memory inside DynamoDB) in which the item will be stored. In a table with only a partition key, no two items can have the same partition key value.  Composite primary key  The first attribute is partition key and the second attribute is sort key. DynamoDB uses the partition key value as input to the internal hash. The output from the hash defines the partition (physical memory inside DynamoDB) in which the item will be stored. All items with the same partition key value are stored together, in sorted order by the sort key value. In a table with a partition key and a sort key, multiple items can have the same partition key value. However, those items must have different sort key values. Composite primary key gives you more flexibility when querying data.  "
+},
+{
+	"uri": "/2-prerequiste/2.2-useawscloudshell/",
+	"title": "Use AWS CloudShell",
+	"tags": [],
+	"description": "",
+	"content": " AWS CloudShell is a browser-based shell that makes it easy to securely manage, discover, and interact with your AWS resources. CloudShell is pre-authenticated with your console credentials. Common development and operations tools are pre-installed, so no local installation or configuration is required. With CloudShell, you can quickly run scripts with the AWS Command Line Interface (AWS CLI), experiment with AWS service APIs using AWS SDK, or use a range of tools other to function effectively. You can use CloudShell right from your browser and at no extra cost.  "
+},
+{
+	"uri": "/2-prerequiste/2.2-useawscloudshell/2.2.2-writedata/",
+	"title": "Write data",
+	"tags": [],
+	"description": "",
+	"content": " To write data, use the command put-item   After creating the table in step 2.2.1 Create table, continue typing the command:  aws dynamodb put-item \\\r--table-name Music \\\r--item \\\r'{\u0026quot;Artist\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;No One You Know\u0026quot;}, \u0026quot;SongTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Call Me Today\u0026quot;}, \u0026quot;AlbumTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Somewhat Famous\u0026quot;}, \u0026quot;Awards\u0026quot;: {\u0026quot;N\u0026quot;: \u0026quot;1\u0026quot;}}'\raws dynamodb put-item \\\r--table-name Music \\\r--item \\\r'{\u0026quot;Artist\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;No One You Know\u0026quot;}, \u0026quot;SongTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Howdy\u0026quot;}, \u0026quot;AlbumTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Somewhat Famous\u0026quot;}, \u0026quot;Awards \u0026quot;: {\u0026quot;N\u0026quot;: \u0026quot;2\u0026quot;}}'\raws dynamodb put-item \\\r--table-name Music \\\r--item \\\r'{\u0026quot;Artist\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;}, \u0026quot;SongTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Happy Day\u0026quot;}, \u0026quot;AlbumTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Songs About Life\u0026quot;}, \u0026quot;Awards \u0026quot;: {\u0026quot;N\u0026quot;: \u0026quot;10\u0026quot;} }'\raws dynamodb put-item \\\r--table-name Music \\\r--item \\\r'{\u0026quot;Artist\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;}, \u0026quot;SongTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;PartiQL Rocks\u0026quot;}, \u0026quot;AlbumTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Another Album Title\u0026quot;}, \u0026quot;Awards \u0026quot;: {\u0026quot;N\u0026quot;: \u0026quot;8\u0026quot;} }'\rResult:  "
+},
+{
+	"uri": "/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.2-writedata/",
+	"title": "Write data",
+	"tags": [],
+	"description": "",
+	"content": "Add items to the Movies table just created in 3.4.1-Create Table\n  Create a file named MoviesItemOps01.py\n  Copy the following program and paste it into the file MoviesItemOps01.py\n  from pprint import pprint\rimport boto3\rdef put_movie(title, year, plot, rating, dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rresponse = table.put_item(\rItem={\r'year': year,\r'title': title,\r'info': {\r'plot': plot,\r'rating': rating\r}\r}\r)\rreturn response\rif __name__ == '__main__':\rmovie_resp = put_movie(\u0026quot;The Big New Movie\u0026quot;, 2015,\r\u0026quot;Nothing happens at all.\u0026quot;, 0)\rprint(\u0026quot;Put movie succeeded:\u0026quot;)\rpprint(movie_resp, sort_dicts=False)\rRun the program using the authenticated and configured Window Command Prompt in step 3.1 Configure AWS CLI. Type command:  python MoviesItemOps01.py\rOther case: use python \u0026quot;MoviesItemOps01.py file path\u0026quot;\nAfter running the program, get the following results:  Put movie succeeded:\r{'ResponseMetadata': {'RequestId': 'U9PQSVRR5PKKDD7NPV0NH91JD7VV4KQNSO5AEMVJF66Q9ASUAAJG',\r'HTTPStatusCode': 200,\r'HTTPHeaders': {'server': 'Server',\r'date': 'Wed, 09 Feb 2022 03:11:45 GMT',\r'content-type': 'application/x-amz-json-1.0',\r'content-length': '2',\r'connection': 'keep-alive',\r'x-amzn-requestid': 'U9PQSVRR5PKKDD7NPV0NH91JD7VV4KQNSO5AEMVJF66Q9ASUAAJG',\r'x-amz-crc32': '2745614147'},\r'RetryAttempts': 0}}\r"
+},
+{
+	"uri": "/3-gettingstartedwithawssdk/",
+	"title": "Begin with AWS SDK",
+	"tags": [],
+	"description": "",
+	"content": "\rTo perform this step, you need to generate an Access key that is used to configure the AWS CLI and install Python and Boto3.\n\rThe SDK includes two main Python packages: Botocore (a library that provides low-level functionality shared between the Python SDK and the AWS CLI) and Boto3 (the main Python SDK implementation package).\nIn this lab, we use Boto3\nClient provides a low-level interface to the AWS service. Their definitions are generated by the JSON service description included in the botocore library. The botocore package is shared between boto3 as well as the AWS CLI.\nService definitions for AWS S3 are stored as JSON in the botocore package.\nThe main benefits of using the Boto3 Client application are:\n It maps 1:1 with the actual AWS service API. All AWS service operations are supported by Client  For example, if you want to list all S3 buckets in your AWS account, you can use the S3 Client as follows:\nimport boto3\r# Retrieve the list of existing buckets\rs3 = boto3.client(\u0026quot;s3\u0026quot;)\rresponse = s3.list_buckets()\r# Output the bucket names\rprint(\u0026quot;Existing buckets:\u0026quot;)\rfor bucket in response['Buckets']:\rprint(f'{bucket[\u0026quot;Name\u0026quot;]}')\rResource is a higher level abstraction than clients. They are generated from the JSON resource description contained in the boto library itself.\nThe resource provides an object-oriented interface for interacting with various AWS services. Resources can be initialized as follows:\nThe example below is a Resource definition for S3 .\n\rimport boto3\rs3 = boto3.resource(\u0026quot;s3\u0026quot;)\rContent  Configure AWS CLI  Getting started with Python and DynamoDB  "
+},
+{
+	"uri": "/2-prerequiste/2.2-useawscloudshell/2.2.3-readdata/",
+	"title": "Read data",
+	"tags": [],
+	"description": "",
+	"content": "  To read data, use the get-item command and the **consistent-read parameter represents strongly consistent reads.\n  The default of AWS DynamoDB is eventually consistent reads.\n   Execute the command:  aws dynamodb get-item --consistent-read \\\r--table-name Music \\\r--key '{ \u0026quot;Artist\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;}, \u0026quot;SongTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Happy Day\u0026quot;}}'\rResult:   Results on AWS CloudShell:  {\r\u0026quot;Item\u0026quot;: {\r\u0026quot;AlbumTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Songs About Life\u0026quot;\r},\r\u0026quot;Awards\u0026quot;: {\r\u0026quot;N\u0026quot;: \u0026quot;10\u0026quot;\r},\r\u0026quot;Artist\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;\r},\r\u0026quot;SongTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Happy Day\u0026quot;\r}\r}\r}\r"
+},
+{
+	"uri": "/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.3-readdata/",
+	"title": "Read data",
+	"tags": [],
+	"description": "",
+	"content": "  Create a file named MoviesItemOps02.py\n  Copy the following code and paste it in MoviesItemOps02.py\n  from pprint import pprint\rimport boto3\rfrom botocore.exceptions import ClientError\rdef get_movie(title, year, dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rtry:\rresponse = table.get_item(Key={'year': year, 'title': title})\rexcept ClientError as e:\rprint(e.response['Error']['Message'])\relse:\rreturn response['Item']\rif __name__ == '__main__':\rmovie = get_movie(\u0026quot;The Big New Movie\u0026quot;, 2015,)\rif movie:\rprint(\u0026quot;Get movie succeeded:\u0026quot;)\rpprint(movie, sort_dicts=False)\rRun the program using the authenticated and configured Window Command Prompt in step 3.1 Configure AWS CLI. Type command:  python MoviesItemOps02.py\rOther case: use python \u0026quot;MoviesItemOps02.py file path\u0026quot;\nAfter running the program, get the following results:  Get movie succeeded:\r{'year': Decimal('2015'),\r'info': {'rating': Decimal('0'), 'plot': 'Nothing happens at all.'},\r'title': 'The Big New Movie'}\r"
+},
+{
+	"uri": "/1-introduce/1.3-secondaryindexes/",
+	"title": "Secondary Index",
+	"tags": [],
+	"description": "",
+	"content": " You can create one or more Secondary Index on a table. Secondary Index allows to query data in the table with different keys from the original partition key and sort of the table. With Dynamo DB, data query operation is much faster and more cost-effective than scanning.  . DynamoDB doesn\u0026rsquo;t force you to use indexes, but they do give your applications more flexibility when it comes to data queries. After creating a Secondary Index on the table, you can read data from the index in the same way as reading data from the table.\nDynamoDB supports two types of indexes:\n  Global secondary index index has partition key and sort key may be different from indexes on table.\n  Local secondary index index has the same partition key as the table but has a different sort key.\n  Each table in DynamoDB has a maximum of 20 Global secondary indexes (default limit) and 5 Local secondary indexes.\n  "
+},
+{
+	"uri": "/2-prerequiste/2.1-useawsmanagementconsole/2.1.3-writedata/",
+	"title": "Write data",
+	"tags": [],
+	"description": "",
+	"content": "Steps to record data to the Music table (created in section 2.1.2):\n  Sign in to the AWS Management Console and open the DynamoDB Console at DynamoDB Management Console.\n  In the navigation bar on the left side of the panel, select Tables.\n  In the list of boards, select the Music board.\n  Select Explore items\n  In the Items interface, select Create item  Select Add new attribute, then select Number. School name: Awards.  Repeat step 6 creating AlbumTitle with type String.  Enter values ​​for items:    Artist, enter No One You Know\n  SongTitle, enter Call Me Today\n  AlbumTitle, enter Somewhat Famous\n  Awards, enter 1.\n  Select Create item.  Repeat step 8 and create another entry with the following values:    Artist, enter Acme Band.\n  SongTitle enter Happy Day.\n  AlbumTitle, enter Songs About Life.\n  Awards, enter 10.\n  Do this again to create another item with the same Artist as the previous step, but different values ​​for the other attributes:    Artist, enter Acme Band.\n  SongTitle import PartiQL Rocks.\n  AlbumTitle, enter Another Album Title.\n  Awards, enter 8.\n  Result:  "
+},
+{
+	"uri": "/2-prerequiste/2.1-useawsmanagementconsole/2.1.4-readdata/",
+	"title": " Read data",
+	"tags": [],
+	"description": "",
+	"content": "Steps to read data from Music table using DynamoDB console:\n  Sign in to the AWS Management Console and open the DynamoDB Console at DynamoDB Management Console.\n  In the navigation bar on the left side of the panel, select Tables\n  Select the Music board from the list of boards.\n  Select Actions, then select Explore items.\n  Select Query, then enter Artist (Partition key) as Acme Band  Select Run and get the results as shown:  "
+},
+{
+	"uri": "/4-cleanupresource/",
+	"title": "Clean up resource",
+	"tags": [],
+	"description": "",
+	"content": "Using AWS Management Console   Open the DynamoDB console table at https://console.aws.amazon.com/dynamodb/\n  In the navigation bar on the left side of the panel, select Tables\n  Select the Music board from the list of boards.\n  Select Actions, then select Delete table.\n  Using AWS CloudShell   To delete a table, use the command delete-table\n  Type command:\n  aws dynamodb delete-table --table-name Music\r"
+},
+{
+	"uri": "/3-gettingstartedwithawssdk/3.2-pythonandynamodb/",
+	"title": "Getting started with Python and DynamoDB",
+	"tags": [],
+	"description": "",
+	"content": "In this lab, you use AWS SDK for Python (Boto3) to write simple programs that perform the following Amazon DynamoDB operations:\n  Create a table named Movies and load the sample data in JSON format.\n  Perform create, read, update and delete operations on the table.\n  Run simple queries.\n  Content  Create Table  Write Data Read Data Update Data Clear Data Load Sample Data Data Query Scan Data Delete Data Table  "
+},
+{
+	"uri": "/1-introduce/1.4-namingrulesanddatatypes/",
+	"title": "Naming Rules and Data Types",
+	"tags": [],
+	"description": "",
+	"content": "Naming rules  Tables, properties, and other objects in DynamoDB must have names. Following are the naming rules for DynamoDB:  All names must be encoded with UTF-8 and have case sensitive. Table name and index name must be from 3 to 255 characters and can only contain the following characters:  a-z A-Z 0-9 _(underlined)   (dash line)   . (dots)     The attribute name must be at least one character long, but no longer than 64 KB. The following are exceptions. These property names cannot be longer than 255 characters:  The key name of the Secondary Index partition. Secondary Index sorts the key names. The name of any user-specified expected properties (applies only to local SecondaryIndexes).    Datatypes DynamoDB supports many different data types for the attributes in the table. They can be classified as follows:\n scalar types: A scalar type can represent exactly one value. Scalar types are numeric, string, binary, Boolean, and null. Document Type: A document type can represent a complex structure with nested properties, such as you will find in a JSON document. The document types are list and map. Set type: A set type can represent many scalar values. Set types are string set, numeric set, and binary set.  "
+},
+{
+	"uri": "/2-prerequiste/2.2-useawscloudshell/2.2.4-updatedata/",
+	"title": "Update data",
+	"tags": [],
+	"description": "",
+	"content": " To update data, use the command update-item   Execute the command:  aws dynamodb update-item \\\r--table-name Music \\\r--key '{ \u0026quot;Artist\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;}, \u0026quot;SongTitle\u0026quot;: {\u0026quot;S\u0026quot;: \u0026quot;Happy Day\u0026quot;}}' \\\r--update-expression \u0026quot;SET AlbumTitle = :newval\u0026quot; \\\r--expression-attribute-values '{\u0026quot;:newval\u0026quot;:{\u0026quot;S\u0026quot;:\u0026quot;Updated Album Title\u0026quot;}}' \\\r--return-values ALL_NEW\rResult:   Results on AWS CLoudShell:  {\r\u0026quot;Attributes\u0026quot;: {\r\u0026quot;AlbumTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Updated Album Title\u0026quot;\r},\r\u0026quot;Awards\u0026quot;: {\r\u0026quot;N\u0026quot;: \u0026quot;10\u0026quot;\r},\r\u0026quot;Artist\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;\r},\r\u0026quot;SongTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Happy Day\u0026quot;\r}\r}\r}\r Result on the interface:  "
+},
+{
+	"uri": "/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.4-updatedata/",
+	"title": "Update data",
+	"tags": [],
+	"description": "",
+	"content": "  Create a file named MoviesItemOps03.py\n  Copy the following code and paste it into the file MoviesItemOps03.py\n  from decimal import Decimal\rfrom pprint import pprint\rimport boto3\rdef update_movie(title, year, rating, plot, actors, dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rresponse = table.update_item(\rKey={\r'year': year,\r'title': title\r},\rUpdateExpression=\u0026quot;set info.rating=:r, info.plot=:p, info.actors=:a\u0026quot;,\rExpressionAttributeValues={\r':r': Decimal(rating),\r':p': plot,\r':a': actors\r},\rReturnValues=\u0026quot;UPDATED_NEW\u0026quot;\r)\rreturn response\rif __name__ == '__main__':\rupdate_response = update_movie(\r\u0026quot;The Big New Movie\u0026quot;, 2015, 5.5, \u0026quot;Everything happens all at once.\u0026quot;,\r[\u0026quot;Larry\u0026quot;, \u0026quot;Moe\u0026quot;, \u0026quot;Curly\u0026quot;])\rprint(\u0026quot;Update movie succeeded:\u0026quot;)\rpprint(update_response, sort_dicts=False)\rRun the program using the authenticated and configured Window Command Prompt in step 3.1 Configure AWS CLI. Type command:  python MoviesItemOps03.py\rAnother case: use python \u0026quot;MoviesItemOps03.py file path\u0026quot;\nAfter running the program, get the following results:  Update movie succeeded:\r{'Attributes': {'info': {'actors': ['Larry', 'Moe', 'Curly'],\r'plot': 'Everything happens all at once.',\r'rating': Decimal('5.5')}},\r'ResponseMetadata': {'RequestId': 'RFMTVB72A6E2J39HBPIK8SHBN7VV4KQNSO5AEMVJF66Q9ASUAAJG',\r'HTTPStatusCode': 200,\r'HTTPHeaders': {'server': 'Server',\r'date': 'Wed, 09 Feb 2022 03:29:15 GMT',\r'content-type': 'application/x-amz-json-1.0',\r'content-length': '156',\r'connection': 'keep-alive',\r'x-amzn-requestid': 'RFMTVB72A6E2J39HBPIK8SHBN7VV4KQNSO5AEMVJF66Q9ASUAAJG',\r'x-amz-crc32': '3767510606'},\r'RetryAttempts': 0}}\r"
+},
+{
+	"uri": "/2-prerequiste/2.1-useawsmanagementconsole/2.1.5-updatedata/",
+	"title": " Update data",
+	"tags": [],
+	"description": "",
+	"content": "The steps to update the Music table data are as follows:\n  Sign in to the AWS Management Console and open the DynamoDB Console at DynamoDB Management Console.\n  In the navigation bar on the left side of the panel, select Tables\n  Select the Music board from the list of boards.\n  Select Actions, then select Explore item.\n  Select item with Artist value of Acme Band and SongTitle value of Happy Day.  Update the Album Title value to Updated Album Title, then select Save changes.  Results after updating data:  "
+},
+{
+	"uri": "/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.5-deletedata/",
+	"title": "Delete data",
+	"tags": [],
+	"description": "",
+	"content": "  Create a file named MoviesItemOps04.py\n  Copy the following code and paste it into the file MoviesItemOps04.py\n  from decimal import Decimal\rfrom pprint import pprint\rimport boto3\rfrom botocore.exceptions import ClientError\rdef delete_underrated_movie(title, year, rating, dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rtry:\rresponse = table.delete_item(\rKey={\r'year': year,\r'title': title\r}\r)\rexcept ClientError as e:\rif e.response['Error']['Code'] == \u0026quot;ConditionalCheckFailedException\u0026quot;:\rprint(e.response['Error']['Message'])\relse:\rraise\relse:\rreturn response\rif __name__ == '__main__':\rprint(\u0026quot;Attempting a conditional delete...\u0026quot;)\rdelete_response = delete_underrated_movie(\u0026quot;The Big New Movie\u0026quot;, 2015, 5)\rif delete_response:\rprint(\u0026quot;Delete movie succeeded:\u0026quot;)\rpprint(delete_response, sort_dicts=False)\r Run the program using the Window Command Prompt authenticated and configured in step 3.1 Configure AWS CLI. Type command:  python MoviesItemOps03.py\rAnother case: use python \u0026quot;MoviesItemOps03.py file path\u0026quot;\nAfter running the program, get the following results:  Attempting a conditional delete...\rDelete movie succeeded:\r{'ResponseMetadata': {'RequestId': 'HHA9MQ2U0UP1CL7CECBAAQRMMVVV4KQNSO5AEMVJF66Q9ASUAAJG',\r'HTTPStatusCode': 200,\r'HTTPHeaders': {'server': 'Server',\r'date': 'Wed, 09 Feb 2022 03:39:32 GMT',\r'content-type': 'application/x-amz-json-1.0',\r'content-length': '2',\r'connection': 'keep-alive',\r'x-amzn-requestid': 'HHA9MQ2U0UP1CL7CECBAAQRMMVVV4KQNSO5AEMVJF66Q9ASUAAJG',\r'x-amz-crc32': '2745614147'},\r'RetryAttempts': 0}}\r"
+},
+{
+	"uri": "/2-prerequiste/2.2-useawscloudshell/2.2.5-querydata/",
+	"title": "Query data",
+	"tags": [],
+	"description": "",
+	"content": " To query data from table, use query command and provide partition key.   Execute the command:  aws dynamodb query \\\r--table-name Music \\\r--key-condition-expression \u0026quot;Artist = :name\u0026quot; \\\r--expression-attribute-values ​​'{\u0026quot;:name\u0026quot;:{\u0026quot;S\u0026quot;:\u0026quot;Acme Band\u0026quot;}}'\rResult:   Results on AWS CloudShell:  {\r\u0026quot;Items\u0026quot;: [\r{\r\u0026quot;AlbumTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Updated Album Title\u0026quot;\r},\r\u0026quot;Awards\u0026quot;: {\r\u0026quot;N\u0026quot;: \u0026quot;10\u0026quot;\r},\r\u0026quot;Artist\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;\r},\r\u0026quot;SongTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Happy Day\u0026quot;\r}\r},\r{\r\u0026quot;AlbumTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Another Album Title\u0026quot;\r},\r\u0026quot;Awards\u0026quot;: {\r\u0026quot;N\u0026quot;: \u0026quot;8\u0026quot;\r},\r\u0026quot;Artist\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Acme Band\u0026quot;\r},\r\u0026quot;SongTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;PartiQL Rocks\u0026quot;\r}\r}\r],\r\u0026quot;Count\u0026quot;: 2,\r\u0026quot;ScannedCount\u0026quot;: 2,\r\u0026quot;ConsumedCapacity\u0026quot;: null\r}\r Result on the interface:  "
+},
+{
+	"uri": "/1-introduce/1.5-readconsistency/",
+	"title": "Read Consistency",
+	"tags": [],
+	"description": "",
+	"content": "Eventually Consistent Reads  When you read data from a DynamoDB table, the response may not reflect the result of a recently completed write operation. Responses may include some stale data. If you repeat your read request after a short time, the response will return the latest data.  Strongly Consistent Reads When you request Strongly Consistent Reads, DynamoDB returns a response with the most up-to-date data, reflecting updates from all previous writes that were successful. However, this consistency comes with some downsides:\n Strongly Consistent Reads may not be available if there are network problems or outages. In this scenario, DynamoDB may return server error (HTTP 500). Strongly Consistent Reads may have higher latency than eventually consistent reads. Global secondary indexes are not supported Strongly Consistent Reads. Strongly Consistent Reads uses double throughput capacity than eventually consistent reads.  "
+},
+{
+	"uri": "/2-prerequiste/2.2-useawscloudshell/2.2.6-createglobalsecondaryindex/",
+	"title": "Create Global Secondary Index",
+	"tags": [],
+	"description": "",
+	"content": " To create Global Secondary Index, use command update-table   Execute the command:  aws dynamodb update-table \\\r--table-name Music \\\r--attribute-definitions AttributeName=AlbumTitle,AttributeType=S \\\r--global-secondary-index-updates \\\r\u0026quot;[{\\\u0026quot;Create\\\u0026quot;:{\\\u0026quot;IndexName\\\u0026quot;: \\\u0026quot;AlbumTitle-index\\\u0026quot;,\\\u0026quot;KeySchema\\\u0026quot;:[{\\\u0026quot;AttributeName\\\u0026quot;:\\\u0026quot;AlbumTitle\\\u0026quot;,\\\u0026quot;KeyType\\\u0026quot;: \\\u0026quot;HASH\\\u0026quot;}], \\\r\\\u0026quot;ProvisionedThroughput\\\u0026quot;: {\\\u0026quot;ReadCapacityUnits\\\u0026quot;: 10, \\\u0026quot;WriteCapacityUnits\\\u0026quot;: 5 },\\\u0026quot;Projection\\\u0026quot;:{\\\u0026quot;ProjectionType\\\u0026quot;:\\\u0026quot;ALL\\\u0026quot;}}}]\u0026quot;\rResult:   Results on AWS CloudShell: using Esc and !wq  {\r\u0026quot;TableDescription\u0026quot;: {\r\u0026quot;AttributeDefinitions\u0026quot;: [\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;AlbumTitle\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r},\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;Artist\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r},\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;SongTitle\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r{\r\u0026quot;TableDescription\u0026quot;: {\r\u0026quot;AttributeDefinitions\u0026quot;: [\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;AlbumTitle\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r},\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;Artist\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r},\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;SongTitle\u0026quot;,\r\u0026quot;AttributeType\u0026quot;: \u0026quot;S\u0026quot;\r}\r],\r\u0026quot;TableName\u0026quot;: \u0026quot;Music\u0026quot;,\r\u0026quot;KeySchema\u0026quot;: [\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;Artist\u0026quot;,\r\u0026quot;KeyType\u0026quot;: \u0026quot;HASH\u0026quot;\r},\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;SongTitle\u0026quot;,\r\u0026quot;KeyType\u0026quot;: \u0026quot;RANGE\u0026quot;\r}\r],\r\u0026quot;TableStatus\u0026quot;: \u0026quot;UPDATING\u0026quot;,\r\u0026quot;CreationDateTime\u0026quot;: \u0026quot;2022-03-06T08:48:31.027000+00:00\u0026quot;,\r\u0026quot;ProvisionedThroughput\u0026quot;: {\r\u0026quot;NumberOfDecreasesToday\u0026quot;: 0,\r\u0026quot;ReadCapacityUnits\u0026quot;: 10,\r\u0026quot;WriteCapacityUnits\u0026quot;: 5\r},\r\u0026quot;TableSizeBytes\u0026quot;: 0,\r\u0026quot;ItemCount\u0026quot;: 0,\r\u0026quot;TableArn\u0026quot;: \u0026quot;arn:aws:dynamodb:us-east-1:089359461550:table/Music\u0026quot;,\r\u0026quot;TableId\u0026quot;: \u0026quot;ee1ef0d6-af0c-4fc2-8dac-10d5a0791fac\u0026quot;,\r\u0026quot;GlobalSecondaryIndexes\u0026quot;: [\r{\r\u0026quot;IndexName\u0026quot;: \u0026quot;AlbumTitle-index\u0026quot;,\r\u0026quot;KeySchema\u0026quot;: [\r{\r\u0026quot;AttributeName\u0026quot;: \u0026quot;AlbumTitle\u0026quot;,\r\u0026quot;KeyType\u0026quot;: \u0026quot;HASH\u0026quot;\r}\r],\r\u0026quot;Projection\u0026quot;: {\r\u0026quot;ProjectionType\u0026quot;: \u0026quot;ALL\u0026quot;\r},\r\u0026quot;IndexStatus\u0026quot;: \u0026quot;CREATING\u0026quot;,\r\u0026quot;Backfilling\u0026quot;: false,\r\u0026quot;ProvisionedThroughput\u0026quot;: {\r Result on the interface:  "
+},
+{
+	"uri": "/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.6-loadsampledata/",
+	"title": "Load sample data",
+	"tags": [],
+	"description": "",
+	"content": "  Download sample data moviedata.zip.\n  Extract the data file (moviedata.json) from the archive.\n  Copy the file moviedata.json to your current directory.\n  Create a file named MoviesLoadData.py\n  Copy the following code and paste it into the file MoviesLoadData.py\n  from decimal import Decimal\rimport json\rimport boto3\rdef load_movies(movies, dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rfor movie in movies:\ryear = int(movie['year'])\rtitle = movie['title']\rprint(\u0026quot;Adding movie:\u0026quot;, year, title)\rtable.put_item(Item=movie)\rif __name__ == '__main__':\rwith open(\u0026quot;moviedata.json\u0026quot;) as json_file:\rmovie_list = json.load(json_file, parse_float=Decimal)\rload_movies(movie_list)\rRun the program using the authenticated and configured Window Command Prompt in step 3.1 Configure AWS CLI. Type command:  python MoviesLoadData.py\rAnother case: use python \u0026quot;MoviesLoadData.py file path\u0026quot;\nAfter running the program, get the following results:  Adding movie: 2013 Insidious: Chapter 2\rAdding movie: 2013 World War Z\rAdding movie: 2014 X-Men: Days of Future Past\rAdding movie: 2014 Transformers: Age of Extinction\rAdding movie: 2013 Now You See Me\rAdding movie: 2013 Gravity\rAdding movie: 2013 We're the Millers\rAdding movie: 2013 Riddick\rAdding movie: 2013 The Family\rAdding movie: 2013 Star Trek Into Darkness\rAdding movie: 2013 After Earth\rAdding movie: 2013 The Great Gatsby\rAdding movie: 2014 Divergent\rAdding movie: 2013 We Are What We Are\rAdding movie: 2013 Iron Man 3\rAdding movie: 2014 The Amazing Spider-Man 2\rAdding movie: 2013 Curse of Chucky\rAdding movie: 2013 The Conjuring\rAdding movie: 2013 Oldboy\rAdding movie: 2013 Escape Plan\rAdding movie: 2013 Elysium\rAdding movie: 2013 Cloudy with a\rNote: Correct file path moviedata.json\n"
+},
+{
+	"uri": "/2-prerequiste/2.1-useawsmanagementconsole/2.1.6-querydata/",
+	"title": "Query data",
+	"tags": [],
+	"description": "",
+	"content": "The steps to query the Music table data are as follows:\n  Sign in to the AWS Management Console and open the DynamoDB Console at DynamoDB Management Console.\n  In the navigation bar on the left side of the panel, select Tables\n  Select the Music board from the list of boards.\n  Select Actions, then select Explore item.\n   Select Query\n  Enter the details of the keys:\n    For Artist (Partition key), enter Acme Band\n  For SongTitle (Sort key), enter PartiQL Rocks\n  Select Run Return result:  "
+},
+{
+	"uri": "/1-introduce/1.6-readwritecapacitymode/",
+	"title": "Read/Write Capacity Mode",
+	"tags": [],
+	"description": "",
+	"content": "On-Demand Mode  Amazon DynamoDB on-demand is a flexible payment option capable of serving thousands of requests per second without capacity planning. DynamoDB on-demand offers pay-on-demand for read and write requests so you only pay for what you use. When you select on-demand mode, DynamoDB instantly responds to your workloads as they increase or decrease to whatever traffic level was previously reached. If the workload\u0026rsquo;s throughput reaches a new peak, DynamoDB adapts quickly to accommodate the workload. Tables using on-demand mode offer the same single-digit millisecond latency, service level agreement (SLA) commitment, and security that DynamoDB already provides. You can choose on demand for both new and existing tables, and you can continue to use existing DynamoDB APIs without code changes. On-Demand mode is a good choice if any of the following are true:  You create a new board with an unknown workload. You have unpredictable application traffic. You just love the ease of paying for what you use.    Provisioned Mode  If you select provisioned mode, you specify the number of reads and writes per second that you require for your application. You can use auto-scaling to automatically adjust your table\u0026rsquo;s provisioned capacity in response to changes in traffic. This helps you manage your DynamoDB usage to stay at or below the specified request rate for cost predictability. The mode provided is a good option if any of the following are true:  You have predictable application traffic. You run applications with consistent or incremental traffic. You can forecast capacity requirements to control costs.    "
+},
+{
+	"uri": "/2-prerequiste/2.1-useawsmanagementconsole/2.1.7-creategobalsecondaryindex/",
+	"title": "Create a Global Secondary Index",
+	"tags": [],
+	"description": "",
+	"content": "  Sign in to the AWS Management Console and open the DynamoDB Console at DynamoDB Management Console.\n  In the navigation bar on the left side of the panel, select Tables\n  Select the Music board from the list of boards.\n   Select the Indexes tab from the Music panel.\n  Select Create index\n   For Partition key , enter AlbumTitle.\n  For Index name, enter AlbumTitle-index.\n  Leave other items as default and select Create index  Result:  "
+},
+{
+	"uri": "/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.7-querydata/",
+	"title": "Query data",
+	"tags": [],
+	"description": "",
+	"content": "Retrieve all movies released in 1985 from sample data uploaded at 3.2.6 Load sample data\n  Create a file named MoviesQuery01.py\n  Copy the following code and paste it into MoviesQuery01.py\n  import boto3\rfrom boto3.dynamodb.conditions import Key\rdef query_movies(year, dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rresponse = table.query(\rKeyConditionExpression=Key('year').eq(year)\r)\rreturn response['Items']\rif __name__ == '__main__':\rquery_year = 1985\rprint(f\u0026quot;Movies from {query_year}\u0026quot;)\rmovies = query_movies(query_year)\rfor movie in movies:\rprint(movie['year'], \u0026quot;:\u0026quot;, movie['title'])\rRun the program using the authenticated and configured Window Command Prompt in step 3.1 Configure AWS CLI. Type command:  python MoviesQuery01.py\rAnother case: use python \u0026quot;MoviesQuery01.py file path\u0026quot;\nAfter running the program, get the following results:  Movies from 1985\r1985 : A Nightmare on Elm Street Part 2: Freddy's Revenge\r1985 : A Room with a View\r1985 : A View to a Kill\r1985 : Back to the Future\r1985 : Better Off Dead...\r1985 : Brazil\r1985 : Clue\r1985 : Cocoon\r1985 : Commando\r1985 : Day of the Dead\r1985 : Flesh+Blood\r1985 : Friday the 13th: A New Beginning\r1985 : Fright Night\r1985 : Girls Just Want to Have Fun\r1985 : Just One of the Guys\r1985 : Legend\r1985 : Mad Max Beyond Thunderdome\r1985 : Mask\r1985 : Pale Rider\r1985 : Pee-wee's Big Adventure\r1985 : Police Academy 2: Their First Assignment\r1985 : Rambo: First Blood Part II\r1985 : Real Genius\r1985 : Return to Oz\r1985 : Rocky IV\r1985 : Silverado\r1985 : St. Elmo's Fire\r1985 : Teen Wolf\r1985 : The Breakfast Club\r1985 : The Color Purple\r1985 : The Goonies\r1985 : The Last Dragon\r1985 : The Return of the Living Dead\r1985 : Weird Science\r1985 : Witness\r"
+},
+{
+	"uri": "/2-prerequiste/2.2-useawscloudshell/2.2.7-queryglobalsecondaryindex/",
+	"title": "Query Global Secondary Index",
+	"tags": [],
+	"description": "",
+	"content": " To query the Global Secondary Index, use the command query   Execute the command:  aws dynamodb query \\\r--table-name Music \\\r--index-name AlbumTitle-index \\\r--key-condition-expression \u0026quot;AlbumTitle = :name\u0026quot; \\\r--expression-attribute-values ​​'{\u0026quot;:name\u0026quot;:{\u0026quot;S\u0026quot;:\u0026quot;Somewhat Famous\u0026quot;}}'\rResult:   Results on AWS CloudShell:  {\r\u0026quot;Items\u0026quot;: [\r{\r\u0026quot;AlbumTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Somewhat Famous\u0026quot;\r},\r\u0026quot;Awards\u0026quot;: {\r\u0026quot;N\u0026quot;: \u0026quot;1\u0026quot;\r},\r\u0026quot;Artist\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;No One You Know\u0026quot;\r},\r\u0026quot;SongTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Call Me Today\u0026quot;\r}\r},\r{\r\u0026quot;AlbumTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Somewhat Famous\u0026quot;\r},\r\u0026quot;Awards\u0026quot;: {\r\u0026quot;N\u0026quot;: \u0026quot;2\u0026quot;\r},\r\u0026quot;Artist\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;No One You Know\u0026quot;\r},\r\u0026quot;SongTitle\u0026quot;: {\r\u0026quot;S\u0026quot;: \u0026quot;Howdy\u0026quot;\r}\r}\r],\r\u0026quot;Count\u0026quot;: 2,\r\u0026quot;ScannedCount\u0026quot;: 2,\r\u0026quot;ConsumedCapacity\u0026quot;: null\r}\r Result on the interface:  "
+},
+{
+	"uri": "/2-prerequiste/2.1-useawsmanagementconsole/2.1.8-querytheglobalsecondaryindex/",
+	"title": "Query the Global Secondary Index",
+	"tags": [],
+	"description": "",
+	"content": " Sign in to the AWS Management Console and open the DynamoDB Console at DynamoDB Management Console. In the navigation bar on the left side of the panel, select Tables Select the Music board from the list of boards. Select Actions, then select Explore item.  Select Query In the drop-down list below Query, select AlbumTitle-index For AlbumTitle , enter Somewhat Famous, . Select Run Return result:  "
+},
+{
+	"uri": "/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.8-scandata/",
+	"title": "Scan data",
+	"tags": [],
+	"description": "",
+	"content": "The scan method reads every item in the entire table and returns all the data in the table. You can provide a filter_expression option so that only items that match your criteria will be returned. However, the filter is only applied after the entire table has been scanned.\nThe following program scans the entire Movies table, which contains about 5,000 items. The scan specifies an optional filter to take only movies from the 1950s (about 100 items) and discard all other movies.\n  Create a file named MoviesScan.py\n  Copy the following code and paste it into the file MoviesScan.py\n  from pprint import pprint\rimport boto3\rfrom boto3.dynamodb.conditions import Key\rdef scan_movies(year_range, display_movies, dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rscan_kwargs = {\r'FilterExpression': Key('year').between(*year_range),\r'ProjectionExpression': \u0026quot;#yr, title, info.rating\u0026quot;,\r'ExpressionAttributeNames': {\u0026quot;#yr\u0026quot;: \u0026quot;year\u0026quot;}\r}\rdone = False\rstart_key = None\rwhile not done:\rif start_key:\rscan_kwargs['ExclusiveStartKey'] = start_key\rresponse = table.scan(**scan_kwargs)\rdisplay_movies(response.get('Items', []))\rstart_key = response.get('LastEvaluatedKey', None)\rdone = start_key is None\rif __name__ == '__main__':\rdef print_movies(movies):\rfor movie in movies:\rprint(f\u0026quot;\\n{movie['year']} : {movie['title']}\u0026quot;)\rpprint(movie['info'])\rquery_range = (1950, 1959)\rprint(\rf\u0026quot;Scanning for movies released from {query_range[0]} to {query_range[1]}...\u0026quot;)\rscan_movies(query_range, print_movies)\rNote:\nProjectionExpression specify the properties you want in the scan results.\nFilterExpression specifies a condition that returns only items that satisfy the condition. All other items are removed.\nRun the program using the authenticated and configured Window Command Prompt in step 3.1 Configure AWS CLI. Type command:  python MoviesScan.py\rAnother case: use python \u0026quot;MoviesScan.py file path\u0026quot;\nAfter running the program, get the result  \r1958 : Cat on a Hot Tin Roof\r{'rating': Decimal('8')}\r1958 : Monster on the Campus\r{'rating': Decimal('5.7')}\r1958 : No Time for Sergeants\r{'rating': Decimal('7.5')}\r1958 : Teacher's Pet\r{'rating': Decimal('7')}\r1958 : Touch of Evil\r{'rating': Decimal('8.2')}\r1958 : Vertigo\r{'rating': Decimal('8.5')}\r1951 : A Streetcar Named Desire\r{'rating': Decimal('8')}\r1951 : Alice in Wonderland\r{'rating': Decimal('7.4')}\r1951 : An American in Paris\r{'rating': Decimal('7.2')}\r1951 : Operation Pacific\r{'rating': Decimal('6.5')}\r1951 : Storm Warning\r{'rating': Decimal('7')}\r1951 : Strangers on a Train\r{'rating': Decimal('8.2')}\r1951 : The African Queen\r{'rating': Decimal('8')}\r"
+},
+{
+	"uri": "/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.9-deletethetable/",
+	"title": "Delete the table",
+	"tags": [],
+	"description": "",
+	"content": "  Create a file named MoviesDeleteTable.py\n  Copy the following code and paste it into MoviesDeleteTable.py\n  import boto3\rdef delete_movie_table(dynamodb=None):\rdynamodb = boto3.resource('dynamodb')\rtable = dynamodb.Table('Movies')\rtable.delete()\rif __name__ == '__main__':\rdelete_movie_table()\rprint(\u0026quot;Movies table deleted.\u0026quot;)\rRun the program using the authenticated and configured Window Command Prompt in step 3.1 Configure AWS CLI. Type command:  python MoviesDeleteTable.py\rAnother case: use python \u0026quot;MoviesDeleteTable.py file path\u0026quot;\nAfter running the program, get the result  Movies table deleted.\r"
+},
+{
+	"uri": "/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
