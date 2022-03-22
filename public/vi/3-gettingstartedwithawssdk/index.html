@@ -12,21 +12,21 @@
     <title>Bắt đầu với AWS SDK :: AWS DynamoDB</title>
 
     
-    <link href="/css/nucleus.css?1647927147" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1647927147" rel="stylesheet">
-    <link href="/css/hybrid.css?1647927147" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1647927147" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1647927147" rel="stylesheet">
-    <link href="/css/auto-complete.css?1647927147" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1647927147" rel="stylesheet">
-    <link href="/css/theme.css?1647927147" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1647927147" rel="stylesheet">
+    <link href="/css/nucleus.css?1647927993" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1647927993" rel="stylesheet">
+    <link href="/css/hybrid.css?1647927993" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1647927993" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1647927993" rel="stylesheet">
+    <link href="/css/auto-complete.css?1647927993" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1647927993" rel="stylesheet">
+    <link href="/css/theme.css?1647927993" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1647927993" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1647927147" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1647927993" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1647927147"></script>
+    <script src="/js/jquery-3.3.1.min.js?1647927993"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1647927147"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1647927147"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1647927993"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1647927993"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1647927147"></script>
+<script type="text/javascript" src="/js/search.js?1647927993"></script>
 
     
   </div>
@@ -1387,7 +1387,7 @@
 
 <p>SDK bao gồm hai gói Python chính: Botocore (thư viện cung cấp chức năng cấp thấp được chia sẻ giữa Python SDK và AWS CLI) và Boto3 (gói triển khai Python SDK chính).</p>
 <p>Trong bài lab này, chúng ta sử dụng Boto3</p>
-<p>** Clients ** cung cấp giao diện cấp thấp cho dịch vụ AWS. Định nghĩa của chúng được tạo bởi mô tả dịch vụ JSON có trong thư viện botocore. Gói botocore được chia sẻ giữa boto3 cũng như AWS CLI.</p>
+<p><strong>Clients</strong> cung cấp giao diện cấp thấp cho dịch vụ AWS. Định nghĩa của chúng được tạo bởi mô tả dịch vụ JSON có trong thư viện botocore. Gói botocore được chia sẻ giữa boto3 cũng như AWS CLI.</p>
 <p>Định nghĩa dịch vụ cho AWS S3 được lưu trữ dưới dạng JSON trong gói botocore.</p>
 <p>Các lợi ích chính của việc sử dụng ứng dụng Boto3 Client là:</p>
 <ul>
@@ -1395,30 +1395,33 @@
 <li>Tất cả các hoạt động dịch vụ AWS đều được hỗ trợ bởi Clients.</li>
 </ul>
 <p>Ví dụ: nếu bạn muốn liệt kê tất cả các S3 buckets trong tài khoản AWS của mình, bạn có thể sử dụng Ứng dụng Clients S3 như sau:</p>
-<p>``
-import boto3</p>
-<h1 id="retrieve-the-list-of-existing-buckets">Retrieve the list of existing buckets</h1>
-<p>s3 = boto3.client(&ldquo;s3&rdquo;)
-response = s3.list_buckets()</p>
-<h1 id="output-the-bucket-names">Output the bucket names</h1>
-<p>print(&ldquo;Existing buckets:&quot;)
-for bucket in response[&lsquo;Buckets&rsquo;]:
-print(f'{bucket[&ldquo;Name&rdquo;]}')</p>
-<p>``
-** Resource ** là một mức trừu tượng cao hơn các máy khách. Chúng được tạo từ mô tả Resource JSON có trong chính thư viện boto.</p>
+<pre tabindex="0"><code>import boto3
+
+# Retrieve the list of existing buckets
+
+s3 = boto3.client(&quot;s3&quot;)
+response = s3.list_buckets()
+
+# Output the bucket names
+
+print(&quot;Existing buckets:&quot;)
+for bucket in response['Buckets']:
+    print(f'{bucket[&quot;Name&quot;]}')
+
+</code></pre><p>** Resource ** là một mức trừu tượng cao hơn các máy khách. Chúng được tạo từ mô tả Resource JSON có trong chính thư viện boto.</p>
 <p>Resource cung cấp giao diện hướng đối tượng để tương tác với các dịch vụ AWS khác nhau. Resource có thể được khởi tạo như sau:</p>
 
 <div class="notices tip" ><p>Ví dụ dưới đây là định nghĩa Resource cho S3.</p>
 </div>
 
-<p>``
-import boto3</p>
-<p>s3 = boto3.resource(&ldquo;s3&rdquo;)</p>
-<p>``</p>
-<h3 id="nội-dung">Nội dung</h3>
+<pre tabindex="0"><code>import boto3
+
+s3 = boto3.resource(&quot;s3&quot;)
+
+</code></pre><h3 id="nội-dung">Nội dung</h3>
 <ul>
-<li>[Cấu hình AWS CLI] (3.1-configureawscli /)</li>
-<li>[Python và DynamoDB] (3.2-pythonandynamodb /)</li>
+<li><a href="3.1-configureawscli/">Cấu hình AWS CLI</a></li>
+<li><a href="3.2-pythonandynamodb/">Python và DynamoDB</a></li>
 </ul>
 
 
@@ -2104,19 +2107,19 @@ import boto3</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1647927147"></script>
-    <script src="/js/perfect-scrollbar.min.js?1647927147"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1647927147"></script>
-    <script src="/js/jquery.sticky.js?1647927147"></script>
-    <script src="/js/featherlight.min.js?1647927147"></script>
-    <script src="/js/highlight.pack.js?1647927147"></script>
+    <script src="/js/clipboard.min.js?1647927993"></script>
+    <script src="/js/perfect-scrollbar.min.js?1647927993"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1647927993"></script>
+    <script src="/js/jquery.sticky.js?1647927993"></script>
+    <script src="/js/featherlight.min.js?1647927993"></script>
+    <script src="/js/highlight.pack.js?1647927993"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1647927147"></script>
-    <script src="/js/learn.js?1647927147"></script>
-    <script src="/js/hugo-learn.js?1647927147"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1647927993"></script>
+    <script src="/js/learn.js?1647927993"></script>
+    <script src="/js/hugo-learn.js?1647927993"></script>
 
-    <link href="/mermaid/mermaid.css?1647927147" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1647927147"></script>
+    <link href="/mermaid/mermaid.css?1647927993" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1647927993"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
