@@ -10,7 +10,7 @@ pre : " <b> 1.6</b> "
 
 - **Amazon DynamoDB on-demand** là một tùy chọn thanh toán linh hoạt có khả năng phục vụ hàng nghìn yêu cầu mỗi giây mà không cần lập kế hoạch dung lượng. **DynamoDB** theo yêu cầu cung cấp giá trả theo yêu cầu cho các yêu cầu đọc và ghi để bạn chỉ trả tiền cho những gì bạn sử dụng.
 - Khi bạn chọn On-Demand Mode, **DynamoDB** ngay lập tức đáp ứng các khối lượng công việc của bạn khi chúng tăng hoặc giảm đến bất kỳ mức lưu lượng truy cập nào đã đạt được trước đó. Nếu mức lưu lượng của khối lượng công việc đạt đến đỉnh mới, DynamoDB sẽ thích ứng nhanh chóng để đáp ứng khối lượng công việc. Các table sử dụng On-Demand Mode cung cấp cùng độ trễ mili giây một chữ số, cam kết thỏa thuận mức dịch vụ (SLA) và bảo mật mà DynamoDB đã cung cấp. Bạn có thể chọn On-Demand Mode cho cả table mới và table hiện có và bạn có thể tiếp tục sử dụng các **API DynamoDB** hiện có mà không cần thay đổi mã.
-- Chế độ theo yêu cầu là một lựa chọn tốt nếu bất kỳ điều nào sau đây là đúng:
+- On-Demand Mode là một lựa chọn tốt nếu bất kỳ điều nào sau đây là đúng:
   + Bạn tạo table mới với khối lượng công việc không xác định.
   + Bạn có lưu lượng ứng dụng không thể đoán trước.
   + Bạn chỉ thích dễ dàng thanh toán cho những gì bạn sử dụng.
