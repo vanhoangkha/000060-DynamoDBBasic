@@ -41,7 +41,7 @@ for bucket in response['Buckets']:
 
 ```
 
-** Resource ** là một mức trừu tượng cao hơn các máy khách. Chúng được tạo từ mô tả Resource JSON có trong chính thư viện boto.
+**Resource** là một mức trừu tượng cao hơn các máy khách. Chúng được tạo từ mô tả Resource JSON có trong chính thư viện boto.
 
 Resource cung cấp giao diện hướng đối tượng để tương tác với các dịch vụ AWS khác nhau. Resource có thể được khởi tạo như sau:
 
