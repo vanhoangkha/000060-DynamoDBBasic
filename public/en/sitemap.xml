@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>/</loc>
     <xhtml:link
@@ -14,9 +13,7 @@
                 hreflang="en"
                 href="/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/3-gettingstartedwithawssdk/3.1-configureawscli/</loc>
     <xhtml:link
                 rel="alternate"
@@ -28,9 +25,7 @@
                 hreflang="en"
                 href="/3-gettingstartedwithawssdk/3.1-configureawscli/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/1-introduce/1.1-corecomponentsofamazondynamodb/</loc>
     <xhtml:link
                 rel="alternate"
@@ -42,9 +37,7 @@
                 hreflang="en"
                 href="/1-introduce/1.1-corecomponentsofamazondynamodb/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/</loc>
     <xhtml:link
                 rel="alternate"
@@ -56,9 +49,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.1-useawsmanagementconsole/2.1.1-createaccesskeys/</loc>
     <xhtml:link
                 rel="alternate"
@@ -70,9 +61,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.1-useawsmanagementconsole/2.1.1-createaccesskeys/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.1-createtable/</loc>
     <xhtml:link
                 rel="alternate"
@@ -84,9 +73,7 @@
                 hreflang="en"
                 href="/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.1-createtable/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/1-introduce/</loc>
     <xhtml:link
                 rel="alternate"
@@ -98,9 +85,7 @@
                 hreflang="en"
                 href="/1-introduce/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.1-useawsmanagementconsole/</loc>
     <xhtml:link
                 rel="alternate"
@@ -112,9 +97,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.1-useawsmanagementconsole/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/</loc>
     <xhtml:link
                 rel="alternate"
@@ -126,9 +109,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.1-useawsmanagementconsole/2.1.2-createtable/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/</loc>
     <xhtml:link
                 rel="alternate"
@@ -140,9 +121,7 @@
                 hreflang="en"
                 href="/2-prerequiste/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/1-introduce/1.2-primarykey/</loc>
     <xhtml:link
                 rel="alternate"
@@ -154,9 +133,7 @@
                 hreflang="en"
                 href="/1-introduce/1.2-primarykey/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.2-useawscloudshell/</loc>
     <xhtml:link
                 rel="alternate"
@@ -168,9 +145,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.2-useawscloudshell/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.2-useawscloudshell/2.2.2-writedata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -182,9 +157,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.2-useawscloudshell/2.2.2-writedata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.2-writedata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -196,9 +169,7 @@
                 hreflang="en"
                 href="/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.2-writedata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/3-gettingstartedwithawssdk/</loc>
     <xhtml:link
                 rel="alternate"
@@ -210,9 +181,7 @@
                 hreflang="en"
                 href="/3-gettingstartedwithawssdk/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.2-useawscloudshell/2.2.3-readdata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -224,9 +193,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.2-useawscloudshell/2.2.3-readdata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.3-readdata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -238,9 +205,7 @@
                 hreflang="en"
                 href="/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.3-readdata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/1-introduce/1.3-secondaryindexes/</loc>
     <xhtml:link
                 rel="alternate"
@@ -252,9 +217,7 @@
                 hreflang="en"
                 href="/1-introduce/1.3-secondaryindexes/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.1-useawsmanagementconsole/2.1.3-writedata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -266,9 +229,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.1-useawsmanagementconsole/2.1.3-writedata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.1-useawsmanagementconsole/2.1.4-readdata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -280,9 +241,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.1-useawsmanagementconsole/2.1.4-readdata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/4-cleanupresource/</loc>
     <xhtml:link
                 rel="alternate"
@@ -294,9 +253,7 @@
                 hreflang="en"
                 href="/4-cleanupresource/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/3-gettingstartedwithawssdk/3.2-pythonandynamodb/</loc>
     <xhtml:link
                 rel="alternate"
@@ -308,9 +265,7 @@
                 hreflang="en"
                 href="/3-gettingstartedwithawssdk/3.2-pythonandynamodb/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/1-introduce/1.4-namingrulesanddatatypes/</loc>
     <xhtml:link
                 rel="alternate"
@@ -322,9 +277,7 @@
                 hreflang="en"
                 href="/1-introduce/1.4-namingrulesanddatatypes/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.2-useawscloudshell/2.2.4-updatedata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -336,9 +289,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.2-useawscloudshell/2.2.4-updatedata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.4-updatedata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -350,9 +301,7 @@
                 hreflang="en"
                 href="/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.4-updatedata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.1-useawsmanagementconsole/2.1.5-updatedata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -364,9 +313,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.1-useawsmanagementconsole/2.1.5-updatedata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.5-deletedata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -378,9 +325,7 @@
                 hreflang="en"
                 href="/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.5-deletedata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.2-useawscloudshell/2.2.5-querydata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -392,9 +337,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.2-useawscloudshell/2.2.5-querydata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/1-introduce/1.5-readconsistency/</loc>
     <xhtml:link
                 rel="alternate"
@@ -406,9 +349,7 @@
                 hreflang="en"
                 href="/1-introduce/1.5-readconsistency/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.2-useawscloudshell/2.2.6-createglobalsecondaryindex/</loc>
     <xhtml:link
                 rel="alternate"
@@ -420,9 +361,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.2-useawscloudshell/2.2.6-createglobalsecondaryindex/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.6-loadsampledata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -434,9 +373,7 @@
                 hreflang="en"
                 href="/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.6-loadsampledata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.1-useawsmanagementconsole/2.1.6-querydata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -448,9 +385,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.1-useawsmanagementconsole/2.1.6-querydata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/1-introduce/1.6-readwritecapacitymode/</loc>
     <xhtml:link
                 rel="alternate"
@@ -462,9 +397,7 @@
                 hreflang="en"
                 href="/1-introduce/1.6-readwritecapacitymode/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.1-useawsmanagementconsole/2.1.7-creategobalsecondaryindex/</loc>
     <xhtml:link
                 rel="alternate"
@@ -476,9 +409,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.1-useawsmanagementconsole/2.1.7-creategobalsecondaryindex/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.7-querydata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -490,9 +421,7 @@
                 hreflang="en"
                 href="/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.7-querydata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.2-useawscloudshell/2.2.7-queryglobalsecondaryindex/</loc>
     <xhtml:link
                 rel="alternate"
@@ -504,9 +433,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.2-useawscloudshell/2.2.7-queryglobalsecondaryindex/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/2-prerequiste/2.1-useawsmanagementconsole/2.1.8-querytheglobalsecondaryindex/</loc>
     <xhtml:link
                 rel="alternate"
@@ -518,9 +445,7 @@
                 hreflang="en"
                 href="/2-prerequiste/2.1-useawsmanagementconsole/2.1.8-querytheglobalsecondaryindex/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.8-scandata/</loc>
     <xhtml:link
                 rel="alternate"
@@ -532,9 +457,7 @@
                 hreflang="en"
                 href="/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.8-scandata/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.9-deletethetable/</loc>
     <xhtml:link
                 rel="alternate"
@@ -546,9 +469,7 @@
                 hreflang="en"
                 href="/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.9-deletethetable/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/categories/</loc>
     <xhtml:link
                 rel="alternate"
@@ -560,9 +481,7 @@
                 hreflang="en"
                 href="/categories/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/</loc>
     <xhtml:link
                 rel="alternate"
@@ -575,5 +494,4 @@
                 href="/tags/"
                 />
   </url>
-  
 </urlset>

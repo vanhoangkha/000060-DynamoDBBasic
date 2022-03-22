@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.92.2" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Primary Key :: AWS DynamoDB</title>
 
     
-    <link href="/css/nucleus.css?1647919101" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1647919101" rel="stylesheet">
-    <link href="/css/hybrid.css?1647919101" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1647919101" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1647919101" rel="stylesheet">
-    <link href="/css/auto-complete.css?1647919101" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1647919101" rel="stylesheet">
-    <link href="/css/theme.css?1647919101" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1647919101" rel="stylesheet">
+    <link href="/css/nucleus.css?1647926511" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1647926511" rel="stylesheet">
+    <link href="/css/hybrid.css?1647926511" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1647926511" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1647926511" rel="stylesheet">
+    <link href="/css/auto-complete.css?1647926511" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1647926511" rel="stylesheet">
+    <link href="/css/theme.css?1647926511" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1647926511" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1647919101" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1647926511" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1647919101"></script>
+    <script src="/js/jquery-3.3.1.min.js?1647926511"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1647919101"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1647919101"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1647926511"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1647926511"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1647919101"></script>
+<script type="text/javascript" src="/js/search.js?1647926511"></script>
 
     
   </div>
@@ -142,7 +142,7 @@
   
     
     <li data-nav-id="/vi/1-introduce/1.2-primarykey/" title="Primary Key" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1387,8 +1387,11 @@
 
 
 
-	<ul>
-<li>Khi bạn tạo một table, ngoài tên table, bạn phải chỉ định <strong>primary key</strong> của table.</li>
+	
+<div class="notices info" ><p>Khi bạn tạo một table, ngoài tên table, bạn phải chỉ định <strong>primary key</strong> của table.</p>
+</div>
+
+<ul>
 <li>Primary key xác định duy nhất từng item trong table, do đó không có hai item nào có thể có cùng một key.</li>
 <li>DynamoDB hỗ trợ hai loại primary key khác nhau:
 <ul>
@@ -1405,10 +1408,11 @@
 </ul>
 <h4 id="composite-primary-key"><strong>Composite primary key</strong></h4>
 <ul>
-<li>attritube đầu tiên là <strong>partition key</strong> và attritube thứ hai là <strong>sort key</strong>.</li>
-<li><strong>DynamoDB</strong> sử dụng giá trị partition key làm đầu vào cho hàm băm bên trong. Đầu ra từ hàm băm xác định phân vùng (bộ nhớ vật lý bên trong DynamoDB) mà item sẽ được lưu trữ. Tất cả các item có cùng giá trị partition key được lưu trữ cùng nhau, theo thứ tự được sắp xếp theo giá trị sort key.</li>
+<li>Attritube đầu tiên là <strong>partition key</strong> và attritube thứ hai là <strong>sort key</strong>.</li>
+<li><strong>DynamoDB</strong> sử dụng giá trị partition key làm đầu vào cho hàm băm bên trong. Đầu ra từ hàm băm xác định phân vùng (bộ nhớ vật lý bên trong DynamoDB) mà item sẽ được lưu trữ.</li>
+<li>Tất cả các item có cùng giá trị partition key được lưu trữ cùng nhau, theo thứ tự được sắp xếp theo giá trị sort key.</li>
 <li>Trong table có partition key và sort key, nhiều item có thể có cùng giá trị partition key. Tuy nhiên, các item đó phải có các giá trị sort key khác nhau.</li>
-<li><strong>Composite primary</strong> key giúp bạn linh hoạt hơn khi truy vấn dữ liệu.</li>
+<li><strong>Composite primary key</strong> giúp bạn linh hoạt hơn khi truy vấn dữ liệu.</li>
 </ul>
 
 
@@ -2095,19 +2099,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1647919101"></script>
-    <script src="/js/perfect-scrollbar.min.js?1647919101"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1647919101"></script>
-    <script src="/js/jquery.sticky.js?1647919101"></script>
-    <script src="/js/featherlight.min.js?1647919101"></script>
-    <script src="/js/highlight.pack.js?1647919101"></script>
+    <script src="/js/clipboard.min.js?1647926511"></script>
+    <script src="/js/perfect-scrollbar.min.js?1647926511"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1647926511"></script>
+    <script src="/js/jquery.sticky.js?1647926511"></script>
+    <script src="/js/featherlight.min.js?1647926511"></script>
+    <script src="/js/highlight.pack.js?1647926511"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1647919101"></script>
-    <script src="/js/learn.js?1647919101"></script>
-    <script src="/js/hugo-learn.js?1647919101"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1647926511"></script>
+    <script src="/js/learn.js?1647926511"></script>
+    <script src="/js/hugo-learn.js?1647926511"></script>
 
-    <link href="/mermaid/mermaid.css?1647919101" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1647919101"></script>
+    <link href="/mermaid/mermaid.css?1647926511" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1647926511"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
