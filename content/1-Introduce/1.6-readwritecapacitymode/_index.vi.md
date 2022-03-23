@@ -6,6 +6,8 @@ chapter : false
 pre : " <b> 1.6</b> "
 ---
 
+![Scan](/images/1-introduce/1.4-namingrulesanddatatypes/0001-Diagram-Base-Table.png)
+
 #### **On-Demand Mode**
 
 - **Amazon DynamoDB on-demand** là một tùy chọn thanh toán linh hoạt có khả năng phục vụ hàng nghìn yêu cầu mỗi giây mà không cần lập kế hoạch dung lượng. **DynamoDB** theo yêu cầu cung cấp giá trả theo yêu cầu cho các yêu cầu đọc và ghi để bạn chỉ trả tiền cho những gì bạn sử dụng.
@@ -14,6 +16,8 @@ pre : " <b> 1.6</b> "
   + Bạn tạo table mới với khối lượng công việc không xác định.
   + Bạn có lưu lượng ứng dụng không thể đoán trước.
   + Bạn chỉ thích dễ dàng thanh toán cho những gì bạn sử dụng.
+
+![Scan](/images/1-introduce/1.6-readwritecapacitymode/0001-Diagram-Scan.png)
 
 #### **Provisioned Mode**
 - Nếu bạn chọn Provisioned Mode, bạn chỉ định số lần đọc và ghi mỗi giây mà bạn yêu cầu cho ứng dụng của mình. Bạn có thể sử dụng tính năng tự động chia tỷ lệ để tự động điều chỉnh dung lượng được cung cấp của table để đáp ứng với những thay đổi về lưu lượng truy cập. Điều này giúp bạn quản lý việc sử dụng DynamoDB của mình để duy trì bằng hoặc thấp hơn tỷ lệ yêu cầu xác định để có được khả năng dự đoán chi phí.

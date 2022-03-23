@@ -5,7 +5,7 @@ weight : 4
 chapter : false
 pre : " <b> 1.4</b> "
 ---
-
+![Quy tắc đặt tên và kiểu dữ liệu](/images/1-introduce/1.4-namingrulesanddatatypes/0001-Diagram-Base-Table.png)
 #### **Quy tắc đặt tên**
 - Các table, attritube và các đối tượng khác trong **DynamoDB** phải có tên.
 - Sau đây là các quy tắc đặt tên cho DynamoDB:

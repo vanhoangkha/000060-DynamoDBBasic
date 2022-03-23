@@ -12,21 +12,21 @@
     <title>Read/Write Capacity Mode :: AWS DynamoDB</title>
 
     
-    <link href="/css/nucleus.css?1648000640" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1648000640" rel="stylesheet">
-    <link href="/css/hybrid.css?1648000640" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1648000640" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1648000640" rel="stylesheet">
-    <link href="/css/auto-complete.css?1648000640" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1648000640" rel="stylesheet">
-    <link href="/css/theme.css?1648000640" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1648000640" rel="stylesheet">
+    <link href="/css/nucleus.css?1648055255" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1648055255" rel="stylesheet">
+    <link href="/css/hybrid.css?1648055255" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1648055255" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1648055255" rel="stylesheet">
+    <link href="/css/auto-complete.css?1648055255" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1648055255" rel="stylesheet">
+    <link href="/css/theme.css?1648055255" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1648055255" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1648000640" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1648055255" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1648000640"></script>
+    <script src="/js/jquery-3.3.1.min.js?1648055255"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1648000640"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1648000640"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1648055255"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1648055255"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1648000640"></script>
+<script type="text/javascript" src="/js/search.js?1648055255"></script>
 
     
   </div>
@@ -1387,7 +1387,8 @@
 
 
 
-	<h4 id="on-demand-mode"><strong>On-Demand Mode</strong></h4>
+	<p><img src="/images/1-introduce/1.4-namingrulesanddatatypes/0001-Diagram-Base-Table.png" alt="Scan"></p>
+<h4 id="on-demand-mode"><strong>On-Demand Mode</strong></h4>
 <ul>
 <li><strong>Amazon DynamoDB on-demand</strong> là một tùy chọn thanh toán linh hoạt có khả năng phục vụ hàng nghìn yêu cầu mỗi giây mà không cần lập kế hoạch dung lượng. <strong>DynamoDB</strong> theo yêu cầu cung cấp giá trả theo yêu cầu cho các yêu cầu đọc và ghi để bạn chỉ trả tiền cho những gì bạn sử dụng.</li>
 <li>Khi bạn chọn On-Demand Mode, <strong>DynamoDB</strong> ngay lập tức đáp ứng các khối lượng công việc của bạn khi chúng tăng hoặc giảm đến bất kỳ mức lưu lượng truy cập nào đã đạt được trước đó. Nếu mức lưu lượng của khối lượng công việc đạt đến đỉnh mới, DynamoDB sẽ thích ứng nhanh chóng để đáp ứng khối lượng công việc. Các table sử dụng On-Demand Mode cung cấp cùng độ trễ mili giây một chữ số, cam kết thỏa thuận mức dịch vụ (SLA) và bảo mật mà DynamoDB đã cung cấp. Bạn có thể chọn On-Demand Mode cho cả table mới và table hiện có và bạn có thể tiếp tục sử dụng các <strong>API DynamoDB</strong> hiện có mà không cần thay đổi mã.</li>
@@ -1399,6 +1400,7 @@
 </ul>
 </li>
 </ul>
+<p><img src="/images/1-introduce/1.6-readwritecapacitymode/0001-Diagram-Scan.png" alt="Scan"></p>
 <h4 id="provisioned-mode"><strong>Provisioned Mode</strong></h4>
 <ul>
 <li>Nếu bạn chọn Provisioned Mode, bạn chỉ định số lần đọc và ghi mỗi giây mà bạn yêu cầu cho ứng dụng của mình. Bạn có thể sử dụng tính năng tự động chia tỷ lệ để tự động điều chỉnh dung lượng được cung cấp của table để đáp ứng với những thay đổi về lưu lượng truy cập. Điều này giúp bạn quản lý việc sử dụng DynamoDB của mình để duy trì bằng hoặc thấp hơn tỷ lệ yêu cầu xác định để có được khả năng dự đoán chi phí.</li>
@@ -2095,19 +2097,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1648000640"></script>
-    <script src="/js/perfect-scrollbar.min.js?1648000640"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1648000640"></script>
-    <script src="/js/jquery.sticky.js?1648000640"></script>
-    <script src="/js/featherlight.min.js?1648000640"></script>
-    <script src="/js/highlight.pack.js?1648000640"></script>
+    <script src="/js/clipboard.min.js?1648055255"></script>
+    <script src="/js/perfect-scrollbar.min.js?1648055255"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1648055255"></script>
+    <script src="/js/jquery.sticky.js?1648055255"></script>
+    <script src="/js/featherlight.min.js?1648055255"></script>
+    <script src="/js/highlight.pack.js?1648055255"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1648000640"></script>
-    <script src="/js/learn.js?1648000640"></script>
-    <script src="/js/hugo-learn.js?1648000640"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1648055255"></script>
+    <script src="/js/learn.js?1648055255"></script>
+    <script src="/js/hugo-learn.js?1648055255"></script>
 
-    <link href="/mermaid/mermaid.css?1648000640" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1648000640"></script>
+    <link href="/mermaid/mermaid.css?1648055255" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1648055255"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

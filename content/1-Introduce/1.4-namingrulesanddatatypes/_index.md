@@ -5,7 +5,7 @@ weight : 4
 chapter : false
 pre : " <b> 1.4</b> "
 ---
-
+![Naming Rules and Data Types](/images/1-introduce/1.4-namingrulesanddatatypes/0001-Diagram-Base-Table.png)
 #### **Naming rules**
 - Tables, properties, and other objects in **DynamoDB** must have names.
 - Following are the naming rules for DynamoDB:
@@ -25,6 +25,6 @@ pre : " <b> 1.4</b> "
   
 #### **Datatypes**
 **DynamoDB** supports many different data types for the attributes in the table. They can be classified as follows:
-- **scalar types:** A scalar type can represent exactly one value. Scalar types are **numeric, string, binary, Boolean, and null**.
+- **Scalar types:** A scalar type can represent exactly one value. Scalar types are **numeric, string, binary, Boolean, and null**.
 - **Document Type:** A document type can represent a complex structure with nested properties, such as you will find in a JSON document. The document types are **list** and **map**.
 - **Set type:** A set type can represent many scalar values. Set types are **string set, numeric set, and binary set**.

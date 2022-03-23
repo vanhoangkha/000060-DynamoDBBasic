@@ -6,6 +6,8 @@ chapter : false
 pre : " <b> 1.2 </b> "
 ---
 
+![Core Components of Amazon DynamoDB](/images/1-introduce/1.1-corecomponentsofamazondynamodb/0001-Diagram-DynamoDB-Tables.png)
+
 - When you create a table, in addition to the table name, you must specify the **primary key** of the table.
 The primary key uniquely identifies each item in the table, so no two items can have the same key.
 DynamoDB supports two different types of primary keys:
