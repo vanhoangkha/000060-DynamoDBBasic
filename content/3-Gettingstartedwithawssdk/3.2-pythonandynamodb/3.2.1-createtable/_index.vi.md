@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 3.2.1 </b> "
 ---
 
-Trong bước này, chúng ta tạo một table có tên **Movies**. primary key cho table bao gồm các attritube sau:
+Trong bước này, chúng ta tạo một table có tên **Movies**. Primary key cho table bao gồm các attritube sau:
 
 **year** – The partition key. AttributeType là N(number).
 

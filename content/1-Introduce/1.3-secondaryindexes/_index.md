@@ -8,8 +8,7 @@ pre : " <b> 1.3</b> "
 
 - You can create one or more **Secondary Index** on a table.
 - Secondary Index allows to query data in the table with different keys from the original partition key and sort of the table. With Dynamo DB, data query operation is much faster and more cost-effective than scanning.
-
-. DynamoDB doesn't force you to use indexes, but they do give your applications more flexibility when it comes to data queries. After creating a Secondary Index on the table, you can read data from the index in the same way as reading data from the table.
+- DynamoDB doesn't force you to use indexes, but they do give your applications more flexibility when it comes to data queries. After creating a Secondary Index on the table, you can read data from the index in the same way as reading data from the table.
 
 DynamoDB supports two types of indexes:
 - **Global secondary index** index has partition key and sort key may be different from indexes on table.
