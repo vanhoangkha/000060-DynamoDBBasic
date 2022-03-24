@@ -8,7 +8,9 @@ pre : " <b> 3.2.6 </b> "
 
 1. Tải xuống dữ liệu mẫu.
 
-{{%attachments style="orange" title="MovieData" pattern=".*(json)"/%}}
+{{%notice tip%}}
+[Download](https://github.com/HungNG-AWS/fcjsample/blob/aa1f636f4ccd8302f01ff0bbb18ecd14f429bb21/moviedata.zip)
+{{%/notice%}}
 
 2. Giải nén tệp dữ liệu (**moviedata.json**) từ kho lưu trữ.
 
