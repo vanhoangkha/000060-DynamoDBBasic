@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.92.2" />
+    <meta name="generator" content="Hugo 0.69.0" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Secondary Index :: AWS DynamoDB</title>
 
     
-    <link href="/css/nucleus.css?1648055255" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1648055255" rel="stylesheet">
-    <link href="/css/hybrid.css?1648055255" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1648055255" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1648055255" rel="stylesheet">
-    <link href="/css/auto-complete.css?1648055255" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1648055255" rel="stylesheet">
-    <link href="/css/theme.css?1648055255" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1648055255" rel="stylesheet">
+    <link href="/css/nucleus.css?1648090408" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1648090408" rel="stylesheet">
+    <link href="/css/hybrid.css?1648090408" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1648090408" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1648090408" rel="stylesheet">
+    <link href="/css/auto-complete.css?1648090408" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1648090408" rel="stylesheet">
+    <link href="/css/theme.css?1648090408" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1648090408" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1648055255" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1648090408" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1648055255"></script>
+    <script src="/js/jquery-3.3.1.min.js?1648090408"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1648055255"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1648055255"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1648090408"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1648090408"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1648055255"></script>
+<script type="text/javascript" src="/js/search.js?1648090408"></script>
 
     
   </div>
@@ -170,7 +170,7 @@
   
     
     <li data-nav-id="/vi/1-introduce/1.3-secondaryindexes/" title="Secondary Index" class="dd-item 
-        parent
+        
         active
         
         ">
@@ -1379,29 +1379,32 @@
 
 
 
-	
-<div class="notices note" ><p>Bạn có thể tạo một hoặc nhiều <strong>Secondary Index</strong> trên một table.</p>
-</div>
-
-<p><img src="/images/1-introduce/1.3-secondaryindexes/0001-Diagram-Local-Secondary-Indexs.png" alt="Secondary Index"></p>
-<ul>
-<li>
-<p>Secondary Index cho phép truy vấn dữ liệu trong table bằng các key khác với partition key và sort ban đầu của table. Với Dynamo DB thao tác query dữ liệu có tốc độ nhanh và tiết kiệm chi phí hơn rất nhiều so với thao tác scan.</p>
-</li>
-<li>
-<p>DynamoDB không bắt buộc bạn phải sử dụng  index, nhưng chúng giúp các ứng dụng của bạn linh hoạt hơn khi query dữ liệu. Sau khi tạo Secondary Index trên table, bạn có thể đọc dữ liệu từ index theo cách giống như đọc dữ liệu từ table.</p>
-</li>
+	<ul>
+<li>Bạn có thể tạo một hoặc nhiều <strong>Secondary Index</strong> trên một table.</li>
+<li>Secondary Index cho phép truy vấn dữ liệu trong table bằng các key khác với partition key và sort ban đầu của table. Với Dynamo DB thao tác query dữ liệu có tốc độ nhanh và tiết kiệm chi phí hơn rất nhiều so với thao tác scan.</li>
 </ul>
-<p><img src="/images/1-introduce/1.3-secondaryindexes/0002-Diagram-Global-Secondary-Indexs.png" alt="Secondary Index"></p>
+<p>Dưới đây là DynamoDB table ví dụ:</p>
+<p><img src="/images/1-introduce/1.4-namingrulesanddatatypes/0001-Diagram-Base-Table.png" alt="Query"></p>
 <ul>
-<li>
+<li>Nếu thực hiện thao tác query dữ liệu chúng ta có thể tìm dữ liệu theo giá trị Partition Key và Sort Key.</li>
+</ul>
+<p><img src="/images/1-introduce/1.5-readconsistency/0001-Diagram-Query.png" alt="Query"></p>
+<ul>
+<li>Nếu thực hiện thao tác scan dữ liệu, chúng ta sẽ scan toàn bộ bảng sau đó thực hiện filter theo một attribute bất kỳ. ( Khi thực hiện filter thực chất chúng ta vẫn phải tốn chi phí scan toàn bộ bảng.)</li>
+</ul>
+<p><img src="/images/1-introduce/1.6-readwritecapacitymode/0001-Diagram-Scan.png" alt="Scan"></p>
+<ul>
+<li>DynamoDB không bắt buộc bạn phải sử dụng  index, nhưng chúng giúp các ứng dụng của bạn linh hoạt hơn khi query dữ liệu. Sau khi tạo Secondary Index trên table, bạn có thể đọc dữ liệu từ index theo cách giống như đọc dữ liệu từ table.</li>
+</ul>
 <p>DynamoDB hỗ trợ hai loại index:</p>
 <ul>
 <li><strong>Global secondary index</strong> index có partition key và sort key có thể khác với các index trên table.</li>
+</ul>
+<p><img src="/images/1-introduce/1.3-secondaryindexes/0002-Diagram-Global-Secondary-Indexs.png" alt="Secondary Index"></p>
+<ul>
 <li><strong>Local secondary index</strong>  index có cùng partition key với table nhưng có sort key khác.</li>
 </ul>
-</li>
-</ul>
+<p><img src="/images/1-introduce/1.3-secondaryindexes/0001-Diagram-Local-Secondary-Indexs.png" alt="Secondary Index"></p>
 
 <div class="notices tip" ><p>Mỗi table trong DynamoDB có tối đa <strong>20 Global secondary index</strong> (giới hạn mặc định) và <strong>5 Local secondary index</strong>.</p>
 </div>
@@ -2091,19 +2094,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1648055255"></script>
-    <script src="/js/perfect-scrollbar.min.js?1648055255"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1648055255"></script>
-    <script src="/js/jquery.sticky.js?1648055255"></script>
-    <script src="/js/featherlight.min.js?1648055255"></script>
-    <script src="/js/highlight.pack.js?1648055255"></script>
+    <script src="/js/clipboard.min.js?1648090408"></script>
+    <script src="/js/perfect-scrollbar.min.js?1648090408"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1648090408"></script>
+    <script src="/js/jquery.sticky.js?1648090408"></script>
+    <script src="/js/featherlight.min.js?1648090408"></script>
+    <script src="/js/highlight.pack.js?1648090408"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1648055255"></script>
-    <script src="/js/learn.js?1648055255"></script>
-    <script src="/js/hugo-learn.js?1648055255"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1648090408"></script>
+    <script src="/js/learn.js?1648090408"></script>
+    <script src="/js/hugo-learn.js?1648090408"></script>
 
-    <link href="/mermaid/mermaid.css?1648055255" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1648055255"></script>
+    <link href="/mermaid/mermaid.css?1648090408" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1648090408"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

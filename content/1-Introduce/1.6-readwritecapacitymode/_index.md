@@ -5,7 +5,6 @@ weight : 6
 chapter : false
 pre : " <b> 1.6</b> "
 ---
-![Scan](/images/1-introduce/1.4-namingrulesanddatatypes/0001-Diagram-Base-Table.png)
 
 #### **On-Demand Mode**
 

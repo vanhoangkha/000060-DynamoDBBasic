@@ -5,7 +5,7 @@ weight : 4
 chapter : false
 pre : " <b> 1.4</b> "
 ---
-![Naming Rules and Data Types](/images/1-introduce/1.4-namingrulesanddatatypes/0001-Diagram-Base-Table.png)
+
 #### **Naming rules**
 - Tables, properties, and other objects in **DynamoDB** must have names.
 - Following are the naming rules for DynamoDB:

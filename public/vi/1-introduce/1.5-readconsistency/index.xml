@@ -4,6 +4,10 @@
     <title>Read Consistency on AWS DynamoDB</title>
     <link>/vi/1-introduce/1.5-readconsistency/</link>
     <description>Recent content in Read Consistency on AWS DynamoDB</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="/vi/1-introduce/1.5-readconsistency/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="/vi/1-introduce/1.5-readconsistency/index.xml" rel="self" type="application/rss+xml" />
+    
+    
   </channel>
 </rss>

@@ -10,7 +10,7 @@ chapter : false
  In this lab, you'll learn the basics and practice of Amazon DynamoDB
 
 ### Content
- 1. [Introduction ](1-introduce/)
+ 1. [Introduction ](1-introduce/)hjuyjkj
  2. [Preparation](2-prerequiste/)
  3. [Getting started with AWS SDK](3-Gettingstartedwithawssdk/)
  4. [Clean up resources](4-cleanupresource/)

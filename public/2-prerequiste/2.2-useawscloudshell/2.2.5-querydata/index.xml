@@ -4,6 +4,10 @@
     <title>Query data on AWS DynamoDB</title>
     <link>/2-prerequiste/2.2-useawscloudshell/2.2.5-querydata/</link>
     <description>Recent content in Query data on AWS DynamoDB</description>
-    <generator>Hugo -- gohugo.io</generator><atom:link href="/2-prerequiste/2.2-useawscloudshell/2.2.5-querydata/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="/2-prerequiste/2.2-useawscloudshell/2.2.5-querydata/index.xml" rel="self" type="application/rss+xml" />
+    
+    
   </channel>
 </rss>
