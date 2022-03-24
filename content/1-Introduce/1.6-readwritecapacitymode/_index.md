@@ -15,9 +15,6 @@ pre : " <b> 1.6</b> "
   + You have unpredictable application traffic.
   + You just love the ease of paying for what you use.
 
-
-![Scan](/images/1-introduce/1.6-readwritecapacitymode/0001-Diagram-Scan.png)
-
 #### **Provisioned Mode**
 - If you select provisioned mode, you specify the number of reads and writes per second that you require for your application. You can use auto-scaling to automatically adjust your table's provisioned capacity in response to changes in traffic. This helps you manage your DynamoDB usage to stay at or below the specified request rate for cost predictability.
 - The mode provided is a good option if any of the following are true:
