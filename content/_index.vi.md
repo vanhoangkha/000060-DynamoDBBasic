@@ -1,5 +1,5 @@
 ---
-title : "AWS DynamoDB"
+title : "Amazon DynamoDB"
 date :  "`r Sys.Date()`" 
 weight : 1
 chapter : false
@@ -8,7 +8,7 @@ chapter : false
 
 ### Tổng quan
 
- Trong bài lab này, bạn sẽ tìm hiểu các khái niệm cơ bản và thực hành về Amazon DynamoDB. Thực hành Python với AWS DynamoDB.
+ Trong bài lab này, bạn sẽ tìm hiểu các khái niệm cơ bản và thực hành về Amazon DynamoDB. Thực hành Python với Amazon DynamoDB.
 
 ### Nội dung
 

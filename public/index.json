@@ -1,10 +1,10 @@
 [
 {
 	"uri": "/",
-	"title": "AWS DynamoDB",
+	"title": "Amazon DynamoDB",
 	"tags": [],
 	"description": "",
-	"content": "Work with AWS DynamoDB Overall In this lab, you\u0026rsquo;ll learn the basics and practice of Amazon DynamoDB\nContent  Introduction  Preparation Getting started with AWS SDK Clean up resources  "
+	"content": "Work with Amazon DynamoDB Overall In this lab, you\u0026rsquo;ll learn the basics and practice of Amazon DynamoDB.Practice Python with Amazon DynamoDB.\nContent  Introduction  Preparation Getting started with AWS SDK Clean up resources  "
 },
 {
 	"uri": "/3-gettingstartedwithawssdk/3.1-configureawscli/",

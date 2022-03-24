@@ -1,10 +1,10 @@
 [
 {
 	"uri": "/vi/",
-	"title": "AWS DynamoDB",
+	"title": "Amazon DynamoDB",
 	"tags": [],
 	"description": "",
-	"content": "Làm việc với Amazon DynamoDB Tổng quan Trong bài lab này, bạn sẽ tìm hiểu các khái niệm cơ bản và thực hành về Amazon DynamoDB. Thực hành Python với AWS DynamoDB.\nNội dung  Giới thiệu Các bước chuẩn bị Bắt đầu với AWS SDK Dọn dẹp tài nguyên  "
+	"content": "Làm việc với Amazon DynamoDB Tổng quan Trong bài lab này, bạn sẽ tìm hiểu các khái niệm cơ bản và thực hành về Amazon DynamoDB. Thực hành Python với Amazon DynamoDB.\nNội dung  Giới thiệu Các bước chuẩn bị Bắt đầu với AWS SDK Dọn dẹp tài nguyên  "
 },
 {
 	"uri": "/vi/1-introduce/1.1-corecomponentsofamazondynamodb/",

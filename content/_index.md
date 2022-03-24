@@ -1,13 +1,13 @@
 ---
-title : "AWS DynamoDB"
+title : "Amazon DynamoDB"
 date :  "`r Sys.Date()`" 
 weight : 1
 chapter : false
 ---
-# Work with AWS DynamoDB
+# Work with Amazon DynamoDB
 
 ### Overall
- In this lab, you'll learn the basics and practice of Amazon DynamoDB
+ In this lab, you'll learn the basics and practice of Amazon DynamoDB.Practice Python with Amazon DynamoDB.
 
 ### Content
  1. [Introduction ](1-introduce/)
