@@ -27,8 +27,8 @@ Access key ID: AKIAIOSFODNN7EXAMPLE
 Secret access key: wJalrXUtnFEMI / K7MDENG / bPxRfiCYEXAMPLEKEY``
 ```
 
-7. Để tải xuống cặp khóa, hãy chọn  **Download .csv file**. 
+6. Để tải xuống cặp khóa, hãy chọn  **Download .csv file**. 
 
 ![Createaccesskey](/images/2-prerequisite/2.1.1-createaccesskeys/0003-createaccesskey.png) 
 
-8. Sau khi bạn tải xuống tệp  **.csv**, chọn **Close** 
+7. Sau khi bạn tải xuống tệp  **.csv**, chọn **Close** 

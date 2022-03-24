@@ -27,8 +27,8 @@ Access key ID: AKIAIOSFODNN7EXAMPLE
 Secret access key: wJalrXUtnFEMI / K7MDENG / bPxRfiCYEXAMPLEKEY``
 ```
 
-7. To download the key pair, select **Download .csv file**.
+6. To download the key pair, select **Download .csv file**.
 
 ![Createaccesskey](/images/2-prerequisite/2.1.1-createaccesskeys/0003-createaccesskey.png)
 
-8. After you download the **.csv** file, select **Close**
+7. After you download the **.csv** file, select **Close**
