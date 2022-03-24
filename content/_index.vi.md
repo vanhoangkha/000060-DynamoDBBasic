@@ -10,6 +10,8 @@ chapter : false
 
  Trong bài lab này, bạn sẽ tìm hiểu các khái niệm cơ bản và thực hành về Amazon DynamoDB. Thực hành Python với Amazon DynamoDB.
 
+![Query](/images/1-introduce/1.4-namingrulesanddatatypes/0001-Diagram-Base-Table.png)
+
 ### Nội dung
 
  1. [Giới thiệu](1-introduce)
