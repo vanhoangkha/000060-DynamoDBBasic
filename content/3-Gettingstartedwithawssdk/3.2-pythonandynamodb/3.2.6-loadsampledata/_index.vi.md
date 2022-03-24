@@ -6,7 +6,9 @@ chapter : false
 pre : " <b> 3.2.6 </b> "
 ---
 
-1. Tải xuống dữ liệu mẫu [**moviedata.zip**](./static/src/moviedata.zip).
+1. Tải xuống dữ liệu mẫu.
+
+{{%attachments style="orange" title="MovieData" pattern=".*(zip)"/%}}
 
 2. Giải nén tệp dữ liệu (**moviedata.json**) từ kho lưu trữ.
 

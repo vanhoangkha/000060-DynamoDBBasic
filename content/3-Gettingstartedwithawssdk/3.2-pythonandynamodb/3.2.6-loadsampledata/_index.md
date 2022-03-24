@@ -6,8 +6,9 @@ chapter : false
 pre : " <b> 3.2.6 </b> "
 ---
 
-1. Download sample data [**moviedata.zip**](./static/src/moviedata.zip).
+1. Download sample data.
 
+{{%attachments style="orange" title="MovieData" pattern=".*(zip)"/%}}
 2. Extract the data file (**moviedata.json**) from the archive.
 
 3. Copy the file **moviedata.json** to your current directory.

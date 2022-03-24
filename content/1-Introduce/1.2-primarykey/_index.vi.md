@@ -5,12 +5,11 @@ weight : 2
 chapter : false
 pre : " <b> 1.2 </b> "
 ---
-{{% notice info %}}
-Khi bạn tạo một table, ngoài tên table, bạn phải chỉ định **primary key** của table. 
-{{% /notice %}}
+
 
 ![Các thành phần cốt lõi của Amazon DynamoDB](/images/1-introduce/1.1-corecomponentsofamazondynamodb/0001-Diagram-DynamoDB-Tables.png)
 
+- Khi bạn tạo một table, ngoài tên table, bạn phải chỉ định **primary key** của table. 
 - Primary key xác định duy nhất từng item trong table, do đó không có hai item nào có thể có cùng một key.
 - DynamoDB hỗ trợ hai loại primary key khác nhau:
 	+  **Partition key**
