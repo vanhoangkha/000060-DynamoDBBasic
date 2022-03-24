@@ -8,7 +8,7 @@ pre : " <b> 3.2.6 </b> "
 
 1. Tải xuống dữ liệu mẫu.
 
-{{%attachments style="orange" title="MovieData" pattern=".*(zip)"/%}}
+{{%attachments style="orange" title="MovieData" pattern=".*(json)"/%}}
 
 2. Giải nén tệp dữ liệu (**moviedata.json**) từ kho lưu trữ.
 

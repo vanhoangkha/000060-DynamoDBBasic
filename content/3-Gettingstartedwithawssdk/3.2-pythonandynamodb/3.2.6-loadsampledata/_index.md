@@ -8,7 +8,7 @@ pre : " <b> 3.2.6 </b> "
 
 1. Download sample data.
 
-{{%attachments style="orange" title="MovieData" pattern=".*(zip)"/%}}
+{{%attachments style="orange" title="MovieData" pattern=".*(json)"/%}}
 
 2. Extract the data file (**moviedata.json**) from the archive.
 
