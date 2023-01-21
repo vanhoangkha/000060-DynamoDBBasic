@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Create table :: Amazon DynamoDB</title>
 
     
-    <link href="/css/nucleus.css?1648108758" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1648108758" rel="stylesheet">
-    <link href="/css/hybrid.css?1648108758" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1648108758" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1648108758" rel="stylesheet">
-    <link href="/css/auto-complete.css?1648108758" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1648108758" rel="stylesheet">
-    <link href="/css/theme.css?1648108758" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1648108758" rel="stylesheet">
+    <link href="/css/nucleus.css?1674289796" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1674289796" rel="stylesheet">
+    <link href="/css/hybrid.css?1674289796" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1674289796" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1674289796" rel="stylesheet">
+    <link href="/css/auto-complete.css?1674289796" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1674289796" rel="stylesheet">
+    <link href="/css/theme.css?1674289796" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1674289796" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1648108758" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1674289796" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1648108758"></script>
+    <script src="/js/jquery-3.3.1.min.js?1674289796"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1648108758"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1648108758"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1674289796"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1674289796"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1648108758"></script>
+<script type="text/javascript" src="/js/search.js?1674289796"></script>
 
     
   </div>
@@ -917,7 +917,7 @@
   
     
     <li data-nav-id="/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.1-createtable/" title="Create table" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1289,7 +1289,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>22-03-2022</font></i>
+        <i><font color=orange>21-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1396,50 +1396,49 @@
 <p>Copy the following code and paste it into the file <strong><code>MoviesCreateTable.py</code></strong></p>
 </li>
 </ol>
-<pre><code>import boto3
+<pre tabindex="0"><code>import boto3
 
 
 def create_movie_table(dynamodb=None):
-    dynamodb = boto3.resource('dynamodb')
+    dynamodb = boto3.resource(&#39;dynamodb&#39;)
     table = dynamodb.create_table(
-        TableName='Movies',
+        TableName=&#39;Movies&#39;,
         KeySchema=[
             {
-                'AttributeName': 'year',
-                'KeyType': 'HASH' # Partition key
+                &#39;AttributeName&#39;: &#39;year&#39;,
+                &#39;KeyType&#39;: &#39;HASH&#39; # Partition key
             },
             {
-                'AttributeName': 'title',
-                'KeyType': 'RANGE' # Sort key
+                &#39;AttributeName&#39;: &#39;title&#39;,
+                &#39;KeyType&#39;: &#39;RANGE&#39; # Sort key
             }
         ],
         AttributeDefinitions=[
             {
-                'AttributeName': 'year',
-                'AttributeType': 'N'
+                &#39;AttributeName&#39;: &#39;year&#39;,
+                &#39;AttributeType&#39;: &#39;N&#39;
             },
             {
-                'AttributeName': 'title',
-                'AttributeType': 'S'
+                &#39;AttributeName&#39;: &#39;title&#39;,
+                &#39;AttributeType&#39;: &#39;S&#39;
             },
 
         ],
         ProvisionedThroughput={
-            'ReadCapacityUnits': 10,
-            'WriteCapacityUnits': 10
+            &#39;ReadCapacityUnits&#39;: 10,
+            &#39;WriteCapacityUnits&#39;: 10
         }
     )
     return table
 
 
-if __name__ == '__main__':
+if __name__ == &#39;__main__&#39;:
     movie_table = create_movie_table()
-    print(&quot;Table status:&quot;, movie_table.table_status)
-
+    print(&#34;Table status:&#34;, movie_table.table_status)
 </code></pre><ol start="3">
 <li>Run the program using the authenticated and configured <strong>Window Command Prompt</strong> in <a href="../../3.1-configureawscli/">step 3.1 Configure AWS CLI</a>. Type command:</li>
 </ol>
-<pre><code>python MoviesCreateTable.py
+<pre tabindex="0"><code>python MoviesCreateTable.py
 </code></pre><p>Another case: use <strong><code>python &quot;MoviesCreateTable.py file path&quot;</code></strong></p>
 <ol start="4">
 <li>After running the program, <strong><code>Table status: CREATING</code></strong> is returned to the successful creation of the table.</li>
@@ -2133,19 +2132,19 @@ if __name__ == '__main__':
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1648108758"></script>
-    <script src="/js/perfect-scrollbar.min.js?1648108758"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1648108758"></script>
-    <script src="/js/jquery.sticky.js?1648108758"></script>
-    <script src="/js/featherlight.min.js?1648108758"></script>
-    <script src="/js/highlight.pack.js?1648108758"></script>
+    <script src="/js/clipboard.min.js?1674289796"></script>
+    <script src="/js/perfect-scrollbar.min.js?1674289796"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1674289796"></script>
+    <script src="/js/jquery.sticky.js?1674289796"></script>
+    <script src="/js/featherlight.min.js?1674289796"></script>
+    <script src="/js/highlight.pack.js?1674289796"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1648108758"></script>
-    <script src="/js/learn.js?1648108758"></script>
-    <script src="/js/hugo-learn.js?1648108758"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1674289796"></script>
+    <script src="/js/learn.js?1674289796"></script>
+    <script src="/js/hugo-learn.js?1674289796"></script>
 
-    <link href="/mermaid/mermaid.css?1648108758" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1648108758"></script>
+    <link href="/mermaid/mermaid.css?1674289796" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1674289796"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

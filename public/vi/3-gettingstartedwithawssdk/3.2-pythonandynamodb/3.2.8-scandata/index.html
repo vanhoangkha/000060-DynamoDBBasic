@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Quét dữ liệu :: Amazon DynamoDB</title>
 
     
-    <link href="/css/nucleus.css?1648108759" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1648108759" rel="stylesheet">
-    <link href="/css/hybrid.css?1648108759" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1648108759" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1648108759" rel="stylesheet">
-    <link href="/css/auto-complete.css?1648108759" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1648108759" rel="stylesheet">
-    <link href="/css/theme.css?1648108759" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1648108759" rel="stylesheet">
+    <link href="/css/nucleus.css?1674289797" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1674289797" rel="stylesheet">
+    <link href="/css/hybrid.css?1674289797" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1674289797" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1674289797" rel="stylesheet">
+    <link href="/css/auto-complete.css?1674289797" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1674289797" rel="stylesheet">
+    <link href="/css/theme.css?1674289797" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1674289797" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1648108759" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1674289797" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1648108759"></script>
+    <script src="/js/jquery-3.3.1.min.js?1674289797"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1648108759"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1648108759"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1674289797"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1674289797"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1648108759"></script>
+<script type="text/javascript" src="/js/search.js?1674289797"></script>
 
     
   </div>
@@ -1113,7 +1113,7 @@
   
     
     <li data-nav-id="/vi/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.8-scandata/" title="Quét dữ liệu" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1289,7 +1289,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>22-03-2022</font></i>
+        <i><font color=orange>21-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1395,41 +1395,41 @@
 <p>Sao chép đoạn mã sau và dán vào file <strong><code>MoviesScan.py</code></strong></p>
 </li>
 </ol>
-<pre><code>from pprint import pprint
+<pre tabindex="0"><code>from pprint import pprint
 import boto3
 from boto3.dynamodb.conditions import Key
 
 
 def scan_movies(year_range, display_movies, dynamodb=None):
-    dynamodb = boto3.resource('dynamodb')
+    dynamodb = boto3.resource(&#39;dynamodb&#39;)
 
-    table = dynamodb.Table('Movies')
+    table = dynamodb.Table(&#39;Movies&#39;)
     scan_kwargs = {
-        'FilterExpression': Key('year').between(*year_range),
-        'ProjectionExpression': &quot;#yr, title, info.rating&quot;,
-        'ExpressionAttributeNames': {&quot;#yr&quot;: &quot;year&quot;}
+        &#39;FilterExpression&#39;: Key(&#39;year&#39;).between(*year_range),
+        &#39;ProjectionExpression&#39;: &#34;#yr, title, info.rating&#34;,
+        &#39;ExpressionAttributeNames&#39;: {&#34;#yr&#34;: &#34;year&#34;}
     }
 
     done = False
     start_key = None
     while not done:
         if start_key:
-            scan_kwargs['ExclusiveStartKey'] = start_key
+            scan_kwargs[&#39;ExclusiveStartKey&#39;] = start_key
         response = table.scan(**scan_kwargs)
-        display_movies(response.get('Items', []))
-        start_key = response.get('LastEvaluatedKey', None)
+        display_movies(response.get(&#39;Items&#39;, []))
+        start_key = response.get(&#39;LastEvaluatedKey&#39;, None)
         done = start_key is None
 
 
-if __name__ == '__main__':
+if __name__ == &#39;__main__&#39;:
     def print_movies(movies):
         for movie in movies:
-            print(f&quot;\n{movie['year']} : {movie['title']}&quot;)
-            pprint(movie['info'])
+            print(f&#34;\n{movie[&#39;year&#39;]} : {movie[&#39;title&#39;]}&#34;)
+            pprint(movie[&#39;info&#39;])
 
     query_range = (1950, 1959)
     print(
-        f&quot;Scanning for movies released from {query_range[0]} to {query_range[1]}...&quot;)
+        f&#34;Scanning for movies released from {query_range[0]} to {query_range[1]}...&#34;)
     scan_movies(query_range, print_movies)
 </code></pre><p>Chú thích:</p>
 <p><strong>ProjectionExpression</strong> chỉ định các attritube bạn muốn trong kết quả quét.</p>
@@ -1437,51 +1437,50 @@ if __name__ == '__main__':
 <ol start="3">
 <li>Chạy chương trình bằng <strong>Window Command Prompt</strong> đã được xác thực và cấu hình ở <a href="../../3.1-configureawscli/">bước 3.1 Cấu hình AWS CLI</a>. Gõ lệnh:</li>
 </ol>
-<pre><code>python MoviesScan.py
+<pre tabindex="0"><code>python MoviesScan.py
 </code></pre><p>Trường hợp khác: sử dụng <strong><code>python &quot;đường dẫn file MoviesScan.py&quot;</code></strong></p>
 <ol start="4">
 <li>Sau khi chạy chương trình, thu được kết quả</li>
 </ol>
-<pre><code>
+<pre tabindex="0"><code>
 1958 : Cat on a Hot Tin Roof
-{'rating': Decimal('8')}
+{&#39;rating&#39;: Decimal(&#39;8&#39;)}
 
 1958 : Monster on the Campus
-{'rating': Decimal('5.7')}
+{&#39;rating&#39;: Decimal(&#39;5.7&#39;)}
 
 1958 : No Time for Sergeants
-{'rating': Decimal('7.5')}
+{&#39;rating&#39;: Decimal(&#39;7.5&#39;)}
 
-1958 : Teacher's Pet
-{'rating': Decimal('7')}
+1958 : Teacher&#39;s Pet
+{&#39;rating&#39;: Decimal(&#39;7&#39;)}
 
 1958 : Touch of Evil
-{'rating': Decimal('8.2')}
+{&#39;rating&#39;: Decimal(&#39;8.2&#39;)}
 
 1958 : Vertigo
-{'rating': Decimal('8.5')}
+{&#39;rating&#39;: Decimal(&#39;8.5&#39;)}
 
 1951 : A Streetcar Named Desire
-{'rating': Decimal('8')}
+{&#39;rating&#39;: Decimal(&#39;8&#39;)}
 
 1951 : Alice in Wonderland
-{'rating': Decimal('7.4')}
+{&#39;rating&#39;: Decimal(&#39;7.4&#39;)}
 
 1951 : An American in Paris
-{'rating': Decimal('7.2')}
+{&#39;rating&#39;: Decimal(&#39;7.2&#39;)}
 
 1951 : Operation Pacific
-{'rating': Decimal('6.5')}
+{&#39;rating&#39;: Decimal(&#39;6.5&#39;)}
 
 1951 : Storm Warning
-{'rating': Decimal('7')}
+{&#39;rating&#39;: Decimal(&#39;7&#39;)}
 
 1951 : Strangers on a Train
-{'rating': Decimal('8.2')}
+{&#39;rating&#39;: Decimal(&#39;8.2&#39;)}
 
 1951 : The African Queen
-{'rating': Decimal('8')}
-
+{&#39;rating&#39;: Decimal(&#39;8&#39;)}
 </code></pre>
 
 
@@ -2174,19 +2173,19 @@ if __name__ == '__main__':
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1648108759"></script>
-    <script src="/js/perfect-scrollbar.min.js?1648108759"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1648108759"></script>
-    <script src="/js/jquery.sticky.js?1648108759"></script>
-    <script src="/js/featherlight.min.js?1648108759"></script>
-    <script src="/js/highlight.pack.js?1648108759"></script>
+    <script src="/js/clipboard.min.js?1674289797"></script>
+    <script src="/js/perfect-scrollbar.min.js?1674289797"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1674289797"></script>
+    <script src="/js/jquery.sticky.js?1674289797"></script>
+    <script src="/js/featherlight.min.js?1674289797"></script>
+    <script src="/js/highlight.pack.js?1674289797"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1648108759"></script>
-    <script src="/js/learn.js?1648108759"></script>
-    <script src="/js/hugo-learn.js?1648108759"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1674289797"></script>
+    <script src="/js/learn.js?1674289797"></script>
+    <script src="/js/hugo-learn.js?1674289797"></script>
 
-    <link href="/mermaid/mermaid.css?1648108759" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1648108759"></script>
+    <link href="/mermaid/mermaid.css?1674289797" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1674289797"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

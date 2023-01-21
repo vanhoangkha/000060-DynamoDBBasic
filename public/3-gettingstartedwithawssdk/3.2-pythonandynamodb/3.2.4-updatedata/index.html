@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Update data :: Amazon DynamoDB</title>
 
     
-    <link href="/css/nucleus.css?1648108758" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1648108758" rel="stylesheet">
-    <link href="/css/hybrid.css?1648108758" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1648108758" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1648108758" rel="stylesheet">
-    <link href="/css/auto-complete.css?1648108758" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1648108758" rel="stylesheet">
-    <link href="/css/theme.css?1648108758" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1648108758" rel="stylesheet">
+    <link href="/css/nucleus.css?1674289796" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1674289796" rel="stylesheet">
+    <link href="/css/hybrid.css?1674289796" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1674289796" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1674289796" rel="stylesheet">
+    <link href="/css/auto-complete.css?1674289796" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1674289796" rel="stylesheet">
+    <link href="/css/theme.css?1674289796" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1674289796" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1648108758" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1674289796" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1648108758"></script>
+    <script src="/js/jquery-3.3.1.min.js?1674289796"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1648108758"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1648108758"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1674289796"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1674289796"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1648108758"></script>
+<script type="text/javascript" src="/js/search.js?1674289796"></script>
 
     
   </div>
@@ -1001,7 +1001,7 @@
   
     
     <li data-nav-id="/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.4-updatedata/" title="Update data" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1289,7 +1289,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>22-03-2022</font></i>
+        <i><font color=orange>21-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1393,61 +1393,59 @@
 <p>Copy the following code and paste it into the file <strong><code>MoviesItemOps03.py</code></strong></p>
 </li>
 </ol>
-<pre><code>from decimal import Decimal
+<pre tabindex="0"><code>from decimal import Decimal
 from pprint import pprint
 import boto3
 
 
 def update_movie(title, year, rating, plot, actors, dynamodb=None):
-    dynamodb = boto3.resource('dynamodb')
-    table = dynamodb.Table('Movies')
+    dynamodb = boto3.resource(&#39;dynamodb&#39;)
+    table = dynamodb.Table(&#39;Movies&#39;)
 
     response = table.update_item(
         Key={
-            'year': year,
-            'title': title
+            &#39;year&#39;: year,
+            &#39;title&#39;: title
         },
-        UpdateExpression=&quot;set info.rating=:r, info.plot=:p, info.actors=:a&quot;,
+        UpdateExpression=&#34;set info.rating=:r, info.plot=:p, info.actors=:a&#34;,
         ExpressionAttributeValues={
-            ':r': Decimal(rating),
-            ':p': plot,
-            ':a': actors
+            &#39;:r&#39;: Decimal(rating),
+            &#39;:p&#39;: plot,
+            &#39;:a&#39;: actors
         },
-        ReturnValues=&quot;UPDATED_NEW&quot;
+        ReturnValues=&#34;UPDATED_NEW&#34;
     )
     return response
 
 
-if __name__ == '__main__':
+if __name__ == &#39;__main__&#39;:
     update_response = update_movie(
-        &quot;The Big New Movie&quot;, 2015, 5.5, &quot;Everything happens all at once.&quot;,
-        [&quot;Larry&quot;, &quot;Moe&quot;, &quot;Curly&quot;])
-    print(&quot;Update movie succeeded:&quot;)
+        &#34;The Big New Movie&#34;, 2015, 5.5, &#34;Everything happens all at once.&#34;,
+        [&#34;Larry&#34;, &#34;Moe&#34;, &#34;Curly&#34;])
+    print(&#34;Update movie succeeded:&#34;)
     pprint(update_response, sort_dicts=False)
-
 </code></pre><ol start="3">
 <li>Run the program using the authenticated and configured <strong>Window Command Prompt</strong> in <a href="../../3.1-configureawscli/">step 3.1 Configure AWS CLI</a>. Type command:</li>
 </ol>
-<pre><code>python MoviesItemOps03.py
+<pre tabindex="0"><code>python MoviesItemOps03.py
 </code></pre><p>Another case: use <strong><code>python &quot;MoviesItemOps03.py file path&quot;</code></strong></p>
 <ol start="4">
 <li>After running the program, get the following results:</li>
 </ol>
-<pre><code>Update movie succeeded:
-{'Attributes': {'info': {'actors': ['Larry', 'Moe', 'Curly'],
-                         'plot': 'Everything happens all at once.',
-                         'rating': Decimal('5.5')}},
- 'ResponseMetadata': {'RequestId': 'RFMTVB72A6E2J39HBPIK8SHBN7VV4KQNSO5AEMVJF66Q9ASUAAJG',
-                      'HTTPStatusCode': 200,
-                      'HTTPHeaders': {'server': 'Server',
-                                      'date': 'Wed, 09 Feb 2022 03:29:15 GMT',
-                                      'content-type': 'application/x-amz-json-1.0',
-                                      'content-length': '156',
-                                      'connection': 'keep-alive',
-                                      'x-amzn-requestid': 'RFMTVB72A6E2J39HBPIK8SHBN7VV4KQNSO5AEMVJF66Q9ASUAAJG',
-                                      'x-amz-crc32': '3767510606'},
-                      'RetryAttempts': 0}}
-
+<pre tabindex="0"><code>Update movie succeeded:
+{&#39;Attributes&#39;: {&#39;info&#39;: {&#39;actors&#39;: [&#39;Larry&#39;, &#39;Moe&#39;, &#39;Curly&#39;],
+                         &#39;plot&#39;: &#39;Everything happens all at once.&#39;,
+                         &#39;rating&#39;: Decimal(&#39;5.5&#39;)}},
+ &#39;ResponseMetadata&#39;: {&#39;RequestId&#39;: &#39;RFMTVB72A6E2J39HBPIK8SHBN7VV4KQNSO5AEMVJF66Q9ASUAAJG&#39;,
+                      &#39;HTTPStatusCode&#39;: 200,
+                      &#39;HTTPHeaders&#39;: {&#39;server&#39;: &#39;Server&#39;,
+                                      &#39;date&#39;: &#39;Wed, 09 Feb 2022 03:29:15 GMT&#39;,
+                                      &#39;content-type&#39;: &#39;application/x-amz-json-1.0&#39;,
+                                      &#39;content-length&#39;: &#39;156&#39;,
+                                      &#39;connection&#39;: &#39;keep-alive&#39;,
+                                      &#39;x-amzn-requestid&#39;: &#39;RFMTVB72A6E2J39HBPIK8SHBN7VV4KQNSO5AEMVJF66Q9ASUAAJG&#39;,
+                                      &#39;x-amz-crc32&#39;: &#39;3767510606&#39;},
+                      &#39;RetryAttempts&#39;: 0}}
 </code></pre>
 
 
@@ -2140,19 +2138,19 @@ if __name__ == '__main__':
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1648108758"></script>
-    <script src="/js/perfect-scrollbar.min.js?1648108758"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1648108758"></script>
-    <script src="/js/jquery.sticky.js?1648108758"></script>
-    <script src="/js/featherlight.min.js?1648108758"></script>
-    <script src="/js/highlight.pack.js?1648108758"></script>
+    <script src="/js/clipboard.min.js?1674289796"></script>
+    <script src="/js/perfect-scrollbar.min.js?1674289796"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1674289796"></script>
+    <script src="/js/jquery.sticky.js?1674289796"></script>
+    <script src="/js/featherlight.min.js?1674289796"></script>
+    <script src="/js/highlight.pack.js?1674289796"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1648108758"></script>
-    <script src="/js/learn.js?1648108758"></script>
-    <script src="/js/hugo-learn.js?1648108758"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1674289796"></script>
+    <script src="/js/learn.js?1674289796"></script>
+    <script src="/js/hugo-learn.js?1674289796"></script>
 
-    <link href="/mermaid/mermaid.css?1648108758" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1648108758"></script>
+    <link href="/mermaid/mermaid.css?1674289796" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1674289796"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

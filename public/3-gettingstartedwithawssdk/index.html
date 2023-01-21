@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Begin with AWS SDK :: Amazon DynamoDB</title>
 
     
-    <link href="/css/nucleus.css?1648108758" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1648108758" rel="stylesheet">
-    <link href="/css/hybrid.css?1648108758" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1648108758" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1648108758" rel="stylesheet">
-    <link href="/css/auto-complete.css?1648108758" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1648108758" rel="stylesheet">
-    <link href="/css/theme.css?1648108758" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1648108758" rel="stylesheet">
+    <link href="/css/nucleus.css?1674289796" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1674289796" rel="stylesheet">
+    <link href="/css/hybrid.css?1674289796" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1674289796" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1674289796" rel="stylesheet">
+    <link href="/css/auto-complete.css?1674289796" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1674289796" rel="stylesheet">
+    <link href="/css/theme.css?1674289796" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1674289796" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1648108758" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1674289796" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1648108758"></script>
+    <script src="/js/jquery-3.3.1.min.js?1674289796"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1648108758"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1648108758"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1674289796"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1674289796"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1648108758"></script>
+<script type="text/javascript" src="/js/search.js?1674289796"></script>
 
     
   </div>
@@ -827,7 +827,7 @@
   
     
     <li data-nav-id="/3-gettingstartedwithawssdk/" title="Begin with AWS SDK" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1289,7 +1289,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>22-03-2022</font></i>
+        <i><font color=orange>21-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1395,27 +1395,25 @@
 <li>All AWS service operations are supported by Client</li>
 </ul>
 <p>For example, if you want to list all S3 buckets in your AWS account, you can use the S3 Client as follows:</p>
-<pre><code>import boto3
+<pre tabindex="0"><code>import boto3
 
 # Retrieve the list of existing buckets
-s3 = boto3.client(&quot;s3&quot;)
+s3 = boto3.client(&#34;s3&#34;)
 response = s3.list_buckets()
 
 # Output the bucket names
-print(&quot;Existing buckets:&quot;)
-for bucket in response['Buckets']:
-    print(f'{bucket[&quot;Name&quot;]}')
-
+print(&#34;Existing buckets:&#34;)
+for bucket in response[&#39;Buckets&#39;]:
+    print(f&#39;{bucket[&#34;Name&#34;]}&#39;)
 </code></pre><p><strong>Resource</strong> is a higher level abstraction than clients. They are generated from the JSON resource description contained in the boto library itself.</p>
 <p>The resource provides an object-oriented interface for interacting with various AWS services. Resources can be initialized as follows:</p>
 
 <div class="notices tip" ><p>The example below is a Resource definition for S3 .</p>
 </div>
 
-<pre><code>import boto3
+<pre tabindex="0"><code>import boto3
 
-s3 = boto3.resource(&quot;s3&quot;)
-
+s3 = boto3.resource(&#34;s3&#34;)
 </code></pre><h3 id="content">Content</h3>
 <ul>
 <li><a href="3.1-configureawscli/">Configure AWS CLI </a></li>
@@ -2105,19 +2103,19 @@ s3 = boto3.resource(&quot;s3&quot;)
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1648108758"></script>
-    <script src="/js/perfect-scrollbar.min.js?1648108758"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1648108758"></script>
-    <script src="/js/jquery.sticky.js?1648108758"></script>
-    <script src="/js/featherlight.min.js?1648108758"></script>
-    <script src="/js/highlight.pack.js?1648108758"></script>
+    <script src="/js/clipboard.min.js?1674289796"></script>
+    <script src="/js/perfect-scrollbar.min.js?1674289796"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1674289796"></script>
+    <script src="/js/jquery.sticky.js?1674289796"></script>
+    <script src="/js/featherlight.min.js?1674289796"></script>
+    <script src="/js/highlight.pack.js?1674289796"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1648108758"></script>
-    <script src="/js/learn.js?1648108758"></script>
-    <script src="/js/hugo-learn.js?1648108758"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1674289796"></script>
+    <script src="/js/learn.js?1674289796"></script>
+    <script src="/js/hugo-learn.js?1674289796"></script>
 
-    <link href="/mermaid/mermaid.css?1648108758" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1648108758"></script>
+    <link href="/mermaid/mermaid.css?1674289796" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1674289796"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Query data :: Amazon DynamoDB</title>
 
     
-    <link href="/css/nucleus.css?1648108758" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1648108758" rel="stylesheet">
-    <link href="/css/hybrid.css?1648108758" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1648108758" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1648108758" rel="stylesheet">
-    <link href="/css/auto-complete.css?1648108758" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1648108758" rel="stylesheet">
-    <link href="/css/theme.css?1648108758" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1648108758" rel="stylesheet">
+    <link href="/css/nucleus.css?1674289796" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1674289796" rel="stylesheet">
+    <link href="/css/hybrid.css?1674289796" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1674289796" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1674289796" rel="stylesheet">
+    <link href="/css/auto-complete.css?1674289796" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1674289796" rel="stylesheet">
+    <link href="/css/theme.css?1674289796" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1674289796" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1648108758" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1674289796" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1648108758"></script>
+    <script src="/js/jquery-3.3.1.min.js?1674289796"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1648108758"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1648108758"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1674289796"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1674289796"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1648108758"></script>
+<script type="text/javascript" src="/js/search.js?1674289796"></script>
 
     
   </div>
@@ -1085,7 +1085,7 @@
   
     
     <li data-nav-id="/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.7-querydata/" title="Query data" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1289,7 +1289,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>22-03-2022</font></i>
+        <i><font color=orange>21-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1394,36 +1394,35 @@
 <p>Copy the following code and paste it into <strong><code>MoviesQuery01.py</code></strong></p>
 </li>
 </ol>
-<pre><code>import boto3
+<pre tabindex="0"><code>import boto3
 from boto3.dynamodb.conditions import Key
 
 
 def query_movies(year, dynamodb=None):
-    dynamodb = boto3.resource('dynamodb')
-    table = dynamodb.Table('Movies')
+    dynamodb = boto3.resource(&#39;dynamodb&#39;)
+    table = dynamodb.Table(&#39;Movies&#39;)
     response = table.query(
-        KeyConditionExpression=Key('year').eq(year)
+        KeyConditionExpression=Key(&#39;year&#39;).eq(year)
     )
-    return response['Items']
+    return response[&#39;Items&#39;]
 
 
-if __name__ == '__main__':
+if __name__ == &#39;__main__&#39;:
     query_year = 1985
-    print(f&quot;Movies from {query_year}&quot;)
+    print(f&#34;Movies from {query_year}&#34;)
     movies = query_movies(query_year)
     for movie in movies:
-        print(movie['year'], &quot;:&quot;, movie['title'])
-
+        print(movie[&#39;year&#39;], &#34;:&#34;, movie[&#39;title&#39;])
 </code></pre><ol start="3">
 <li>Run the program using the authenticated and configured <strong>Window Command Prompt</strong> in <a href="../../3.1-configureawscli/">step 3.1 Configure AWS CLI</a>. Type command:</li>
 </ol>
-<pre><code>python MoviesQuery01.py
+<pre tabindex="0"><code>python MoviesQuery01.py
 </code></pre><p>Another case: use <strong><code>python &quot;MoviesQuery01.py file path&quot;</code></strong></p>
 <ol start="4">
 <li>After running the program, get the following results:</li>
 </ol>
-<pre><code>Movies from 1985
-1985 : A Nightmare on Elm Street Part 2: Freddy's Revenge
+<pre tabindex="0"><code>Movies from 1985
+1985 : A Nightmare on Elm Street Part 2: Freddy&#39;s Revenge
 1985 : A Room with a View
 1985 : A View to a Kill
 1985 : Back to the Future
@@ -1442,14 +1441,14 @@ if __name__ == '__main__':
 1985 : Mad Max Beyond Thunderdome
 1985 : Mask
 1985 : Pale Rider
-1985 : Pee-wee's Big Adventure
+1985 : Pee-wee&#39;s Big Adventure
 1985 : Police Academy 2: Their First Assignment
 1985 : Rambo: First Blood Part II
 1985 : Real Genius
 1985 : Return to Oz
 1985 : Rocky IV
 1985 : Silverado
-1985 : St. Elmo's Fire
+1985 : St. Elmo&#39;s Fire
 1985 : Teen Wolf
 1985 : The Breakfast Club
 1985 : The Color Purple
@@ -1458,7 +1457,6 @@ if __name__ == '__main__':
 1985 : The Return of the Living Dead
 1985 : Weird Science
 1985 : Witness
-
 </code></pre>
 
 
@@ -2151,19 +2149,19 @@ if __name__ == '__main__':
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1648108758"></script>
-    <script src="/js/perfect-scrollbar.min.js?1648108758"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1648108758"></script>
-    <script src="/js/jquery.sticky.js?1648108758"></script>
-    <script src="/js/featherlight.min.js?1648108758"></script>
-    <script src="/js/highlight.pack.js?1648108758"></script>
+    <script src="/js/clipboard.min.js?1674289796"></script>
+    <script src="/js/perfect-scrollbar.min.js?1674289796"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1674289796"></script>
+    <script src="/js/jquery.sticky.js?1674289796"></script>
+    <script src="/js/featherlight.min.js?1674289796"></script>
+    <script src="/js/highlight.pack.js?1674289796"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1648108758"></script>
-    <script src="/js/learn.js?1648108758"></script>
-    <script src="/js/hugo-learn.js?1648108758"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1674289796"></script>
+    <script src="/js/learn.js?1674289796"></script>
+    <script src="/js/hugo-learn.js?1674289796"></script>
 
-    <link href="/mermaid/mermaid.css?1648108758" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1648108758"></script>
+    <link href="/mermaid/mermaid.css?1674289796" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1674289796"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

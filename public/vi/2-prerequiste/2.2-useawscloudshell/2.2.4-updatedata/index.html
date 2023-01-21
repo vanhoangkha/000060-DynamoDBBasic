@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Cập nhật dữ liệu :: Amazon DynamoDB</title>
 
     
-    <link href="/css/nucleus.css?1648108759" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1648108759" rel="stylesheet">
-    <link href="/css/hybrid.css?1648108759" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1648108759" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1648108759" rel="stylesheet">
-    <link href="/css/auto-complete.css?1648108759" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1648108759" rel="stylesheet">
-    <link href="/css/theme.css?1648108759" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1648108759" rel="stylesheet">
+    <link href="/css/nucleus.css?1674289797" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1674289797" rel="stylesheet">
+    <link href="/css/hybrid.css?1674289797" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1674289797" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1674289797" rel="stylesheet">
+    <link href="/css/auto-complete.css?1674289797" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1674289797" rel="stylesheet">
+    <link href="/css/theme.css?1674289797" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1674289797" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1648108759" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1674289797" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1648108759"></script>
+    <script src="/js/jquery-3.3.1.min.js?1674289797"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1648108759"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1648108759"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1674289797"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1674289797"></script>
 <script type="text/javascript">
     
         var baseurl = "\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1648108759"></script>
+<script type="text/javascript" src="/js/search.js?1674289797"></script>
 
     
   </div>
@@ -699,7 +699,7 @@
   
     
     <li data-nav-id="/vi/2-prerequiste/2.2-useawscloudshell/2.2.4-updatedata/" title="Cập nhật dữ liệu" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1289,7 +1289,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>22-03-2022</font></i>
+        <i><font color=orange>21-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1391,11 +1391,11 @@
 <ol>
 <li>Thực hiện lệnh:</li>
 </ol>
-<pre><code>aws dynamodb update-item \
+<pre tabindex="0"><code>aws dynamodb update-item \
     --table-name Music \
-    --key '{ &quot;Artist&quot;: {&quot;S&quot;: &quot;Acme Band&quot;}, &quot;SongTitle&quot;: {&quot;S&quot;: &quot;Happy Day&quot;}}' \
-    --update-expression &quot;SET AlbumTitle = :newval&quot; \
-    --expression-attribute-values '{&quot;:newval&quot;:{&quot;S&quot;:&quot;Updated Album Title&quot;}}' \
+    --key &#39;{ &#34;Artist&#34;: {&#34;S&#34;: &#34;Acme Band&#34;}, &#34;SongTitle&#34;: {&#34;S&#34;: &#34;Happy Day&#34;}}&#39; \
+    --update-expression &#34;SET AlbumTitle = :newval&#34; \
+    --expression-attribute-values &#39;{&#34;:newval&#34;:{&#34;S&#34;:&#34;Updated Album Title&#34;}}&#39; \
     --return-values ALL_NEW
 </code></pre><ol start="2">
 <li>Kết quả:</li>
@@ -1403,19 +1403,19 @@
 <ul>
 <li>Kết quả trên AWS CLoudShell:</li>
 </ul>
-<pre><code>{
-    &quot;Attributes&quot;: {
-        &quot;AlbumTitle&quot;: {
-            &quot;S&quot;: &quot;Updated Album Title&quot;
+<pre tabindex="0"><code>{
+    &#34;Attributes&#34;: {
+        &#34;AlbumTitle&#34;: {
+            &#34;S&#34;: &#34;Updated Album Title&#34;
         },
-        &quot;Awards&quot;: {
-            &quot;N&quot;: &quot;10&quot;
+        &#34;Awards&#34;: {
+            &#34;N&#34;: &#34;10&#34;
         },
-        &quot;Artist&quot;: {
-            &quot;S&quot;: &quot;Acme Band&quot;
+        &#34;Artist&#34;: {
+            &#34;S&#34;: &#34;Acme Band&#34;
         },
-        &quot;SongTitle&quot;: {
-            &quot;S&quot;: &quot;Happy Day&quot;
+        &#34;SongTitle&#34;: {
+            &#34;S&#34;: &#34;Happy Day&#34;
         }
     }
 }
@@ -2115,19 +2115,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1648108759"></script>
-    <script src="/js/perfect-scrollbar.min.js?1648108759"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1648108759"></script>
-    <script src="/js/jquery.sticky.js?1648108759"></script>
-    <script src="/js/featherlight.min.js?1648108759"></script>
-    <script src="/js/highlight.pack.js?1648108759"></script>
+    <script src="/js/clipboard.min.js?1674289797"></script>
+    <script src="/js/perfect-scrollbar.min.js?1674289797"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1674289797"></script>
+    <script src="/js/jquery.sticky.js?1674289797"></script>
+    <script src="/js/featherlight.min.js?1674289797"></script>
+    <script src="/js/highlight.pack.js?1674289797"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1648108759"></script>
-    <script src="/js/learn.js?1648108759"></script>
-    <script src="/js/hugo-learn.js?1648108759"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1674289797"></script>
+    <script src="/js/learn.js?1674289797"></script>
+    <script src="/js/hugo-learn.js?1674289797"></script>
 
-    <link href="/mermaid/mermaid.css?1648108759" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1648108759"></script>
+    <link href="/mermaid/mermaid.css?1674289797" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1674289797"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

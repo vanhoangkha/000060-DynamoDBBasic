@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.69.0" />
+    <meta name="generator" content="Hugo 0.99.1" />
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Create a table :: Amazon DynamoDB</title>
 
     
-    <link href="/css/nucleus.css?1648108758" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1648108758" rel="stylesheet">
-    <link href="/css/hybrid.css?1648108758" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1648108758" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1648108758" rel="stylesheet">
-    <link href="/css/auto-complete.css?1648108758" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1648108758" rel="stylesheet">
-    <link href="/css/theme.css?1648108758" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1648108758" rel="stylesheet">
+    <link href="/css/nucleus.css?1674289796" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1674289796" rel="stylesheet">
+    <link href="/css/hybrid.css?1674289796" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1674289796" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1674289796" rel="stylesheet">
+    <link href="/css/auto-complete.css?1674289796" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1674289796" rel="stylesheet">
+    <link href="/css/theme.css?1674289796" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1674289796" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1648108758" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1674289796" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1648108758"></script>
+    <script src="/js/jquery-3.3.1.min.js?1674289796"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1648108758"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1648108758"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1674289796"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1674289796"></script>
 <script type="text/javascript">
     
         var baseurl = "";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1648108758"></script>
+<script type="text/javascript" src="/js/search.js?1674289796"></script>
 
     
   </div>
@@ -615,7 +615,7 @@
   
     
     <li data-nav-id="/2-prerequiste/2.2-useawscloudshell/2.2.1-createtable/" title="Create a table" class="dd-item 
-        
+        parent
         active
         
         ">
@@ -1289,7 +1289,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>22-03-2022</font></i>
+        <i><font color=orange>21-01-2023</font></i>
     </left>
     <left>
         <br>
@@ -1406,7 +1406,7 @@
 <ol start="4">
 <li>To create a table, use the <strong><code>create-table</code></strong> command. Type command:</li>
 </ol>
-<pre><code>aws dynamodb create-table \
+<pre tabindex="0"><code>aws dynamodb create-table \
     --table-name Music \
     --attribute-definitions \
         AttributeName=Artist,AttributeType=S \
@@ -1423,42 +1423,42 @@
 <ul>
 <li>Results on AWS CloudShell:</li>
 </ul>
-<pre><code>{
-    &quot;TableDescription&quot;: {
-        &quot;AttributeDefinitions&quot;: [
+<pre tabindex="0"><code>{
+    &#34;TableDescription&#34;: {
+        &#34;AttributeDefinitions&#34;: [
             {
-                &quot;AttributeName&quot;: &quot;Artist&quot;,
-                &quot;AttributeType&quot;: &quot;S&quot;
+                &#34;AttributeName&#34;: &#34;Artist&#34;,
+                &#34;AttributeType&#34;: &#34;S&#34;
             },
             {
-                &quot;AttributeName&quot;: &quot;SongTitle&quot;,
-                &quot;AttributeType&quot;: &quot;S&quot;
+                &#34;AttributeName&#34;: &#34;SongTitle&#34;,
+                &#34;AttributeType&#34;: &#34;S&#34;
             }
         ],
-        &quot;TableName&quot;: &quot;Music&quot;,
-        &quot;KeySchema&quot;: [
+        &#34;TableName&#34;: &#34;Music&#34;,
+        &#34;KeySchema&#34;: [
             {
-                &quot;AttributeName&quot;: &quot;Artist&quot;,
-                &quot;KeyType&quot;: &quot;HASH&quot;
+                &#34;AttributeName&#34;: &#34;Artist&#34;,
+                &#34;KeyType&#34;: &#34;HASH&#34;
             },
             {
-                &quot;AttributeName&quot;: &quot;SongTitle&quot;,
-                &quot;KeyType&quot;: &quot;RANGE&quot;
+                &#34;AttributeName&#34;: &#34;SongTitle&#34;,
+                &#34;KeyType&#34;: &#34;RANGE&#34;
             }
         ],
-        &quot;TableStatus&quot;: &quot;CREATING&quot;,
-        &quot;CreationDateTime&quot;: &quot;2022-02-08T06:15:18.343000+00:00&quot;,
-        &quot;ProvisionedThroughput&quot;: {
-            &quot;NumberOfDecreasesToday&quot;: 0,
-            &quot;ReadCapacityUnits&quot;: 10,
-            &quot;WriteCapacityUnits&quot;: 5
+        &#34;TableStatus&#34;: &#34;CREATING&#34;,
+        &#34;CreationDateTime&#34;: &#34;2022-02-08T06:15:18.343000+00:00&#34;,
+        &#34;ProvisionedThroughput&#34;: {
+            &#34;NumberOfDecreasesToday&#34;: 0,
+            &#34;ReadCapacityUnits&#34;: 10,
+            &#34;WriteCapacityUnits&#34;: 5
         },
-        &quot;TableSizeBytes&quot;: 0,
-        &quot;ItemCount&quot;: 0,
-        &quot;TableArn&quot;: &quot;arn:aws:dynamodb:us-east-2:089359461550:table/Music&quot;,
-        &quot;TableId&quot;: &quot;4b2a1e9a-c223-4b07-a536-c4b85a67df96&quot;,
-        &quot;TableClassSummary&quot;: {
-            &quot;TableClass&quot;: &quot;STANDARD&quot;
+        &#34;TableSizeBytes&#34;: 0,
+        &#34;ItemCount&#34;: 0,
+        &#34;TableArn&#34;: &#34;arn:aws:dynamodb:us-east-2:089359461550:table/Music&#34;,
+        &#34;TableId&#34;: &#34;4b2a1e9a-c223-4b07-a536-c4b85a67df96&#34;,
+        &#34;TableClassSummary&#34;: {
+            &#34;TableClass&#34;: &#34;STANDARD&#34;
         }
     }
 }
@@ -1472,7 +1472,7 @@
 <ul>
 <li>Type command:</li>
 </ul>
-<pre><code>aws dynamodb describe-table --table-name Music | grep TableStatus
+<pre tabindex="0"><code>aws dynamodb describe-table --table-name Music | grep TableStatus
 </code></pre><ul>
 <li>When DynamoDB finishes creating the table, the value of <strong>TableStatus</strong> is <strong>ACTIVE</strong>: <code>&quot;TableStatus&quot;: &quot;ACTIVE&quot;,</code></li>
 </ul>
@@ -2165,19 +2165,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1648108758"></script>
-    <script src="/js/perfect-scrollbar.min.js?1648108758"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1648108758"></script>
-    <script src="/js/jquery.sticky.js?1648108758"></script>
-    <script src="/js/featherlight.min.js?1648108758"></script>
-    <script src="/js/highlight.pack.js?1648108758"></script>
+    <script src="/js/clipboard.min.js?1674289796"></script>
+    <script src="/js/perfect-scrollbar.min.js?1674289796"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1674289796"></script>
+    <script src="/js/jquery.sticky.js?1674289796"></script>
+    <script src="/js/featherlight.min.js?1674289796"></script>
+    <script src="/js/highlight.pack.js?1674289796"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1648108758"></script>
-    <script src="/js/learn.js?1648108758"></script>
-    <script src="/js/hugo-learn.js?1648108758"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1674289796"></script>
+    <script src="/js/learn.js?1674289796"></script>
+    <script src="/js/hugo-learn.js?1674289796"></script>
 
-    <link href="/mermaid/mermaid.css?1648108758" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1648108758"></script>
+    <link href="/mermaid/mermaid.css?1674289796" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1674289796"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

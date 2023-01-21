@@ -4,10 +4,6 @@
     <title>Manage using AWS Management Console on Amazon DynamoDB</title>
     <link>/2-prerequiste/2.1-useawsmanagementconsole/</link>
     <description>Recent content in Manage using AWS Management Console on Amazon DynamoDB</description>
-    <generator>Hugo -- gohugo.io</generator>
-    
-	<atom:link href="/2-prerequiste/2.1-useawsmanagementconsole/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <generator>Hugo -- gohugo.io</generator><atom:link href="/2-prerequiste/2.1-useawsmanagementconsole/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
