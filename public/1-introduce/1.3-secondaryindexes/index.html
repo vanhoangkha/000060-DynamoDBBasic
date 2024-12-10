@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.133.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
@@ -12,21 +12,21 @@
     <title>Secondary Index :: WORK WITH AMAZON DYNAMODB</title>
 
     
-    <link href="/css/nucleus.css?1701079791" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1701079791" rel="stylesheet">
-    <link href="/css/hybrid.css?1701079791" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1701079791" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1701079791" rel="stylesheet">
-    <link href="/css/auto-complete.css?1701079791" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1701079791" rel="stylesheet">
-    <link href="/css/theme.css?1701079791" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1701079791" rel="stylesheet">
+    <link href="/css/nucleus.css?1733805413" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1733805413" rel="stylesheet">
+    <link href="/css/hybrid.css?1733805413" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1733805413" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1733805413" rel="stylesheet">
+    <link href="/css/auto-complete.css?1733805413" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1733805413" rel="stylesheet">
+    <link href="/css/theme.css?1733805413" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1733805413" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1701079791" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1733805413" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1701079791"></script>
+    <script src="/js/jquery-3.3.1.min.js?1733805413"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1701079791"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1701079791"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1733805413"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1733805413"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1701079791"></script>
+<script type="text/javascript" src="/js/search.js?1733805413"></script>
 
     
   </div>
@@ -170,7 +170,7 @@
   
     
     <li data-nav-id="/1-introduce/1.3-secondaryindexes/" title="Secondary Index" class="dd-item 
-        parent
+        
         active
         
         ">
@@ -462,12 +462,12 @@
  
   
     
-    <li data-nav-id="/2-prerequiste/2.1-useawsmanagementconsole/2.1.5-updatedata/" title=" Update data" class="dd-item 
+    <li data-nav-id="/2-prerequiste/2.1-useawsmanagementconsole/2.1.5--updatedata/" title=" Update data" class="dd-item 
         
         
         
         ">
-      <a href="/2-prerequiste/2.1-useawsmanagementconsole/2.1.5-updatedata/">
+      <a href="/2-prerequiste/2.1-useawsmanagementconsole/2.1.5--updatedata/">
            <b> 2.1.5 </b>  Update data
           
             <i class="fas fa-check read-icon"></i>
@@ -1293,7 +1293,7 @@
     <br>
     <br>
         <b> Last Updated </b> <br>
-        <i><font color=orange>27-11-2023</font></i>
+        <i><font color=orange>10-12-2024</font></i>
     </left>
     <left>
         <br>
@@ -1388,15 +1388,15 @@
 <li>Secondary Index allows to query data in the table with different keys from the original partition key and sort of the table. With Dynamo DB, data query operation is much faster and more cost-effective than scanning.</li>
 </ul>
 <p>Here is an example DynamoDB table:</p>
-<p><img src="/images/1-introduce/1.4-namingrulesanddatatypes/0001-Diagram-Base-Table.png" alt="Query"></p>
+<p><img alt="Query" src="/images/1-introduce/1.4-namingrulesanddatatypes/0001-Diagram-Base-Table.png"></p>
 <ul>
 <li>If we perform a data query operation, we can find data by the value of Partition Key and Sort Key.</li>
 </ul>
-<p><img src="/images/1-introduce/1.5-readconsistency/0001-Diagram-Query.png" alt="Query"></p>
+<p><img alt="Query" src="/images/1-introduce/1.5-readconsistency/0001-Diagram-Query.png"></p>
 <ul>
 <li>If we perform a data scan operation, we will scan the entire table and then filter by any attribute. (When implementing the filter, we still have to spend the cost of scanning the entire table.)</li>
 </ul>
-<p><img src="/images/1-introduce/1.6-readwritecapacitymode/0001-Diagram-Scan.png" alt="Scan"></p>
+<p><img alt="Scan" src="/images/1-introduce/1.6-readwritecapacitymode/0001-Diagram-Scan.png"></p>
 <ul>
 <li>DynamoDB doesn&rsquo;t force you to use indexes, but they do give your applications more flexibility when it comes to data queries. After creating a Secondary Index on the table, you can read data from the index in the same way as reading data from the table.</li>
 </ul>
@@ -1404,11 +1404,11 @@
 <ul>
 <li>
 <p><strong>Global secondary index</strong> index has partition key and sort key may be different from indexes on table.
-<img src="/images/1-introduce/1.3-secondaryindexes/0002-Diagram-Global-Secondary-Indexs.png" alt="Secondary Index"></p>
+<img alt="Secondary Index" src="/images/1-introduce/1.3-secondaryindexes/0002-Diagram-Global-Secondary-Indexs.png"></p>
 </li>
 <li>
 <p><strong>Local secondary index</strong> index has the same partition key as the table but has a different sort key.
-<img src="/images/1-introduce/1.3-secondaryindexes/0001-Diagram-Local-Secondary-Indexs.png" alt="Secondary Index"></p>
+<img alt="Secondary Index" src="/images/1-introduce/1.3-secondaryindexes/0001-Diagram-Local-Secondary-Indexs.png"></p>
 </li>
 <li>
 <p>Each table in DynamoDB has a maximum of <strong>20 Global secondary indexes</strong> (default limit) and <strong>5 Local secondary indexes</strong>.</p>
@@ -2099,19 +2099,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1701079791"></script>
-    <script src="/js/perfect-scrollbar.min.js?1701079791"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1701079791"></script>
-    <script src="/js/jquery.sticky.js?1701079791"></script>
-    <script src="/js/featherlight.min.js?1701079791"></script>
-    <script src="/js/highlight.pack.js?1701079791"></script>
+    <script src="/js/clipboard.min.js?1733805413"></script>
+    <script src="/js/perfect-scrollbar.min.js?1733805413"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1733805413"></script>
+    <script src="/js/jquery.sticky.js?1733805413"></script>
+    <script src="/js/featherlight.min.js?1733805413"></script>
+    <script src="/js/highlight.pack.js?1733805413"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1701079791"></script>
-    <script src="/js/learn.js?1701079791"></script>
-    <script src="/js/hugo-learn.js?1701079791"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1733805413"></script>
+    <script src="/js/learn.js?1733805413"></script>
+    <script src="/js/hugo-learn.js?1733805413"></script>
 
-    <link href="/mermaid/mermaid.css?1701079791" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1701079791"></script>
+    <link href="/mermaid/mermaid.css?1733805413" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1733805413"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

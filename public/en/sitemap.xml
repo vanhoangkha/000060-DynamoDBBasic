@@ -302,16 +302,16 @@
                 href="/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.4-updatedata/"
                 />
   </url><url>
-    <loc>/2-prerequiste/2.1-useawsmanagementconsole/2.1.5-updatedata/</loc>
+    <loc>/2-prerequiste/2.1-useawsmanagementconsole/2.1.5--updatedata/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.5-updatedata/"
+                href="/vi/2-prerequiste/2.1-useawsmanagementconsole/2.1.5--updatedata/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/2-prerequiste/2.1-useawsmanagementconsole/2.1.5-updatedata/"
+                href="/2-prerequiste/2.1-useawsmanagementconsole/2.1.5--updatedata/"
                 />
   </url><url>
     <loc>/3-gettingstartedwithawssdk/3.2-pythonandynamodb/3.2.5-deletedata/</loc>
