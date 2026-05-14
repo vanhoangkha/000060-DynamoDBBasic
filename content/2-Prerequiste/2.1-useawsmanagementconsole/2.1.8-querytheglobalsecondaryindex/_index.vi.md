@@ -1,6 +1,6 @@
 ---
 title : "Truy vấn Global secondary index"
-date :  "`r Sys.Date()`" 
+date: 2024-01-01
 weight : 8
 chapter : false
 pre : " <b> 2.1.8 </b> "
